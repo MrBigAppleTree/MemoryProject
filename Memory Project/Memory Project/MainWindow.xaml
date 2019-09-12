@@ -5,15 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Memory_Project"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid RenderTransformOrigin="0.326,0.444">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0*"/>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="0*"/>
-        </Grid.ColumnDefinitions>
-        <Image Source="" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="720
-               " VerticalAlignment="Top" Width="1280"/>
+        Title="Memory" Height="720" Width="1280" Icon="Images/MainTheme/Main Icon.png">
+    <Grid>
+        <Image Source="Images/MainTheme/MenuBackground.png" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Fill"/>
+        <Button Content="Play" VerticalAlignment="Top" Width="113" Margin="0,75,0,0" Height="59" FontSize="36" RenderTransformOrigin="0.5,0.5">
+        </Button>
 
     </Grid>
 </Window>
