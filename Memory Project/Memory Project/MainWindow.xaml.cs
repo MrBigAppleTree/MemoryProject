@@ -24,5 +24,10 @@ namespace Memory_Project
         {
             InitializeComponent();
         }
+
+        private void play_click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Play button has been pressed");
+        }
     }
 }
