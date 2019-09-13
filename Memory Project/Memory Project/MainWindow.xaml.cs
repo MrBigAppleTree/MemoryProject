@@ -23,7 +23,7 @@ namespace Memory_Project
         public MainWindow()
         {
             InitializeComponent();
-            
+           
         }
 
         private void play_click(object sender, RoutedEventArgs e)

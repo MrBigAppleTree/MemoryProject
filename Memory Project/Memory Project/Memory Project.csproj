@@ -70,6 +70,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="obj\Debug\App.g.i.cs" />
+    <Compile Include="obj\Debug\MainWindow.g.i.cs" />
+    <Compile Include="obj\Debug\Memory Project_Content.g.i.cs" />
+    <Compile Include="obj\Release\App.g.cs" />
+    <Compile Include="obj\Release\MainWindow.g.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -87,6 +92,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="bin\Debug\Memory Project.exe.config" />
+    <None Include="obj\Release\Memory Project.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Release\Memory Project_MarkupCompile.cache" />
+    <None Include="obj\Release\Memory Project_MarkupCompile.lref" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -96,7 +105,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Images\" />
+    <Folder Include="bin\Release\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\NHLStenden\MenuBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Main Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\Memory Project.exe" />
+    <Content Include="bin\Debug\Memory Project.pdb" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
