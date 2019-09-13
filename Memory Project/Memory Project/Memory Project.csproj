@@ -95,15 +95,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Images\Theme1\Cards\" />
+    <Folder Include="Images\Avatar\" />
+    <Folder Include="Images\LOTR\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\MainTheme\Main Icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\MainTheme\MenuBackground.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    <Resource Include="Images\NHLStenden\MenuBackground.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
