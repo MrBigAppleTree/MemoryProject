@@ -24,5 +24,30 @@ namespace Memory_Project
         {
             InitializeComponent();
         }
+
+        private void play_click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Hurdur play button");
+        }
+
+        private void theme_click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Hurdur theme button");
+        }
+
+        private void conf_click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Hurdur configuration button");
+        }
+
+        private void high_click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Hurdur highscores button");
+        }
+
+        private void close_click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
