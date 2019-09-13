@@ -29,14 +29,22 @@ namespace Memory_Project
         {
             MessageBox.Show("Play button has been pressed");
         }
+
         private void theme_click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Theme button has been pressed");
         }
+
         private void config_click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Configuration button has been pressed");
         }
+
+        private void high_click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Highscores button has been pressed");
+        }
+
         private void close_click(object sender, RoutedEventArgs e)
         {
             this.Close();
