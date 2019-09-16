@@ -67,21 +67,21 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Page1.xaml">
+    <Page Include="MainNav.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Page2.xaml">
+    <Page Include="PlayNav.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Page1.xaml.cs">
-      <DependentUpon>Page1.xaml</DependentUpon>
+    <Compile Include="MainNav.xaml.cs">
+      <DependentUpon>MainNav.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Page2.xaml.cs">
-      <DependentUpon>Page2.xaml</DependentUpon>
+    <Compile Include="PlayNav.xaml.cs">
+      <DependentUpon>PlayNav.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -110,6 +110,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Iroh.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\NHLStenden\MenuBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="WillingHopefulEasternnewt-small.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

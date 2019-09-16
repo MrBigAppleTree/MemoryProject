@@ -18,19 +18,15 @@ namespace Memory_Project
     /// <summary>
     /// Interaction logic for Page1.xaml
     /// </summary>
-    public partial class Page1 : Page
+    public partial class MainNav : Page
     {
-        public Page1()
+        public MainNav()
         {
             InitializeComponent();
         }
         private void play_click(object sender, RoutedEventArgs e)
         {
-            int height = Convert.ToInt32(comboHeight.Text);
-            int width = Convert.ToInt32(comboWidth.Text);
-            MessageBox.Show($"Play button has been pressed height {height} width {width}");
-            this.NavigationService.Navigate(new Uri("Page2.xaml", UriKind.Relative));
-
+            this.NavigationService.Navigate(new Uri("PlayNav.xaml", UriKind.Relative));
         }
 
         private void theme_click(object sender, RoutedEventArgs e)
