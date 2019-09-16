@@ -9,11 +9,11 @@
 
     <Grid>
         <Image Source="Images/NHLStenden/MenuBackground.png" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Fill"/>
-        <Button Content="Play" x:Name="play_button" Click="play_click" Width="300" Margin="0,0,0,400" Height="60" FontSize="36" RenderTransformOrigin="0.5,0.5"/>
-        <Button Content="Theme" x:Name="theme_button" Click="theme_click" Width="300" Margin="0,0,0,200" Height="60" FontSize="36" RenderTransformOrigin="0.5,0.5"/>
-        <Button Content="Configuration" x:Name="config_button" Click="config_click" Width="300" Margin="0,0,0,0" Height="60" FontSize="36" RenderTransformOrigin="0.5,0.5"/>
-        <Button Content="Highscores" x:Name="high_button" Click="high_click" Width="300" Margin="0,200,0,0" Height="60" FontSize="36" RenderTransformOrigin="0.5,0.5"/>
-        <Button Content="Close Game" x:Name="close_button" Click="close_click" Width="300" Margin="0,400,0,0" Height="60" FontSize="36" RenderTransformOrigin="0.5,0.5"/>
+        <Button Content="Play" x:Name="play_button" Click="Play_click" Width="300" Margin="0,0,0,400" Height="60" FontSize="36" RenderTransformOrigin="0.5,0.5"/>
+        <Button Content="Theme" x:Name="theme_button" Click="Theme_click" Width="300" Margin="0,0,0,200" Height="60" FontSize="36" RenderTransformOrigin="0.5,0.5"/>
+        <Button Content="Configuration" x:Name="config_button" Click="Config_click" Width="300" Margin="0,0,0,0" Height="60" FontSize="36" RenderTransformOrigin="0.5,0.5"/>
+        <Button Content="Highscores" x:Name="high_button" Click="High_click" Width="300" Margin="0,200,0,0" Height="60" FontSize="36" RenderTransformOrigin="0.5,0.5"/>
+        <Button Content="Close Game" x:Name="close_button" Click="Close_click" Width="300" Margin="0,400,0,0" Height="60" FontSize="36" RenderTransformOrigin="0.5,0.5"/>
         <ComboBox HorizontalAlignment="Left" x:Name="comboHeight" Margin="132,82,0,0" VerticalAlignment="Top" Width="102" Height="44">
             <ComboBoxItem Content="2" HorizontalAlignment="Left" Width="99.2"/>
             <ComboBoxItem Content="3" HorizontalAlignment="Left" Width="99.2"/>

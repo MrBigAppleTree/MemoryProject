@@ -24,32 +24,34 @@ namespace Memory_Project
         {
             InitializeComponent();
         }
-        private void play_click(object sender, RoutedEventArgs e)
+        private void Play_click(object sender, RoutedEventArgs e)
         {
             int height = Convert.ToInt32(comboHeight.Text);
             int width = Convert.ToInt32(comboWidth.Text);
-            MessageBox.Show($"Play button has been pressed height {height} width {width}");
+            int amount = height*width;
+            MessageBox.Show($"Play button has been pressed height {height} width {width} so you have {amount} cards total");
             this.NavigationService.Navigate(new Uri("Page2.xaml", UriKind.Relative));
 
         }
 
-        private void theme_click(object sender, RoutedEventArgs e)
+        private void Theme_click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Theme button has been pressed");
         }
 
-        private void config_click(object sender, RoutedEventArgs e)
+        private void Config_click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Configuration button has been pressed");
         }
 
-        private void high_click(object sender, RoutedEventArgs e)
+        private void High_click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Highscores button has been pressed");
+            this.NavigationService.Navigate(new Uri("HighNav.xaml", UriKind.Relative));
         }
 
-        private void close_click(object sender, RoutedEventArgs e)
+        private void Close_click(object sender, RoutedEventArgs e)
         {
+            
         }
     }
 }
