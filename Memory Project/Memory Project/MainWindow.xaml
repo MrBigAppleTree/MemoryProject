@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Memory" Height="720" Width="1280">
     <Grid>
-        <Image Source="images/NHLStenden/MenuBackground.png" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Fill"></Image>
+        <Image Source="images/NHLStenden/MenuBackground.png" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Fill"/>
         <Button Content="Play" x:Name="play_button" Click="play_click" Width="300" Margin="0,0,0,400" Height="60" FontSize="36" RenderTransformOrigin="0.5,0.5"/>
         <Button Content="Theme" x:Name="theme_button" Click="theme_click" Width="300" Margin="0,0,0,200" Height="60" FontSize="36" RenderTransformOrigin="0.5,0.5"/>
         <Button Content="Configuration" x:Name="conf_button" Click="conf_click" Width="300" Margin="0,0,0,0" Height="60" FontSize="36" RenderTransformOrigin="0.5,0.5"/>
