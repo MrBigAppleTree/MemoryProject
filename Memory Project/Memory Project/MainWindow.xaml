@@ -5,8 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Memory_Project"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Memory" Height="720" Width="1280">
     <Grid>
-        
+        <Image Source="images/NHLStenden/MenuBackground.png" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Fill"></Image>
+        <Button Content="Play" x:Name="play_button" Click="play_click" Width="300" Margin="0,0,0,400" Height="60" FontSize="36" RenderTransformOrigin="0.5,0.5"/>
+        <Button Content="Theme" x:Name="theme_button" Click="theme_click" Width="300" Margin="0,0,0,200" Height="60" FontSize="36" RenderTransformOrigin="0.5,0.5"/>
+        <Button Content="Configuration" x:Name="conf_button" Click="conf_click" Width="300" Margin="0,0,0,0" Height="60" FontSize="36" RenderTransformOrigin="0.5,0.5"/>
+        <Button Content="Highscores" x:Name="high_button" Click="high_click" Width="300" Margin="0,200,0,0" Height="60" FontSize="36" RenderTransformOrigin="0.5,0.5"/>
+        <Button Content="Close Game" x:Name="close_button" Click="close_click" Width="300" Margin="0,400,0,0" Height="60" FontSize="36" RenderTransformOrigin="0.5,0.5"/>
     </Grid>
 </Window>
