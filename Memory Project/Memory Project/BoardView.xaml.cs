@@ -29,7 +29,7 @@ namespace Memory_Project
         {
             InitializeComponent();
             b = new Board(height, width);
-            
+            BackgroundImg.Source = new BitmapImage(new Uri("Images/" + (string)Application.Current.Resources["Theme"] + "/MenuBackground.png"));
         }
 
         public BoardView(int height, int width):this()
