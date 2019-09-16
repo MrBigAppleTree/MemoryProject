@@ -9,7 +9,8 @@
       Title="PlayNav">
 
     <Grid Background="White">
-        <ComboBox HorizontalAlignment="Left" x:Name="comboHeight" Margin="359,110,0,0" VerticalAlignment="Top" Width="162" Height="63">
+        <Image Source="Images/NHLStenden/MenuBackground.png" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Fill"/>
+        <ComboBox FontSize="20" HorizontalAlignment="Left" x:Name="comboHeight" Margin="503,110,0,0" VerticalAlignment="Top" Width="58" Height="48">
             <ComboBoxItem Content="2" HorizontalAlignment="Left" Width="99.2"/>
             <ComboBoxItem Content="3" HorizontalAlignment="Left" Width="99.2"/>
             <ComboBoxItem Content="4" HorizontalAlignment="Left" Width="99.2" IsSelected="True"/>
@@ -18,7 +19,7 @@
             <ComboBoxItem Content="7" HorizontalAlignment="Left" Width="99.2"/>
             <ComboBoxItem Content="8" HorizontalAlignment="Left" Width="99.2"/>
         </ComboBox>
-        <ComboBox HorizontalAlignment="Left" x:Name="comboWidth" Margin="530,110,0,0" VerticalAlignment="Top" Width="160" Height="63">
+        <ComboBox FontSize="20" HorizontalAlignment="Left" x:Name="comboWidth" Margin="566,110,0,0" VerticalAlignment="Top" Width="60" Height="48">
             <ComboBoxItem Content="2" HorizontalAlignment="Left" Width="99.2"/>
             <ComboBoxItem Content="3" HorizontalAlignment="Left" Width="99.2"/>
             <ComboBoxItem Content="4" HorizontalAlignment="Left" Width="99.2" IsSelected="True"/>
@@ -27,11 +28,11 @@
             <ComboBoxItem Content="7" HorizontalAlignment="Left" Width="99.2"/>
             <ComboBoxItem Content="8" HorizontalAlignment="Left" Width="99.2"/>
         </ComboBox>
-        <Button Content="New Game" Click="new_click" HorizontalAlignment="Left" Margin="142,110,0,0" VerticalAlignment="Top" Width="182" Height="63"/>
-        <Button Content="Load Game" HorizontalAlignment="Left" Margin="142,208,0,0" VerticalAlignment="Top" Width="182" Height="63"/>
-        <Button Content="Back" Click="back_click" HorizontalAlignment="Left" Margin="142,315,0,0" VerticalAlignment="Top" Width="182" Height="62"/>
-        <TextBlock HorizontalAlignment="Left" Margin="412,80,0,0" TextWrapping="Wrap" Text="Height" VerticalAlignment="Top" Height="23" Width="57"/>
-        <TextBlock HorizontalAlignment="Left" Margin="579,80,0,0" TextWrapping="Wrap" Text="Width" VerticalAlignment="Top" Height="23" Width="51"/>
+        <Button Content="New Game" Click="new_click" HorizontalAlignment="Left" Margin="307,100,0,0" VerticalAlignment="Top" Width="182" Height="63"/>
+        <Button Content="Load Game" HorizontalAlignment="Left" Margin="307,198,0,0" VerticalAlignment="Top" Width="182" Height="63"/>
+        <Button Content="Back" Click="back_click" HorizontalAlignment="Left" Margin="307,305,0,0" VerticalAlignment="Top" Width="182" Height="62"/>
+        <TextBlock HorizontalAlignment="Left" TextAlignment="Center" Margin="504,87,0,0" TextWrapping="Wrap" Text="Height" VerticalAlignment="Top" Height="23" Width="57"/>
+        <TextBlock HorizontalAlignment="Left" TextAlignment="Center" Margin="566,87,0,0" TextWrapping="Wrap" Text="Width" VerticalAlignment="Top" Height="23" Width="60" RenderTransformOrigin="0.116,1.259"/>
         <Label Content="GAME SELECT&#xD;&#xA;" FontSize="25" FontWeight="Bold" HorizontalAlignment="Left" Margin="307,10,0,0" VerticalAlignment="Top" Height="43" Width="182"/>
     </Grid>
 </Page>

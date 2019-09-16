@@ -20,6 +20,7 @@ namespace Memory_Project
     /// </summary>
     public partial class PlayNav : Page
     {
+        string theme = "MenuBackground";
         public PlayNav()
         {
             InitializeComponent();
