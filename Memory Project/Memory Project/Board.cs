@@ -10,11 +10,15 @@ namespace Memory_Project
     {
         private int height;
         private int width;
+        private int[,] boardarray;
 
         public Board(int height, int width)
         {
             this.height = height;
             this.width = width;
+            boardarray = new int[height, width];
         }
+
+        
     }
 }
