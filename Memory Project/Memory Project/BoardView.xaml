@@ -9,6 +9,6 @@
       Title="BoardView">
 
     <Grid Background="White">
-        <Image x:Name="BackgroundImg"/>
+        <Image x:Name="BackgroundImg" Stretch="Fill"/>
     </Grid>
 </Page>

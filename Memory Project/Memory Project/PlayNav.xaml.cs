@@ -34,8 +34,8 @@ namespace Memory_Project
         {
             int height = Convert.ToInt32(comboHeight.Text);
             int width = Convert.ToInt32(comboWidth.Text);
-            //BoardView = new BoardView(height, width);
-            this.NavigationService.Navigate(new Uri("BoardView.xaml", UriKind.Relative));
+            BoardView b = new BoardView(height, width);
+            this.NavigationService.Navigate(b);
         }
     }
 }
