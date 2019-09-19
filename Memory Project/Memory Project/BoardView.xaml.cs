@@ -28,7 +28,7 @@ namespace Memory_Project
         public BoardView()
         {
             InitializeComponent();
-            b = new Board(height, width);
+            b = new Board(height, width, this);
             try
             {
                 string currentTheme = (string)Application.Current.Resources["Theme"];
@@ -43,6 +43,38 @@ namespace Memory_Project
         {
             this.height = height;
             this.width = width;
+        }
+
+        public void addToGrid(int height, int width)
+        {
+            for (int i = 0; i < width; i++)
+            {
+                playGrid.ColumnDefinitions.Add(new ColumnDefinition());
+            }
+            for (int i = 0; i < height; i++)
+            {
+                playGrid.RowDefinitions.Add(new RowDefinition());
+            }
+        }
+
+        public void addCard(Card card)
+        {
+            Button btn = new Button();
+            btn.SetValue(Grid.ColumnProperty, card.getXPos());
+            btn.SetValue(Grid.RowProperty, card.getYPos());
+            Image img = new Image();
+            img.Source = new BitmapImage(new Uri(card.getbackImg(), UriKind.Relative));
+            img.Stretch = Stretch.Fill;
+            btn.Content = img;
+            btn.Click += new RoutedEventHandler(card_click);
+            playGrid.Children.Add(btn);
+        }
+
+        private void card_click(object sender, RoutedEventArgs e)
+        {
+            int x = Grid.GetColumn((Button)sender);
+            int y = Grid.GetRow((Button)sender);
+
         }
     }
 }
