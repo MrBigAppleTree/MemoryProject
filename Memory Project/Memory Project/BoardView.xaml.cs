@@ -20,15 +20,10 @@ namespace Memory_Project
     /// </summary>
     public partial class BoardView : Page
     {
-        private int height = 4;
-        private int width = 4;
-
-        Board b;
 
         public BoardView()
         {
             InitializeComponent();
-            b = new Board(height, width, this);
             try
             {
                 string currentTheme = (string)Application.Current.Resources["Theme"];
@@ -37,12 +32,6 @@ namespace Memory_Project
             {
                 Console.WriteLine(e.Message);
             }
-        }
-
-        public BoardView(int height, int width):this()
-        {
-            this.height = height;
-            this.width = width;
         }
 
         public void addToGrid(int height, int width)
