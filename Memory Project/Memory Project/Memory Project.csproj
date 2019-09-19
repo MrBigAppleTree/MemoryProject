@@ -76,6 +76,7 @@
       <DependentUpon>BoardView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Card.cs" />
+    <Compile Include="GameController.cs" />
     <Compile Include="HighNav.xaml.cs">
       <DependentUpon>HighNav.xaml</DependentUpon>
     </Compile>
@@ -96,6 +97,7 @@
     <Compile Include="MainNav.xaml.cs">
       <DependentUpon>MainNav.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Player.cs" />
     <Compile Include="PlayNav.xaml.cs">
       <DependentUpon>PlayNav.xaml</DependentUpon>
     </Compile>
