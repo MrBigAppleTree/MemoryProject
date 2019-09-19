@@ -7,8 +7,9 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="BoardView">
-
-    <Grid Background="White">
+    
+    <Grid Background="White" Name="playGrid">
         <Image x:Name="BackgroundImg" Stretch="Fill"/>
+        
     </Grid>
 </Page>
