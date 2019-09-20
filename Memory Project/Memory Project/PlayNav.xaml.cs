@@ -34,7 +34,8 @@ namespace Memory_Project
         {
             int height = Convert.ToInt32(comboHeight.Text);
             int width = Convert.ToInt32(comboWidth.Text);
-            BoardView b = new BoardView(height, width);
+            GameController controller = new GameController(height, width);
+            BoardView b = controller.getView();
             this.NavigationService.Navigate(b);
         }
     }
