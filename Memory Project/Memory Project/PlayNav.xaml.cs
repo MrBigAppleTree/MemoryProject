@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,22 +21,83 @@ namespace Memory_Project
     /// </summary>
     public partial class PlayNav : Page
     {
-        string theme = "MenuBackground";
+        string theme = "Avatar";
+        public ObservableCollection<ComboBoxItem> cbItems { get; set; }
+        public ComboBoxItem SelectedcbItem { get; set; }
+        public int j;
+
         public PlayNav()
         {
             InitializeComponent();
+            comboboxItems();
+
+
+        }
+        private void comboboxItems()
+        {
+            /*
+             * 
+            Generate Combobox items dependend on theme for the xaml
+
+            TO DO: -Dynamicly fill combobox dependend on height/width selected, for example with 32 cards having a 10*3 board
+                   -Chance fetch from Dictionary to global variable
+
+            ~~Thomas branch
+
+            */
+            Dictionary<string, int> maxCards = new Dictionary<string, int>();
+            maxCards.Add("Avatar", 32);
+            DataContext = this;
+
+            cbItems = new ObservableCollection<ComboBoxItem>();
+            for (int i = 0; i <= Math.Sqrt(maxCards[theme] * 2); i++)
+            {
+                if (i == 4)
+                {
+                    var cbItem = new ComboBoxItem { Content = i };
+                    SelectedcbItem = cbItem;
+                    cbItems.Add(cbItem);
+                }
+                else if (i != 0 && i != 1)
+                {
+                    cbItems.Add(new ComboBoxItem { Content = i });
+                }
+            }
         }
         private void back_click(object sender, RoutedEventArgs e)
         {
+
             this.NavigationService.Navigate(new Uri("MainNav.xaml", UriKind.Relative));
 
         }
         public void new_click(object sender, RoutedEventArgs e)
         {
+            List<string> players = new List<string>();
+            int numPlayers = Convert.ToInt32(Players.Text);
             int height = Convert.ToInt32(comboHeight.Text);
             int width = Convert.ToInt32(comboWidth.Text);
-            //BoardView = new BoardView(height, width);
-            this.NavigationService.Navigate(new Uri("BoardView.xaml", UriKind.Relative));
+            //Spaghetti incoming...
+            for (int i = 0; i < numPlayers; i++)
+            {
+                if (i == 0)
+                {
+                    players.Add(Player1.Text);
+                }
+                if (i == 1)
+                {
+                    players.Add(Player2.Text);
+                }
+                if (i == 2)
+                {
+                    players.Add(Player3.Text);
+                }
+                if (i == 3)
+                {
+                    players.Add(Player4.Text);
+                }
+            }
+            //BoardView b = new BoardView(height, width, players);
+            //this.NavigationService.Navigate(new Uri(b , UriKind.Relative));
         }
     }
 }
