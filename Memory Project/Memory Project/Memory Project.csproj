@@ -161,6 +161,8 @@
     <Resource Include="images\Avatar\Card9.png" />
     <Resource Include="images\Avatar\CardBack.png" />
     <Resource Include="images\Avatar\MenuBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="images\LOTR\Card1.png" />
     <Resource Include="images\LOTR\Card10.png" />
     <Resource Include="images\LOTR\Card11.png" />
@@ -195,6 +197,9 @@
     <Resource Include="images\LOTR\Card9.png" />
     <Resource Include="images\LOTR\CardBack.png" />
     <Resource Include="images\LOTR\MenuBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\LOTR\BoardBackground.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
