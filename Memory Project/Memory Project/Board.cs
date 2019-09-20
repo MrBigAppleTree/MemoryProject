@@ -8,13 +8,13 @@ using System.Windows;
 
 namespace Memory_Project
 {
-    class Board
+    public class Board
     {
         private int height;
         private int width;
         private List<Card> boardList = new List<Card>();
-        private List<int> takenCards = new List<int>();
-        private List<Tuple<int, int>> takenCoords = new List<Tuple<int, int>>();
+        private List<int> availableCards = new List<int>();
+        private List<Tuple<int, int>> availableCoords = new List<Tuple<int, int>>();
         string currentTheme;
         string backpath;
         BoardView board;
@@ -26,9 +26,32 @@ namespace Memory_Project
             board = b;
 
             currentTheme = (string)Application.Current.Resources["Theme"];
-            backpath = "images/" + currentTheme + "CardBack";
+            backpath = "images/" + currentTheme + "/CardBack.png";
+            //Console.WriteLine(backpath);
+            generateImages();
+            generateCoords();
             prepareCards();
             prepareBoard();
+        }
+
+        private void generateImages()
+        {
+            int maxCards = (Directory.GetFiles("../../images/" + currentTheme).Length) - 3;
+            for(int i=1; i <= maxCards; i++)
+            {
+                availableCards.Add(i);
+            }
+        }
+
+        private void generateCoords()
+        {
+            for(int i=0; i < width; i++)
+            {
+                for(int j=0; j < height; j++)
+                {
+                    availableCoords.Add(new Tuple<int, int>(i, j));
+                }
+            }
         }
 
         private void prepareCards()
@@ -38,8 +61,8 @@ namespace Memory_Project
             for(int i=0; i < imgNumber;i++)
             {
                 int img = selectImg(maxCards);
-                string frontpath = "images/" + currentTheme + "/card" + img;
-                Console.WriteLine("imgpath: " + frontpath);
+                string frontpath = "images/" + currentTheme + "/Card" + img + ".png";
+                //Console.WriteLine("imgpath: " + frontpath);
                 for (int j=0; j < 2; j++)
                 {
                     Tuple<int, int> coord = coords();
@@ -50,7 +73,7 @@ namespace Memory_Project
             if ((height * width) % 2 != 0)
             {
                 int img = selectImg(maxCards);
-                string frontpath = "images/" + currentTheme + "/card" + img;
+                string frontpath = "images/" + currentTheme + "/card" + img + ".png";
                 Tuple<int, int> coord = coords();
                 Card temp = new Card(coord.Item1, coord.Item2, frontpath, backpath);
                 boardList.Add(temp);
@@ -74,35 +97,18 @@ namespace Memory_Project
 
         private int selectImg(int maxCards)
         {
-            while (true)
-            {
-                int cardnum = genRand(1, maxCards);
-                if (takenCards.Contains(cardnum))
-                {
-                    continue;
-                } else
-                {
-                    takenCards.Add(cardnum);
-                    return cardnum;
-                }
-            }
+            int index = genRand(0, (availableCards.Count-1));
+            int img = availableCards[index];
+            availableCards.RemoveAt(index);
+            return img;
         }
 
         private Tuple<int, int> coords()
         {
-            while (true)
-            {
-                int x = genRand(0, width);
-                int y = genRand(0, height);
-                Tuple<int,int> coord = new Tuple<int,int>(x, y);
-                if (takenCoords.Contains(coord)){
-                    continue;
-                } else
-                {
-                    takenCoords.Add(coord);
-                    return coord;
-                }
-            }
+            int index = genRand(0, (availableCoords.Count-1));
+            Tuple<int, int> coord = availableCoords[index];
+            availableCoords.RemoveAt(index);
+            return coord;
         }
 
         public string getFrontImg(int x, int y)

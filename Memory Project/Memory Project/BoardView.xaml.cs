@@ -20,15 +20,17 @@ namespace Memory_Project
     /// </summary>
     public partial class BoardView : Page
     {
-
-        public BoardView()
+        GameController controller;
+        public BoardView(GameController controller)
         {
             InitializeComponent();
+            this.controller = controller;
             try
             {
                 string currentTheme = (string)Application.Current.Resources["Theme"];
                 Console.WriteLine(currentTheme);
-                BackgroundImg.Source = new BitmapImage(new Uri(@"Images/" + currentTheme + "/MenuBackground.png", UriKind.Relative));
+                BackgroundImg.Source = new BitmapImage(new Uri(@"../../images/"+currentTheme+"/BoardBackground.png", UriKind.Relative));
+                Console.WriteLine(BackgroundImg.Source);
             } catch (Exception e)
             {
                 Console.WriteLine(e.Message);
@@ -37,6 +39,8 @@ namespace Memory_Project
 
         public void addToGrid(int height, int width)
         {
+            ColumnDefinition c = new ColumnDefinition();
+            
             for (int i = 0; i < width; i++)
             {
                 playGrid.ColumnDefinitions.Add(new ColumnDefinition());
@@ -45,6 +49,7 @@ namespace Memory_Project
             {
                 playGrid.RowDefinitions.Add(new RowDefinition());
             }
+            
         }
 
         public void addCard(Card card)
@@ -54,7 +59,6 @@ namespace Memory_Project
             btn.SetValue(Grid.RowProperty, card.getYPos());
             Image img = new Image();
             img.Source = new BitmapImage(new Uri(card.getbackImg(), UriKind.Relative));
-            img.Stretch = Stretch.Fill;
             btn.Content = img;
             btn.Click += new RoutedEventHandler(card_click);
             playGrid.Children.Add(btn);
@@ -64,7 +68,12 @@ namespace Memory_Project
         {
             int x = Grid.GetColumn((Button)sender);
             int y = Grid.GetRow((Button)sender);
+            string frontImgPath = controller.getBoard().getFrontImg(x, y);
 
+            Button btn = sender as Button;
+            Image img = new Image();
+            img.Source = new BitmapImage(new Uri(frontImgPath, UriKind.Relative));
+            btn.Content = img;
         }
     }
 }

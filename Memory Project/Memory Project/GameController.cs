@@ -7,16 +7,16 @@ using System.Windows;
 
 namespace Memory_Project
 {
-    class GameController
+    public class GameController
     {
-        int height;
-        int width;
-        int players;
+        private int height;
+        private int width;
+        private int players;
 
-        string theme = (string)Application.Current.Resources["Theme"];
+        private string theme = (string)Application.Current.Resources["Theme"];
 
-        Board board;
-        BoardView view;
+        private Board board;
+        private BoardView view;
 
 
         public GameController(int height, int width, int players)
@@ -25,7 +25,7 @@ namespace Memory_Project
             this.width = width;
             this.players = players;
 
-            view = new BoardView();
+            view = new BoardView(this);
             board = new Board(height, width, view);
         }
 
@@ -33,7 +33,11 @@ namespace Memory_Project
         {
         }
 
+        public int getHeight() { return height; }
+        public int getWidth() { return width; }
+
         public BoardView getView() { return view; }
+        public Board getBoard() { return board; }
 
         private void startMusic()
         {
