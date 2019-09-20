@@ -26,12 +26,14 @@ namespace Memory_Project
             this.players = players;
 
             view = new BoardView();
-            board = new Board(height, width, view);
+            //board = new Board(height, width, view);
         }
 
         public GameController(int height, int width) : this(height, width, 2)
         {
         }
+
+        public BoardView getView() { return view; }
 
         private void startMusic()
         {
@@ -44,6 +46,8 @@ namespace Memory_Project
         {
 
         }
+
+
 
     }
 }
