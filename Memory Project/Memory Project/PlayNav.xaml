@@ -28,7 +28,11 @@
             <ComboBoxItem Content="3" HorizontalAlignment="Left" Width="92.8"/>
             <ComboBoxItem Content="4" HorizontalAlignment="Left" Width="92.8"/>
         </ComboBox>
-        <Grid Width="200px" Margin="59,78,541,113.6">
+        <Grid Margin="30,109,512,110.6" HorizontalAlignment="Center" Width="258">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="49*"/>
+                <ColumnDefinition Width="51*"/>
+            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -37,11 +41,11 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Label Background="Azure" Content="Player names:" FontSize="20px" Margin="5"/>
-            <TextBox Grid.Row="1" Name="Player1" Text="Player1" Margin="5" TextAlignment="Center" Padding="10"/>
-            <TextBox Grid.Row="2" Name="Player2" Text="Player2" Margin="5" TextAlignment="Center" Padding="10"/>
-            <TextBox Grid.Row="3" Name="Player3" Text="Player3" Margin="5" TextAlignment="Center" Padding="10"/>
-            <TextBox Grid.Row="4" Name="Player4" Text="Player4" Margin="5" TextAlignment="Center" Padding="10"/>
+            <Label Background="Azure" Content="Player names:" HorizontalContentAlignment="Center" FontSize="20px" Margin="5,5,5,5.2" Grid.ColumnSpan="2"/>
+            <TextBox FontSize="15px" Grid.Row="1" Name="Player1" Text="Player1" Margin="2,1.8,2,1.4" TextAlignment="Center" Padding="10" Grid.ColumnSpan="2"/>
+            <TextBox FontSize="15px" Grid.Row="2" Name="Player2" Text="Player2" Margin="2,1.6" TextAlignment="Center" Padding="10" Grid.ColumnSpan="2"/>
+            <TextBox FontSize="15px" Grid.Row="3" Name="Player3" Text="Player3" Margin="2,2.4,2,1" TextAlignment="Center" Padding="10" Grid.ColumnSpan="2"/>
+            <TextBox FontSize="15px" Grid.Row="4" Name="Player4" Text="Player4" Margin="2,2,2,1.2" TextAlignment="Center" Padding="10" Grid.ColumnSpan="2"/>
         </Grid>
         <Label Background="Azure" Content="Game Setttings" HorizontalAlignment="Center" Margin="592,74,116,0" VerticalAlignment="Top" Height="28" Width="92"/>
     </Grid>
