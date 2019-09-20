@@ -20,29 +20,60 @@ namespace Memory_Project
     /// </summary>
     public partial class BoardView : Page
     {
-        private int height = 4;
-        private int width = 4;
-
-        Board b;
-
-        public BoardView()
+        GameController controller;
+        public BoardView(GameController controller)
         {
             InitializeComponent();
-            b = new Board(height, width);
+            this.controller = controller;
             try
             {
                 string currentTheme = (string)Application.Current.Resources["Theme"];
-                BackgroundImg.Source = new BitmapImage(new Uri(@"Images/" + currentTheme + "/MenuBackground.png", UriKind.Relative));
+                Console.WriteLine(currentTheme);
+                BackgroundImg.Source = new BitmapImage(new Uri(@"../../images/"+currentTheme+"/BoardBackground.png", UriKind.Relative));
+                Console.WriteLine(BackgroundImg.Source);
             } catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
         }
 
-        public BoardView(int height, int width):this()
+        public void addToGrid(int height, int width)
         {
-            this.height = height;
-            this.width = width;
+            ColumnDefinition c = new ColumnDefinition();
+            
+            for (int i = 0; i < width; i++)
+            {
+                playGrid.ColumnDefinitions.Add(new ColumnDefinition());
+            }
+            for (int i = 0; i < height; i++)
+            {
+                playGrid.RowDefinitions.Add(new RowDefinition());
+            }
+            
+        }
+
+        public void addCard(Card card)
+        {
+            Button btn = new Button();
+            btn.SetValue(Grid.ColumnProperty, card.getXPos());
+            btn.SetValue(Grid.RowProperty, card.getYPos());
+            Image img = new Image();
+            img.Source = new BitmapImage(new Uri(card.getbackImg(), UriKind.Relative));
+            btn.Content = img;
+            btn.Click += new RoutedEventHandler(card_click);
+            playGrid.Children.Add(btn);
+        }
+
+        private void card_click(object sender, RoutedEventArgs e)
+        {
+            int x = Grid.GetColumn((Button)sender);
+            int y = Grid.GetRow((Button)sender);
+            string frontImgPath = controller.getBoard().getFrontImg(x, y);
+
+            Button btn = sender as Button;
+            Image img = new Image();
+            img.Source = new BitmapImage(new Uri(frontImgPath, UriKind.Relative));
+            btn.Content = img;
         }
     }
 }
