@@ -24,7 +24,6 @@ namespace Memory_Project
         string theme = "Avatar";
         public ObservableCollection<ComboBoxItem> cbItems { get; set; }
         public ComboBoxItem SelectedcbItem { get; set; }
-        public int j;
 
         public PlayNav()
         {
