@@ -198,5 +198,8 @@
     <Resource Include="images\LOTR\CardBack.png" />
     <Resource Include="images\LOTR\MenuBackground.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\LOTR\BoardBackground.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
