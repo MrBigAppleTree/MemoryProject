@@ -26,14 +26,14 @@ namespace Memory_Project
             board = b;
 
             currentTheme = (string)Application.Current.Resources["Theme"];
-            backpath = "images/" + currentTheme + "backimg";
+            backpath = "images/" + currentTheme + "CardBack";
             prepareCards();
             prepareBoard();
         }
 
         private void prepareCards()
         {
-            int maxCards = Directory.GetFiles("../../images/"+currentTheme).Length;
+            int maxCards = (Directory.GetFiles("../../images/"+currentTheme).Length) - 3;
             int imgNumber = (int)Math.Floor((double)(height * width / 2));
             for(int i=0; i < imgNumber;i++)
             {
