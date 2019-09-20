@@ -150,5 +150,42 @@
     <Resource Include="images\LOTR\CardBack.png" />
     <Resource Include="images\LOTR\MenuBackground.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Avatar\BoardBackground.png" />
+    <Resource Include="images\Avatar\Card1.png" />
+    <Resource Include="images\Avatar\Card10.png" />
+    <Resource Include="images\Avatar\Card11.png" />
+    <Resource Include="images\Avatar\Card12.png" />
+    <Resource Include="images\Avatar\Card13.png" />
+    <Resource Include="images\Avatar\Card14.png" />
+    <Resource Include="images\Avatar\Card15.png" />
+    <Resource Include="images\Avatar\Card16.png" />
+    <Resource Include="images\Avatar\Card17.png" />
+    <Resource Include="images\Avatar\Card18.png" />
+    <Resource Include="images\Avatar\Card19.png" />
+    <Resource Include="images\Avatar\Card2.png" />
+    <Resource Include="images\Avatar\Card20.png" />
+    <Resource Include="images\Avatar\Card21.png" />
+    <Resource Include="images\Avatar\Card22.png" />
+    <Resource Include="images\Avatar\Card23.png" />
+    <Resource Include="images\Avatar\Card24.png" />
+    <Resource Include="images\Avatar\Card25.png" />
+    <Resource Include="images\Avatar\Card26.png" />
+    <Resource Include="images\Avatar\Card27.png" />
+    <Resource Include="images\Avatar\Card28.png" />
+    <Resource Include="images\Avatar\Card29.png" />
+    <Resource Include="images\Avatar\Card3.png" />
+    <Resource Include="images\Avatar\Card30.png" />
+    <Resource Include="images\Avatar\Card31.png" />
+    <Resource Include="images\Avatar\Card32.png" />
+    <Resource Include="images\Avatar\Card4.png" />
+    <Resource Include="images\Avatar\Card5.png" />
+    <Resource Include="images\Avatar\Card6.png" />
+    <Resource Include="images\Avatar\Card7.png" />
+    <Resource Include="images\Avatar\Card8.png" />
+    <Resource Include="images\Avatar\Card9.png" />
+    <Resource Include="images\Avatar\CardBack.png" />
+    <Resource Include="images\Avatar\MenuBackground.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
