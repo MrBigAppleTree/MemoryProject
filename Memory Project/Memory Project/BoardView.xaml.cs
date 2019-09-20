@@ -27,6 +27,7 @@ namespace Memory_Project
             try
             {
                 string currentTheme = (string)Application.Current.Resources["Theme"];
+                Console.WriteLine(currentTheme);
                 BackgroundImg.Source = new BitmapImage(new Uri(@"Images/" + currentTheme + "/MenuBackground.png", UriKind.Relative));
             } catch (Exception e)
             {
