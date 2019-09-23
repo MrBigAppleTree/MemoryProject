@@ -25,5 +25,9 @@ namespace Memory_Project
         {
             InitializeComponent();
         }
+        //private void close_click(object sender, RoutedEventArgs e)
+        //{
+        //    this.Close();
+        //}
     }
 }

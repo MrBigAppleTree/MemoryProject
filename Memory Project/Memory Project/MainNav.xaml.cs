@@ -41,12 +41,12 @@ namespace Memory_Project
 
         private void high_click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Highscores button has been pressed");
+            this.NavigationService.Navigate(new Uri("HighNav.xaml", UriKind.Relative));
         }
 
         private void close_click(object sender, RoutedEventArgs e)
         {
-           System.Environment.Exit(1);
+            System.Environment.Exit(1);
         }
     }
 }
