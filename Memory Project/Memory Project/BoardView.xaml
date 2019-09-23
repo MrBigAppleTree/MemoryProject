@@ -9,11 +9,15 @@
       Title="BoardView">
 
     <StackPanel x:Name="mainPanel" Orientation="Horizontal">
-        <Grid x:Name="PlayerGrid" HorizontalAlignment="Left" MinWidth="280"/>
+        <StackPanel.Background>
+            <ImageBrush x:Name="BackgroundImg" Stretch="Fill"/>
+        </StackPanel.Background>
 
-        <Grid x:Name="playGrid" HorizontalAlignment="Right" MinWidth="1000" Width="840" Visibility="Visible"/>
+        <Grid x:Name="PlayerGrid" HorizontalAlignment="Left" MinWidth="280" Background="Transparent"/>
+        <Grid VerticalAlignment="Stretch" HorizontalAlignment="Center"/>
+        <Grid x:Name="playGrid" HorizontalAlignment="Left" VerticalAlignment="Stretch" Background="Transparent"/>
 
-        <Image x:Name="BackgroundImg" Stretch="Fill" Visibility="Visible" />
+
 
 
     </StackPanel>

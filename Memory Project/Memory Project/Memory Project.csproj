@@ -85,9 +85,6 @@
     <Compile Include="HighNav.xaml.cs">
       <DependentUpon>HighNav.xaml</DependentUpon>
     </Compile>
-    <Compile Include="HighNav.xaml.cs">
-      <DependentUpon>HighNav.xaml</DependentUpon>
-    </Compile>
     <Compile Include="HighNav2.xaml.cs">
       <DependentUpon>HighNav2.xaml</DependentUpon>
     </Compile>
