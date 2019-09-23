@@ -27,6 +27,7 @@ namespace Memory_Project
 
             view = new BoardView(this);
             board = new Board(height, width, view);
+            view.loadPlayers(players);
         }
 
         public int getHeight() { return height; }

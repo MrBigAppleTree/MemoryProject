@@ -62,6 +62,7 @@ namespace Memory_Project
             btn.Content = img;
             btn.Click += new RoutedEventHandler(card_click);
             playGrid.Children.Add(btn);
+            
         }
 
         private void card_click(object sender, RoutedEventArgs e)
@@ -74,6 +75,25 @@ namespace Memory_Project
             Image img = new Image();
             img.Source = new BitmapImage(new Uri(frontImgPath, UriKind.Relative));
             btn.Content = img;
+        }
+
+        public void loadPlayers(List<Player> list)
+        {
+            for (int i=0; i < list.Count; i++)
+            {
+                PlayerGrid.RowDefinitions.Add(new RowDefinition());
+                TextBlock txt = new TextBlock();
+                txt.TextAlignment = TextAlignment.Center;
+                txt.FontSize = 30;
+                txt.SetValue(Grid.RowProperty, i);
+
+                txt.Text = list[i].getName();
+                txt.Inlines.Add(new LineBreak());
+                txt.Inlines.Add(new LineBreak());
+                txt.Inlines.Add("Score: " + list[i].getScore());
+
+                PlayerGrid.Children.Add(txt);
+            }
         }
     }
 }
