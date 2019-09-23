@@ -45,7 +45,6 @@ namespace Memory_Project
 
         private void turnHandler()
         {
-
         }
 
 

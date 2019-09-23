@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -63,6 +64,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="HighNav2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -79,6 +84,12 @@
     <Compile Include="GameController.cs" />
     <Compile Include="HighNav.xaml.cs">
       <DependentUpon>HighNav.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HighNav.xaml.cs">
+      <DependentUpon>HighNav.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HighNav2.xaml.cs">
+      <DependentUpon>HighNav2.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -460,6 +471,44 @@
     <Resource Include="images\Avatar\Card68.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\NHLStenden\BoardBackground.png" />
+    <Resource Include="images\NHLStenden\Card1.jpg" />
+    <Resource Include="images\NHLStenden\Card10.jpg" />
+    <Resource Include="images\NHLStenden\Card11.jpg" />
+    <Resource Include="images\NHLStenden\Card12.jpg" />
+    <Resource Include="images\NHLStenden\Card13.jpg" />
+    <Resource Include="images\NHLStenden\Card14.jpg" />
+    <Resource Include="images\NHLStenden\Card15.jpg" />
+    <Resource Include="images\NHLStenden\Card16.jpg" />
+    <Resource Include="images\NHLStenden\Card17.jpg" />
+    <Resource Include="images\NHLStenden\Card18.jpg" />
+    <Resource Include="images\NHLStenden\Card19.jpg" />
+    <Resource Include="images\NHLStenden\Card2.jpg" />
+    <Resource Include="images\NHLStenden\Card20.jpg" />
+    <Resource Include="images\NHLStenden\Card21.jpg" />
+    <Resource Include="images\NHLStenden\Card22.jpg" />
+    <Resource Include="images\NHLStenden\Card23.jpg" />
+    <Resource Include="images\NHLStenden\Card24.jpg" />
+    <Resource Include="images\NHLStenden\Card25.jpg" />
+    <Resource Include="images\NHLStenden\Card26.jpg" />
+    <Resource Include="images\NHLStenden\Card27.jpg" />
+    <Resource Include="images\NHLStenden\Card28.jpg" />
+    <Resource Include="images\NHLStenden\Card29.jpg" />
+    <Resource Include="images\NHLStenden\Card3.jpg" />
+    <Resource Include="images\NHLStenden\Card30.jpg" />
+    <Resource Include="images\NHLStenden\Card31.jpg" />
+    <Resource Include="images\NHLStenden\Card32.jpg" />
+    <Resource Include="images\NHLStenden\Card4.jpg" />
+    <Resource Include="images\NHLStenden\Card5.jpg" />
+    <Resource Include="images\NHLStenden\Card6.jpg" />
+    <Resource Include="images\NHLStenden\Card7.jpg" />
+    <Resource Include="images\NHLStenden\Card8.jpg" />
+    <Resource Include="images\NHLStenden\Card9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\NHLStenden\CardBack.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
