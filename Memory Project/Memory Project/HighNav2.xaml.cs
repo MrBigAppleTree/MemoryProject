@@ -18,9 +18,9 @@ namespace Memory_Project
     /// <summary>
     /// Interaction logic for HighNav.xaml
     /// </summary>
-    public partial class HighNav : Page
+    public partial class HighNav2 : Page
     {
-        public HighNav()
+        public HighNav2()
         {
             InitializeComponent();
         }
@@ -28,9 +28,9 @@ namespace Memory_Project
         {
             this.NavigationService.Navigate(new Uri("MainNav.xaml", UriKind.Relative));
         }
-        private void High2_click(object sender, RoutedEventArgs e)
+        private void High_click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("HighNav2.xaml", UriKind.Relative));
+            this.NavigationService.Navigate(new Uri("HighNav.xaml", UriKind.Relative));
         }
     }
 }
