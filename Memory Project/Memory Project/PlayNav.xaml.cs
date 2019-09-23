@@ -75,7 +75,7 @@ namespace Memory_Project
             int numPlayers = Convert.ToInt32(Players.Text);
             int height = Convert.ToInt32(comboHeight.Text);
             int width = Convert.ToInt32(comboWidth.Text);
-            //Spaghetti incoming...
+ 
             for (int i = 0; i < numPlayers; i++)
             {
                 TextBox tb = (TextBox)FindName("Player" + (i + 1));

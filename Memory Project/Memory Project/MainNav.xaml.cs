@@ -46,6 +46,7 @@ namespace Memory_Project
 
         private void close_click(object sender, RoutedEventArgs e)
         {
+           System.Environment.Exit(1);
         }
     }
 }
