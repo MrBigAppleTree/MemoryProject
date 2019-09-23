@@ -30,10 +30,10 @@
         </ComboBox>
         <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Center" Height="222" Margin="926,329,100,0" Stroke="Black" VerticalAlignment="Top" Width="254"/>
         <Label Background="Azure" Content="Player Names" HorizontalContentAlignment="Center" FontSize="20px" Margin="953,296,123,378"/>
-        <TextBox FontSize="15px" Name="Player1" Text="Player1" Margin="958,350,134,327" TextAlignment="Center" Padding="10"/>
-        <TextBox FontSize="15px" Name="Player2" Text="Player2" Margin="958,395,134,283" TextAlignment="Center" Padding="10"/>
-        <TextBox FontSize="15px" Name="Player3" Text="Player3" Margin="958,439,134,238" TextAlignment="Center" Padding="10"/>
-        <TextBox FontSize="15px" Name="Player4" Text="Player4" Margin="958,486,134,191" TextAlignment="Center" Padding="10"/>
+        <TextBox FontSize="15px" x:Name="Player1" Text="Player1" Margin="958,350,134,327" TextAlignment="Center" Padding="10"/>
+        <TextBox FontSize="15px" x:Name="Player2" Text="Player2" Margin="958,395,134,283" TextAlignment="Center" Padding="10"/>
+        <TextBox FontSize="15px" x:Name="Player3" Text="Player3" Margin="958,439,134,238" TextAlignment="Center" Padding="10"/>
+        <TextBox FontSize="15px" x:Name="Player4" Text="Player4" Margin="958,486,134,191" TextAlignment="Center" Padding="10"/>
         <Label Background="Azure" Content="Game Setttings" HorizontalAlignment="Center" Margin="1002,141,186,0" VerticalAlignment="Top" Height="28" Width="92"/>
     </Grid>
 </Page>

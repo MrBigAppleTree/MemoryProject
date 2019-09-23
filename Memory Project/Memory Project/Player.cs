@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Memory_Project
 {
-    class Player
+    public class Player
     {
         string name;
         int score;

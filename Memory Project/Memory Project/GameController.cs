@@ -11,7 +11,7 @@ namespace Memory_Project
     {
         private int height;
         private int width;
-        private int players;
+        private List<Player> players;
 
         private string theme = (string)Application.Current.Resources["Theme"];
 
@@ -19,7 +19,7 @@ namespace Memory_Project
         private BoardView view;
 
 
-        public GameController(int height, int width, int players)
+        public GameController(int height, int width, List<Player> players)
         {
             this.height = height;
             this.width = width;
@@ -27,10 +27,6 @@ namespace Memory_Project
 
             view = new BoardView(this);
             board = new Board(height, width, view);
-        }
-
-        public GameController(int height, int width) : this(height, width, 2)
-        {
         }
 
         public int getHeight() { return height; }

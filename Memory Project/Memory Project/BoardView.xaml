@@ -9,6 +9,9 @@
       Title="BoardView">
     
     <Grid Name="playGrid">
+        <DockPanel HorizontalAlignment="Left" MinWidth="100">
+              
+        </DockPanel>
         <Image x:Name="BackgroundImg" Stretch="Fill" Visibility="Visible" />
 
 

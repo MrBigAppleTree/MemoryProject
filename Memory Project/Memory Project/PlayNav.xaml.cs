@@ -71,32 +71,18 @@ namespace Memory_Project
         }
         public void new_click(object sender, RoutedEventArgs e)
         {
-            List<string> players = new List<string>();
+            List<Player> players = new List<Player>();
             int numPlayers = Convert.ToInt32(Players.Text);
             int height = Convert.ToInt32(comboHeight.Text);
             int width = Convert.ToInt32(comboWidth.Text);
             //Spaghetti incoming...
             for (int i = 0; i < numPlayers; i++)
             {
-                if (i == 0)
-                {
-                    players.Add(Player1.Text);
-                }
-                if (i == 1)
-                {
-                    players.Add(Player2.Text);
-                }
-                if (i == 2)
-                {
-                    players.Add(Player3.Text);
-                }
-                if (i == 3)
-                {
-                    players.Add(Player4.Text);
-                }
+                TextBox tb = (TextBox)FindName("Player" + (i + 1));
+                players.Add(new Player(tb.Text));
             }
-            //BoardView b = new BoardView(height, width, players);
-            //this.NavigationService.Navigate(new Uri(b , UriKind.Relative));
+            GameController controller = new GameController(height, width, players);
+            this.NavigationService.Navigate(controller.getView());
         }
     }
 }
