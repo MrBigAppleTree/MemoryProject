@@ -37,7 +37,7 @@ namespace Memory_Project
         private void generateImages()
         {
             int maxCards = (Directory.GetFiles("../../images/" + currentTheme).Length) - 3;
-            for(int i=1; i <= maxCards; i++)
+            for(int i = 1; i <= maxCards; i++)
             {
                 availableCards.Add(i);
             }
@@ -45,9 +45,9 @@ namespace Memory_Project
 
         private void generateCoords()
         {
-            for(int i=0; i < width; i++)
+            for(int i = 0; i < width; i++)
             {
-                for(int j=0; j < height; j++)
+                for(int j = 0; j < height; j++)
                 {
                     availableCoords.Add(new Tuple<int, int>(i, j));
                 }
@@ -58,7 +58,7 @@ namespace Memory_Project
         {
             int maxCards = (Directory.GetFiles("../../images/"+currentTheme).Length) - 3;
             int imgNumber = (int)Math.Floor((double)(height * width / 2));
-            for(int i=0; i < imgNumber;i++)
+            for(int i = 0; i < imgNumber;i++)
             {
                 int img = selectImg(maxCards);
                 string frontpath = "images/" + currentTheme + "/Card" + img + ".png";
