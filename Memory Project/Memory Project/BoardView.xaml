@@ -14,7 +14,6 @@
         </StackPanel.Background>
 
         <Grid x:Name="PlayerGrid" HorizontalAlignment="Left" MinWidth="280" Background="Transparent"/>
-        <Grid VerticalAlignment="Stretch" HorizontalAlignment="Center"/>
         <Grid x:Name="playGrid" HorizontalAlignment="Left"  Background="Transparent"/>
 
 
