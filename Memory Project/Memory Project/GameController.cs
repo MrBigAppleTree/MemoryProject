@@ -45,6 +45,15 @@ namespace Memory_Project
 
         private void turnHandler()
         {
+            while (!gameFin())
+            {
+
+            }
+        }
+
+        private bool gameFin()
+        {
+            return board.getBoardList().Count <= 1;
         }
 
 

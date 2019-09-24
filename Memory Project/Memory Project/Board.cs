@@ -18,13 +18,13 @@ namespace Memory_Project
         private List<Tuple<int, int>> availableCoords = new List<Tuple<int, int>>();
         string currentTheme;
         string backpath;
-        BoardView board;
+        BoardView view;
 
         public Board(int height, int width, BoardView b)
         {
             this.height = height;
             this.width = width;
-            board = b;
+            view = b;
 
             currentTheme = (string)Application.Current.Resources["Theme"];
             backpath = "images/" + currentTheme + "/CardBack.png";
@@ -87,10 +87,10 @@ namespace Memory_Project
 
         private void prepareBoard()
         {
-            board.addToGrid(height, width);
+            view.addToGrid(height, width);
             foreach(Card c in boardList)
             {
-                board.addCard(c);
+                view.addCard(c);
             }
         }
 
@@ -128,7 +128,10 @@ namespace Memory_Project
             return null;
         }
 
-        
+        public List<Card> getBoardList()
+        {
+            return this.boardList;
+        }
         
     }
 
