@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Memory_Project"
       mc:Ignorable="d" 
-      d:DesignHeight="720" d:DesignWidth="1280"
+      Height="720" Width="1280"
       Title="BoardView">
 
     <StackPanel x:Name="mainPanel" Orientation="Horizontal">
@@ -15,7 +15,7 @@
 
         <Grid x:Name="PlayerGrid" HorizontalAlignment="Left" MinWidth="280" Background="Transparent"/>
         <Grid VerticalAlignment="Stretch" HorizontalAlignment="Center"/>
-        <Grid x:Name="playGrid" HorizontalAlignment="Left" VerticalAlignment="Stretch" Background="Transparent"/>
+        <Grid x:Name="playGrid" HorizontalAlignment="Left"  Background="Transparent"/>
 
 
 

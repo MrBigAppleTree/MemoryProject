@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Memory_Project"
         mc:Ignorable="d"
-        Title="Memory" Height="720" Width="1280">
+        Title="Memory"  ResizeMode="NoResize" SizeToContent="WidthAndHeight" >
     <Grid>
-        <Frame  NavigationUIVisibility="Hidden" x:Name="frame1" Source="MainNav.xaml" HorizontalAlignment="center" Height="720" VerticalAlignment="Top" Width="1280"/>
+        <Frame  NavigationUIVisibility="Hidden" x:Name="frame1" Source="MainNav.xaml" Height="720" Width="1280"/>
     </Grid>
 </Window>
