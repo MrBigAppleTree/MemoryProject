@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Security.Cryptography;
 
 namespace Memory_Project
 {
@@ -52,6 +53,10 @@ namespace Memory_Project
                     availableCoords.Add(new Tuple<int, int>(i, j));
                 }
             }
+            for (int i=0; i < 5; i++){
+                availableCoords.listShuffle();
+            }
+            
         }
 
         private void prepareCards()
@@ -122,6 +127,30 @@ namespace Memory_Project
             }
             return null;
         }
+
         
+        
+    }
+
+    public static class Randomization
+    {
+        public static void listShuffle<T>(this IList<T> list)
+        {
+            RNGCryptoServiceProvider rnd = new RNGCryptoServiceProvider();
+            int i = list.Count;
+            while (i > 1)
+            {
+                byte[] box = new byte[1];
+                do
+                {
+                    rnd.GetBytes(box);
+                } while (!(box[0] < i * (Byte.MaxValue / i)));
+                var k = (box[0] % i);
+                i--;
+                var value = list[k];
+                list[k] = list[i];
+                list[i] = value;
+            }
+        }
     }
 }

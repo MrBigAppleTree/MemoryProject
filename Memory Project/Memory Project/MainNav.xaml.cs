@@ -23,6 +23,8 @@ namespace Memory_Project
         public MainNav()
         {
             InitializeComponent();
+            string currentTheme = (string)Application.Current.Resources["Theme"];
+            BackgroundImg.Source = new BitmapImage(new Uri(@"../../images/" + currentTheme + "/MenuBackground.png", UriKind.Relative));
         }
         private void play_click(object sender, RoutedEventArgs e)
         {
@@ -41,11 +43,12 @@ namespace Memory_Project
 
         private void high_click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Highscores button has been pressed");
+            this.NavigationService.Navigate(new Uri("HighNav.xaml", UriKind.Relative));
         }
 
         private void close_click(object sender, RoutedEventArgs e)
         {
+            System.Environment.Exit(1);
         }
     }
 }

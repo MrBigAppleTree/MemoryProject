@@ -8,7 +8,7 @@
     Title="Memory" Height="720" Width="1280">
 
     <Grid HorizontalAlignment="center" VerticalAlignment="Center">
-        <Image Source="Images/NHLStenden/MenuBackground.png" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Fill"/>
+        <Image x:Name="BackgroundImg" Source="Images/NHLStenden/MenuBackground.png" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Fill"/>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="268">
             <Button Content="Play" x:Name="play_button" Click="play_click" Width="300" Height="60" FontSize="36" Margin="0, 0, 0, 10" HorizontalAlignment="Center"/>
             <Button Content="Theme" x:Name="theme_button" Click="theme_click" Width="300" Height="60" FontSize="36" Margin="0, 0, 0, 10" HorizontalAlignment="Center"/>
