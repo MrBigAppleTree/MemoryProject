@@ -29,7 +29,8 @@ namespace Memory_Project
         {
             InitializeComponent();
             comboboxItems();
-
+            string currentTheme = (string)Application.Current.Resources["Theme"];
+            BackgroundImg.Source = new BitmapImage(new Uri(@"../../images/" + currentTheme + "/MenuBackground.png", UriKind.Relative));
 
         }
         private void comboboxItems()

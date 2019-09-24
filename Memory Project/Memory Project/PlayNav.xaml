@@ -9,7 +9,7 @@
       Title="PlayNav">
 
     <Grid Background="White">
-        <Image Source="Images/NHLStenden/MenuBackground.png" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Fill"/>
+        <Image x:Name="BackgroundImg" Source="Images/NHLStenden/MenuBackground.png" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Fill"/>
         <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Center" Height="110" Margin="926,160,100,0" Stroke="Black" VerticalAlignment="Top" Width="254"/>
         <ComboBox ItemsSource="{Binding cbItems}" SelectedItem="{Binding SelectedcbItem}" FontSize="20" HorizontalAlignment="Center" x:Name="comboHeight" Margin="939,199,281,0" VerticalAlignment="Top" Width="60" Height="48">
         </ComboBox>
