@@ -59,10 +59,7 @@ namespace Memory_Project
             Button btn = new Button();
             btn.SetValue(Grid.ColumnProperty, card.getXPos());
             btn.SetValue(Grid.RowProperty, card.getYPos());
-            //btn.verticalalignment = verticalalignment.stretch;
-            //btn.horizontalalignment = horizontalalignment.center;
-            //btn.horizontalcontentalignment = horizontalalignment.center;
-            //btn.verticalcontentalignment = verticalalignment.top;
+            btn.Margin = new Thickness(5);
             Image img = new Image();
             img.Source = new BitmapImage(new Uri(card.getbackImg(), UriKind.Relative));
             btn.Content = img;
