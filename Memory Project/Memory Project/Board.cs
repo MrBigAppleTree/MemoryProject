@@ -16,7 +16,7 @@ namespace Memory_Project
         private List<int> availableCards = new List<int>();
         private List<Tuple<int, int>> availableCoords = new List<Tuple<int, int>>();
         string currentTheme;
-        string backpath;
+        public string backpath;
         BoardView board;
 
         public Board(int height, int width, BoardView b)
@@ -122,6 +122,6 @@ namespace Memory_Project
             }
             return null;
         }
-        
+
     }
 }

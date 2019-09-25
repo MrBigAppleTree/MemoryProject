@@ -24,7 +24,7 @@ namespace Memory_Project
         public int getXPos() { return xPos; }
         public int getYPos() { return yPos; }
         public string getFrontImg() { return frontImgPath; }
-        public string getbackImg() { return backImgPath; }
+        public string getBackImg() { return backImgPath; }
 
         public bool locationCheck(int x, int y)
         {
