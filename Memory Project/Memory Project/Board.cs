@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Security.Cryptography;
+using System.Windows.Controls;
 
 namespace Memory_Project
 {
@@ -127,6 +128,19 @@ namespace Memory_Project
             }
             return null;
         }
+
+        public Card locationToCard(int x, int y)
+        {
+            foreach (Card c in boardList)
+            {
+                if (c.locationCheck(x, y))
+                {
+                    return c;
+                }
+            }
+            return null;
+        }
+
         public List<Card> getBoardList()
         {
             return this.boardList;

@@ -21,8 +21,12 @@ namespace Memory_Project
     public partial class BoardView : Page
     {
         GameController controller;
-        Tuple<int, int> turnInfo;
-        private int firstTurn;
+
+        int turnCounter = 0;
+
+        List<Player> players;
+        Player currentPlayer;
+
         public BoardView(GameController controller)
         {
             InitializeComponent();
@@ -67,66 +71,80 @@ namespace Memory_Project
             btn.Content = img;
             btn.Click += new RoutedEventHandler(card_click);
             playGrid.Children.Add(btn);
-            
         }
 
         private void card_click(object sender, RoutedEventArgs e)
         {
-            string currentTheme = (string)Application.Current.Resources["Theme"];
-            int x = Grid.GetColumn((Button)sender);
-            int y = Grid.GetRow((Button)sender);
-            string frontImgPath = controller.getBoard().getFrontImg(x, y);
-            string backImgPath = "images/" + currentTheme + "/CardBack.png";
-            Button btn = sender as Button;
-            Image img = new Image();
-            Image back = new Image();
-            Button temp = new Button();
-            back.Source = new BitmapImage(new Uri(backImgPath, UriKind.Relative));
-
-            if (temp != btn || firstTurn == 0)
+            if(currentPlayer.getClickedBtns().Count < 2)
             {
-                firstTurn = 1;
-                turnInfo = controller.turnHandler();
+                int x = Grid.GetColumn((Button)sender);
+                int y = Grid.GetRow((Button)sender);
+                string frontImgPath = controller.getBoard().getFrontImg(x, y);
 
-                if (turnInfo.Item1 == 1)
-                {
-                    img.Source = new BitmapImage(new Uri(frontImgPath, UriKind.Relative));
-                    btn.Content = img;
-                    temp = btn; //Problem??
-                    //MessageBox.Show("test2");
-                }
-                if (turnInfo.Item1 == 2)
-                {
-                    if (btn.Content == temp.Content)
-                    {
-                        btn.Visibility = 0;
-                        temp.Visibility = 0;
-
-                    }
-                    else
-                    {
-                        img.Source = new BitmapImage(new Uri(frontImgPath, UriKind.Relative));
-                        btn.Content = img;
-                        //MessageBox.Show(backImgPath);
-                        //System.Threading.Thread.Sleep(1500);
-                        btn.Content = back;
-                        temp.Content = back;
-                        //MessageBox.Show("test");
-                    }
-                }
-
+                Button btn = sender as Button;
+                Image img = new Image();
+                img.Source = new BitmapImage(new Uri(frontImgPath, UriKind.Relative));
+                btn.Content = img;
+                Console.WriteLine(((Image)btn.Content).Source);
+                this.NavigationService.Refresh();
+                currentPlayer.getClickedBtns().Add(btn);
+                turnCheck();
+                return;
             }
-            else
+        }
+
+        private async void turnCheck()
+        {
+            await Task.Delay(2500);
+            if (currentPlayer.getClickedBtns().Count == 2 && compareCards(currentPlayer.getClickedBtns()))
             {
-                MessageBox.Show("What happends when you click same card twice");
+                List<Card> gainedCards = new List<Card>();
+                foreach(Button b in currentPlayer.getClickedBtns())
+                {
+                    b.Visibility = Visibility.Hidden;
+                    Card c = controller.btnToCard(b);
+                    gainedCards.Add(c);
+                    controller.removeCard(c);
+                    
+                }
+                Console.WriteLine("cards moved to player: " + currentPlayer.getName());
+                currentPlayer.increaseScore(100);
+                currentPlayer.addCards(gainedCards);
+                turnHandler();
+            } else if (currentPlayer.getClickedBtns().Count == 2)
+            {
+                foreach (Button b in currentPlayer.getClickedBtns())
+                {
+                    Image img = new Image();
+                    img.Source = new BitmapImage(new Uri(controller.btnToCard(b).getBackImg(), UriKind.Relative));
+                    b.Content = img;
+                }
+                turnCounter += 1;
+                turnHandler();
             }
-            
+        }
 
-
+        private void turnHandler()
+        {
+            if (controller.gameFin())
+            {
+                playGrid.Children.Clear();
+                currentPlayer.getClickedBtns().Clear();
+                Player winner = determineWinner();
+                Console.WriteLine("Congratulations Winner:\n" + winner.getName());
+            } else
+            {
+                currentPlayer = players[turnCounter % players.Count];
+                currentPlayer.getClickedBtns().Clear();
+                updateScore();
+                setColor(turnCounter % players.Count);
+                Console.WriteLine("Player: " + currentPlayer.getName() + " turn");
+            }
         }
 
         public void loadPlayers(List<Player> list)
         {
+            players = list;
             for (int i=0; i < list.Count; i++)
             {
                 PlayerGrid.RowDefinitions.Add(new RowDefinition());
@@ -143,6 +161,46 @@ namespace Memory_Project
 
                 PlayerGrid.Children.Add(txt);
             }
+
+            turnHandler();
+        }
+
+        private void setColor(int i)
+        {
+            TextBlock txt = (TextBlock)PlayerGrid.Children[i];
+            foreach(UIElement e in PlayerGrid.Children){
+                TextBlock t = (TextBlock)e;
+                t.Foreground = Brushes.White;
+            }
+            txt.Foreground = Brushes.Yellow;
+        }
+
+        private void updateScore()
+        {
+            for(int i = 0; i < players.Count; i++)
+            {
+                TextBlock txt = (TextBlock)PlayerGrid.Children[i];
+                txt.Inlines.Remove(txt.Inlines.LastInline);
+                txt.Inlines.Add("Score: " + players[i].getScore());
+            }
+        }
+
+        private bool compareCards(List<Button> cards)
+        {
+            try
+            {
+                return controller.btnToCard(cards[0]).getFrontImg().Equals(controller.btnToCard(cards[1]).getFrontImg());
+            } catch(NullReferenceException e)
+            {
+                return false;
+            }
+            
+        }
+
+        private Player determineWinner()
+        {
+            Player winner = players.Aggregate((player1, player2) => player1.getScore() > player2.getScore() ? player1 : player1);
+            return winner;
         }
     }
 }

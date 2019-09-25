@@ -14,13 +14,9 @@ namespace Memory_Project
     {
         private int height;
         private int width;
-        private string frontImgPath;
-        private string frontTemp;
-        private string backImgPath;
-        private int cardClickCount;
-        private int turnCount;
-        private int playerTurnCount;
+        
         private List<Player> players;
+        List<Button> selectedCards = new List<Button>();
 
         private string theme = (string)Application.Current.Resources["Theme"];
 
@@ -52,41 +48,22 @@ namespace Memory_Project
             player.PlayLooping();
         }
 
-        public Tuple<int, int> turnHandler()
+        public Card btnToCard(Button b)
         {
-            if (!gameFin())
-            {
-                int maxPlayers = players.Count;
-
-
-                if (cardClickCount == 1)
-                {
-                    playerTurnCount += 1;
-                    if (playerTurnCount == (maxPlayers - 1))
-                    {
-                        playerTurnCount = 0;
-                        turnCount += 1;
-                    }
-                    cardClickCount = 2;
-                    return Tuple.Create(cardClickCount, playerTurnCount);
-                }
-                else
-                {
-                    cardClickCount = 1;
-                    return Tuple.Create(cardClickCount, playerTurnCount);
-                }
-            }
-            else
-            {
-                return Tuple.Create(cardClickCount, playerTurnCount); //REPLACE WITH END VALUE
-            }
+            int x = Grid.GetColumn(b);
+            int y = Grid.GetRow(b);
+            return board.locationToCard(x, y);
         }
-        private bool gameFin()
+
+        public void removeCard(Card c)
+        {
+            board.getBoardList().Remove(c);
+            Console.WriteLine(board.getBoardList().Count);
+        }
+
+        public bool gameFin()
         {
             return board.getBoardList().Count <= 1;
         }
-
-
-
     }
 }
