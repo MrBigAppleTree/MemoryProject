@@ -21,6 +21,8 @@ namespace Memory_Project
     public partial class BoardView : Page
     {
         GameController controller;
+        Tuple<int, int> turnInfo;
+        private int firstTurn;
         public BoardView(GameController controller)
         {
             InitializeComponent();
@@ -59,12 +61,9 @@ namespace Memory_Project
             Button btn = new Button();
             btn.SetValue(Grid.ColumnProperty, card.getXPos());
             btn.SetValue(Grid.RowProperty, card.getYPos());
-            //btn.verticalalignment = verticalalignment.stretch;
-            //btn.horizontalalignment = horizontalalignment.center;
-            //btn.horizontalcontentalignment = horizontalalignment.center;
-            //btn.verticalcontentalignment = verticalalignment.top;
+            btn.Margin = new Thickness(5);
             Image img = new Image();
-            img.Source = new BitmapImage(new Uri(card.getbackImg(), UriKind.Relative));
+            img.Source = new BitmapImage(new Uri(card.getBackImg(), UriKind.Relative));
             btn.Content = img;
             btn.Click += new RoutedEventHandler(card_click);
             playGrid.Children.Add(btn);
@@ -73,14 +72,57 @@ namespace Memory_Project
 
         private void card_click(object sender, RoutedEventArgs e)
         {
+            string currentTheme = (string)Application.Current.Resources["Theme"];
             int x = Grid.GetColumn((Button)sender);
             int y = Grid.GetRow((Button)sender);
             string frontImgPath = controller.getBoard().getFrontImg(x, y);
-
+            string backImgPath = "images/" + currentTheme + "/CardBack.png";
             Button btn = sender as Button;
             Image img = new Image();
-            img.Source = new BitmapImage(new Uri(frontImgPath, UriKind.Relative));
-            btn.Content = img;
+            Image back = new Image();
+            Button temp = new Button();
+            back.Source = new BitmapImage(new Uri(backImgPath, UriKind.Relative));
+
+            if (temp != btn || firstTurn == 0)
+            {
+                firstTurn = 1;
+                turnInfo = controller.turnHandler();
+
+                if (turnInfo.Item1 == 1)
+                {
+                    img.Source = new BitmapImage(new Uri(frontImgPath, UriKind.Relative));
+                    btn.Content = img;
+                    temp = btn; //Problem??
+                    //MessageBox.Show("test2");
+                }
+                if (turnInfo.Item1 == 2)
+                {
+                    if (btn.Content == temp.Content)
+                    {
+                        btn.Visibility = 0;
+                        temp.Visibility = 0;
+
+                    }
+                    else
+                    {
+                        img.Source = new BitmapImage(new Uri(frontImgPath, UriKind.Relative));
+                        btn.Content = img;
+                        //MessageBox.Show(backImgPath);
+                        //System.Threading.Thread.Sleep(1500);
+                        btn.Content = back;
+                        temp.Content = back;
+                        //MessageBox.Show("test");
+                    }
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("What happends when you click same card twice");
+            }
+            
+
+
         }
 
         public void loadPlayers(List<Player> list)

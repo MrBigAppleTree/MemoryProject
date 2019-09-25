@@ -9,7 +9,7 @@
       Title="Memory">
 
     <Grid>
-        <Image Source="Images/NHLStenden/MenuBackground.png" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Fill"/>
+        <Image x:Name="BackgroundImg" Source="Images/NHLStenden/MenuBackground.png" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Fill"/>
         <Button Content="Multiplayer Highscores" x:Name="high2_button" Click="High2_click" Width="425" Margin="0,50,0,0" Height="60" FontSize="36" RenderTransformOrigin="0.5,0.5" VerticalAlignment="top" HorizontalAlignment="center"/>
         <Button Content="Back to main menu" x:Name="back_button" Click="Back_click" Width="350" Margin="0,0,20,20" Height="60" FontSize="36" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
         <Rectangle Fill="#AAF4F4F5" HorizontalAlignment="Left" Height="450" Margin="40,20,0,0" Stroke="Black" VerticalAlignment="center" Width="350"/>
