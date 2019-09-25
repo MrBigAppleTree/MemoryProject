@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Security.Cryptography;
 
 namespace Memory_Project
 {
@@ -16,14 +17,14 @@ namespace Memory_Project
         private List<int> availableCards = new List<int>();
         private List<Tuple<int, int>> availableCoords = new List<Tuple<int, int>>();
         string currentTheme;
-        public string backpath;
-        BoardView board;
+        string backpath;
+        BoardView view;
 
         public Board(int height, int width, BoardView b)
         {
             this.height = height;
             this.width = width;
-            board = b;
+            view = b;
 
             currentTheme = (string)Application.Current.Resources["Theme"];
             backpath = "images/" + currentTheme + "/CardBack.png";
@@ -37,7 +38,7 @@ namespace Memory_Project
         private void generateImages()
         {
             int maxCards = (Directory.GetFiles("../../images/" + currentTheme).Length) - 3;
-            for(int i=1; i <= maxCards; i++)
+            for(int i = 1; i <= maxCards; i++)
             {
                 availableCards.Add(i);
             }
@@ -45,20 +46,24 @@ namespace Memory_Project
 
         private void generateCoords()
         {
-            for(int i=0; i < width; i++)
+            for(int i = 0; i < width; i++)
             {
-                for(int j=0; j < height; j++)
+                for(int j = 0; j < height; j++)
                 {
                     availableCoords.Add(new Tuple<int, int>(i, j));
                 }
             }
+            for (int i=0; i < 5; i++){
+                availableCoords.listShuffle();
+            }
+            
         }
 
         private void prepareCards()
         {
             int maxCards = (Directory.GetFiles("../../images/"+currentTheme).Length) - 3;
             int imgNumber = (int)Math.Floor((double)(height * width / 2));
-            for(int i=0; i < imgNumber;i++)
+            for(int i = 0; i < imgNumber;i++)
             {
                 int img = selectImg(maxCards);
                 string frontpath = "images/" + currentTheme + "/Card" + img + ".png";
@@ -82,10 +87,10 @@ namespace Memory_Project
 
         private void prepareBoard()
         {
-            board.addToGrid(height, width);
+            view.addToGrid(height, width);
             foreach(Card c in boardList)
             {
-                board.addCard(c);
+                view.addCard(c);
             }
         }
 
@@ -122,6 +127,32 @@ namespace Memory_Project
             }
             return null;
         }
+        public List<Card> getBoardList()
+        {
+            return this.boardList;
+        }
 
+    }
+
+    public static class Randomization
+    {
+        public static void listShuffle<T>(this IList<T> list)
+        {
+            RNGCryptoServiceProvider rnd = new RNGCryptoServiceProvider();
+            int i = list.Count;
+            while (i > 1)
+            {
+                byte[] box = new byte[1];
+                do
+                {
+                    rnd.GetBytes(box);
+                } while (!(box[0] < i * (Byte.MaxValue / i)));
+                var k = (box[0] % i);
+                i--;
+                var value = list[k];
+                list[k] = list[i];
+                list[i] = value;
+            }
+        }
     }
 }

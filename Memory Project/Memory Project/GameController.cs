@@ -36,6 +36,7 @@ namespace Memory_Project
 
             view = new BoardView(this);
             board = new Board(height, width, view);
+            view.loadPlayers(players);
         }
 
         public int getHeight() { return height; }
@@ -53,26 +54,35 @@ namespace Memory_Project
 
         public Tuple<int, int> turnHandler()
         {
-
-            int maxPlayers = players.Count;
-
-
-            if (cardClickCount == 1)
+            while (!gameFin())
             {
-                playerTurnCount += 1;
-                if (playerTurnCount == (maxPlayers - 1))
+                int maxPlayers = players.Count;
+
+
+                if (cardClickCount == 1)
                 {
-                    playerTurnCount = 0;
-                    turnCount += 1;
+                    playerTurnCount += 1;
+                    if (playerTurnCount == (maxPlayers - 1))
+                    {
+                        playerTurnCount = 0;
+                        turnCount += 1;
+                    }
+                    cardClickCount = 2;
+                    return Tuple.Create(cardClickCount, playerTurnCount);
                 }
-                cardClickCount = 2;
-                return Tuple.Create(cardClickCount, playerTurnCount);
+                else
+                {
+                    cardClickCount = 1;
+                    return Tuple.Create(cardClickCount, playerTurnCount);
+                }
             }
-            else
-            {
-                cardClickCount = 1;
-                return Tuple.Create(cardClickCount, playerTurnCount);
-            }            
         }
+        private bool gameFin()
+        {
+            return board.getBoardList().Count <= 1;
+        }
+
+
+
     }
 }

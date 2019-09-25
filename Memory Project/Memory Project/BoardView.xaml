@@ -5,15 +5,20 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Memory_Project"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      Height="720" Width="1280"
       Title="BoardView">
-    
-    <Grid Name="playGrid">
-        <DockPanel HorizontalAlignment="Left" MinWidth="100">
-              
-        </DockPanel>
-        <Image x:Name="BackgroundImg" Stretch="Fill" Visibility="Visible" />
+
+    <StackPanel x:Name="mainPanel" Orientation="Horizontal">
+        <StackPanel.Background>
+            <ImageBrush x:Name="BackgroundImg" Stretch="Fill"/>
+        </StackPanel.Background>
+
+        <Grid x:Name="PlayerGrid" HorizontalAlignment="Left" MinWidth="280" Background="Transparent"/>
+        <Grid VerticalAlignment="Stretch" HorizontalAlignment="Center"/>
+        <Grid x:Name="playGrid" HorizontalAlignment="Left"  Background="Transparent"/>
 
 
-    </Grid>
+
+
+    </StackPanel>
 </Page>

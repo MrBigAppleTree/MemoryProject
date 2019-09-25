@@ -16,39 +16,23 @@ using System.Windows.Shapes;
 namespace Memory_Project
 {
     /// <summary>
-    /// Interaction logic for Page1.xaml
+    /// Interaction logic for HighNav.xaml
     /// </summary>
-    public partial class MainNav : Page
+    public partial class HighNav2 : Page
     {
-        public MainNav()
+        public HighNav2()
         {
             InitializeComponent();
             string currentTheme = (string)Application.Current.Resources["Theme"];
             BackgroundImg.Source = new BitmapImage(new Uri(@"../../images/" + currentTheme + "/MenuBackground.png", UriKind.Relative));
         }
-        private void play_click(object sender, RoutedEventArgs e)
+        private void Back_click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("PlayNav.xaml", UriKind.Relative));
+            this.NavigationService.Navigate(new Uri("MainNav.xaml", UriKind.Relative));
         }
-
-        private void theme_click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Theme button has been pressed");
-        }
-
-        private void config_click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Configuration button has been pressed");
-        }
-
-        private void high_click(object sender, RoutedEventArgs e)
+        private void High_click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("HighNav.xaml", UriKind.Relative));
-        }
-
-        private void close_click(object sender, RoutedEventArgs e)
-        {
-            System.Environment.Exit(1);
         }
     }
 }

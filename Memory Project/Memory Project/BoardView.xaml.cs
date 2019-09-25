@@ -31,8 +31,8 @@ namespace Memory_Project
             {
                 string currentTheme = (string)Application.Current.Resources["Theme"];
                 Console.WriteLine(currentTheme);
-                BackgroundImg.Source = new BitmapImage(new Uri(@"../../images/"+currentTheme+"/BoardBackground.png", UriKind.Relative));
-                Console.WriteLine(BackgroundImg.Source);
+                BackgroundImg.ImageSource = new BitmapImage(new Uri(@"../../images/"+currentTheme+"/BoardBackground.png", UriKind.Relative));
+                Console.WriteLine(BackgroundImg.ImageSource);
             } catch (Exception e)
             {
                 Console.WriteLine(e.Message);
@@ -41,15 +41,17 @@ namespace Memory_Project
 
         public void addToGrid(int height, int width)
         {
-            ColumnDefinition c = new ColumnDefinition();
-            
+            double percentageHeight = 1 / (double)height;
+            double percentageWidth = 1 / (double)width;
             for (int i = 0; i < width; i++)
             {
-                playGrid.ColumnDefinitions.Add(new ColumnDefinition());
+                GridLength W1 = new GridLength(percentageWidth, GridUnitType.Star);
+                playGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = W1 });
             }
             for (int i = 0; i < height; i++)
             {
-                playGrid.RowDefinitions.Add(new RowDefinition());
+                GridLength H1 = new GridLength(percentageHeight, GridUnitType.Star);
+                playGrid.RowDefinitions.Add(new RowDefinition() { Height = H1 });
             }
             
         }
@@ -59,11 +61,13 @@ namespace Memory_Project
             Button btn = new Button();
             btn.SetValue(Grid.ColumnProperty, card.getXPos());
             btn.SetValue(Grid.RowProperty, card.getYPos());
+            btn.Margin = new Thickness(5);
             Image img = new Image();
             img.Source = new BitmapImage(new Uri(card.getBackImg(), UriKind.Relative));
             btn.Content = img;
             btn.Click += new RoutedEventHandler(card_click);
             playGrid.Children.Add(btn);
+            
         }
 
         private void card_click(object sender, RoutedEventArgs e)
@@ -120,6 +124,26 @@ namespace Memory_Project
             
 
 
+        }
+
+        public void loadPlayers(List<Player> list)
+        {
+            for (int i=0; i < list.Count; i++)
+            {
+                PlayerGrid.RowDefinitions.Add(new RowDefinition());
+                TextBlock txt = new TextBlock();
+                txt.TextAlignment = TextAlignment.Center;
+                txt.FontSize = 30;
+                txt.Foreground = Brushes.White;
+                txt.SetValue(Grid.RowProperty, i);
+
+                txt.Text = list[i].getName();
+                txt.Inlines.Add(new LineBreak());
+                txt.Inlines.Add(new LineBreak());
+                txt.Inlines.Add("Score: " + list[i].getScore());
+
+                PlayerGrid.Children.Add(txt);
+            }
         }
     }
 }

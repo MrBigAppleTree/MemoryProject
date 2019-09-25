@@ -18,5 +18,11 @@ namespace Memory_Project
             score = 0;
             collectedCards.Clear();
         }
+
+        public string getName() { return name; }
+        public int getScore() { return score; }
+
+        public void setScore(int score) { this.score = score; }
+        public void setName(string name) { this.name = name; }
     }
 }

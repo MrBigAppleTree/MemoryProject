@@ -23,10 +23,16 @@ namespace Memory_Project
         public HighNav()
         {
             InitializeComponent();
+            string currentTheme = (string)Application.Current.Resources["Theme"];
+            BackgroundImg.Source = new BitmapImage(new Uri(@"../../images/" + currentTheme + "/MenuBackground.png", UriKind.Relative));
         }
         private void Back_click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Thy shall not return");
+            this.NavigationService.Navigate(new Uri("MainNav.xaml", UriKind.Relative));
+        }
+        private void High2_click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("HighNav2.xaml", UriKind.Relative));
         }
     }
 }
