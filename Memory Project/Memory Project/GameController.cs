@@ -54,7 +54,7 @@ namespace Memory_Project
 
         public Tuple<int, int> turnHandler()
         {
-            while (!gameFin())
+            if (!gameFin())
             {
                 int maxPlayers = players.Count;
 
@@ -75,6 +75,10 @@ namespace Memory_Project
                     cardClickCount = 1;
                     return Tuple.Create(cardClickCount, playerTurnCount);
                 }
+            }
+            else
+            {
+                return Tuple.Create(cardClickCount, playerTurnCount); //REPLACE WITH END VALUE
             }
         }
         private bool gameFin()

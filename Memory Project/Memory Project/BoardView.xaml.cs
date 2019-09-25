@@ -90,10 +90,9 @@ namespace Memory_Project
 
                 if (turnInfo.Item1 == 1)
                 {
-
                     img.Source = new BitmapImage(new Uri(frontImgPath, UriKind.Relative));
                     btn.Content = img;
-                    temp = btn;
+                    temp = btn; //Problem??
                     //MessageBox.Show("test2");
                 }
                 if (turnInfo.Item1 == 2)
@@ -108,7 +107,7 @@ namespace Memory_Project
                     {
                         img.Source = new BitmapImage(new Uri(frontImgPath, UriKind.Relative));
                         btn.Content = img;
-                        MessageBox.Show(backImgPath);
+                        //MessageBox.Show(backImgPath);
                         //System.Threading.Thread.Sleep(1500);
                         btn.Content = back;
                         temp.Content = back;
