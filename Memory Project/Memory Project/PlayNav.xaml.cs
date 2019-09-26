@@ -39,7 +39,7 @@ namespace Memory_Project
         private void comboboxItems1()
         {
             Dictionary<string, int> maxCards = new Dictionary<string, int>();
-            maxCards.Add("LOTR", 32);
+            maxCards.Add(theme, 32);
 
             DataContext = this;
             cbItems1 = new ObservableCollection<ComboBoxItem>();
@@ -71,7 +71,7 @@ namespace Memory_Project
         private void comboboxItems2()
         {
             Dictionary<string, int> maxCards = new Dictionary<string, int>();
-            maxCards.Add("LOTR", 32);
+            maxCards.Add(theme, 32);
 
             DataContext = this;
             cbItems2 = new ObservableCollection<ComboBoxItem>();
