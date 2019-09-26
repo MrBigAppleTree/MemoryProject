@@ -508,6 +508,9 @@
     <Resource Include="images\NHLStenden\CardBack.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="music\Avatar\BackgroundMusic.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="music\LOTR\BackgroundMusic.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
