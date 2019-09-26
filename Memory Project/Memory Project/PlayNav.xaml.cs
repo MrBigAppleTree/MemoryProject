@@ -61,7 +61,7 @@ namespace Memory_Project
             Generate Combobox items dependend on theme for the xaml
 
             TO DO: -Dynamicly fill combobox dependend on height/width selected, for example with 32 cards having a 10*3 board
-                   -Chance fetch from Dictionary to global variable
+            
 
             ~~Thomas branch
 
