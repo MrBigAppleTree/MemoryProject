@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Media;
 
 namespace Memory_Project
 {
@@ -25,6 +26,7 @@ namespace Memory_Project
             InitializeComponent();
             string currentTheme = (string)Application.Current.Resources["Theme"];
             BackgroundImg.Source = new BitmapImage(new Uri(@"../../images/" + currentTheme + "/MenuBackground.png", UriKind.Relative));
+            startMusic(currentTheme);
         }
         private void play_click(object sender, RoutedEventArgs e)
         {
@@ -49,6 +51,13 @@ namespace Memory_Project
         private void close_click(object sender, RoutedEventArgs e)
         {
             System.Environment.Exit(1);
+        }
+
+        private void startMusic(string theme)
+        {
+            SoundPlayer player = new SoundPlayer();
+            player.SoundLocation = "music/" + theme + "/BackgroundMusic.wav";
+            player.PlayLooping();
         }
     }
 }

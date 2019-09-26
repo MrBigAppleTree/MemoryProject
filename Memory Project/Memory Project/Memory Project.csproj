@@ -507,5 +507,10 @@
   <ItemGroup>
     <Resource Include="images\NHLStenden\CardBack.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="music\LOTR\BackgroundMusic.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
