@@ -82,6 +82,7 @@ namespace Memory_Project
                 string frontImgPath = controller.getBoard().getFrontImg(x, y);
 
                 Button btn = sender as Button;
+                if(currentPlayer.getClickedBtns().Count > 0 && currentPlayer.getClickedBtns()[0].Equals(btn)) { return; }
                 Image img = new Image();
                 img.Source = new BitmapImage(new Uri(frontImgPath, UriKind.Relative));
                 btn.Content = img;
@@ -109,6 +110,7 @@ namespace Memory_Project
                 }
                 Console.WriteLine("cards moved to player: " + currentPlayer.getName());
                 currentPlayer.increaseScore(100);
+                updateScore();
                 currentPlayer.addCards(gainedCards);
                 turnHandler();
             } else if (currentPlayer.getClickedBtns().Count == 2)
@@ -136,7 +138,6 @@ namespace Memory_Project
             {
                 currentPlayer = players[turnCounter % players.Count];
                 currentPlayer.getClickedBtns().Clear();
-                updateScore();
                 setColor(turnCounter % players.Count);
                 Console.WriteLine("Player: " + currentPlayer.getName() + " turn");
             }
