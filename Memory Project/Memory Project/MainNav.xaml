@@ -8,13 +8,35 @@
     Title="Memory" Height="720" Width="1280">
 
     <Grid HorizontalAlignment="center" VerticalAlignment="Center">
-        <Image x:Name="BackgroundImg" Source="Images/NHLStenden/MenuBackground.png" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Fill"/>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="268">
-            <Button Content="Play" x:Name="play_button" Click="play_click" Width="300" Height="60" FontSize="36" Margin="0, 0, 0, 10" HorizontalAlignment="Center"/>
-            <Button Content="Theme" x:Name="theme_button" Click="theme_click" Width="300" Height="60" FontSize="36" Margin="0, 0, 0, 10" HorizontalAlignment="Center"/>
-            <Button Content="Configuration" x:Name="config_button" Click="config_click" Width="300" Height="60" FontSize="36" Margin="0, 0, 0, 10" HorizontalAlignment="Center"/>
-            <Button Content="Highscores" x:Name="high_button" Click="high_click" Width="300" Height="60" FontSize="36" Margin="0, 0, 0, 10" HorizontalAlignment="Center"/>
-            <Button Content="Close Game" x:Name="close_button" Click="close_click" Width="300" Height="60" FontSize="36" Margin="0, 0, 0, 10" HorizontalAlignment="Center"/>
+        <Image x:Name="BackgroundImg" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Fill"/>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Margin="30, 0, 0, 0">
+            <Button Content="Play" x:Name="play" Click="play_click" Height="60" FontSize="36" Margin="0, 0, 0, 0" HorizontalAlignment="Left" Background="#00000000" BorderBrush="#00000000" Foreground="#FFD28C0A"/>
+            <Button Content="Theme" x:Name="theme" Click="theme_click" Height="60" FontSize="36" Margin="0, 0, 0, 0" HorizontalAlignment="Left" Background="#00000000" BorderBrush="#00000000" Foreground="#FFF5FB69"/>
+            <Button Content="Close Game" x:Name="close" Click="close_click" Height="60" FontSize="36" Margin="0, 0, 0, 0" HorizontalAlignment="Left" Background="#00000000" BorderBrush="#00000000" Foreground="#FFF5FB69"/>
         </StackPanel>
+        <Border Margin="0, 0, 50, 0" HorizontalAlignment="Right" VerticalAlignment="Center" Background="#99FFFFFF" Width="404" Height="644">
+            <StackPanel Height="640" Width="400" Background="#66000000" >
+                <RichTextBox Margin="10, 10, 0, 0" Background="Transparent">
+                    <FlowDocument>
+                        <Paragraph FontSize="24" Foreground="White">Highscores</Paragraph>
+                    </FlowDocument>
+                </RichTextBox>
+                <ComboBox x:Name="Players" FontSize="20" HorizontalAlignment="Right" Margin="0, 0, 0, 0" VerticalAlignment="Top" Width="45" Height="35" Background="Transparent" BorderBrush="#00ACACAC" Foreground="White">
+                    <ComboBox.ItemContainerStyle>
+                        <Style TargetType="ComboBoxItem">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="BorderBrush" Value="White"/>
+                        </Style>
+                    </ComboBox.ItemContainerStyle>
+                    <ComboBoxItem Content="2" HorizontalAlignment="Left" Width="45"/>
+                    <ComboBoxItem Content="3" HorizontalAlignment="Left" Width="45"/>
+                    <ComboBoxItem IsSelected="True" Content="4" HorizontalAlignment="Left" Width="45"/>
+                    <ComboBoxItem Content="5" HorizontalAlignment="Left" Width="45"/>
+                    <ComboBoxItem Content="6" HorizontalAlignment="Left" Width="45"/>
+                    <ComboBoxItem Content="7" HorizontalAlignment="Left" Width="45"/>
+                    <ComboBoxItem Content="8" HorizontalAlignment="Left" Width="45"/>
+                </ComboBox>
+            </StackPanel>
+        </Border>
     </Grid>
 </Page>
