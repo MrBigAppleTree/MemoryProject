@@ -11,9 +11,9 @@
     <Grid Background="White">
         <Image x:Name="BackgroundImg" Source="Images/NHLStenden/MenuBackground.png" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Fill"/>
         <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Center" Height="110" Margin="926,160,100,0" Stroke="Black" VerticalAlignment="Top" Width="254"/>
-        <ComboBox ItemsSource="{Binding cbItems}" SelectedItem="{Binding SelectedcbItem}" FontSize="20" HorizontalAlignment="Center" x:Name="comboHeight" Margin="939,199,281,0" VerticalAlignment="Top" Width="60" Height="48">
+        <ComboBox ItemsSource="{Binding cbItems1}" SelectedItem="{Binding SelectedcbItem1}" FontSize="20" HorizontalAlignment="Center" x:Name="comboHeight" Margin="939,199,281,0" VerticalAlignment="Top" Width="60" Height="48">
         </ComboBox>
-        <ComboBox ItemsSource="{Binding cbItems}" SelectedItem="{Binding SelectedcbItem}" FontSize="20" HorizontalAlignment="Center" x:Name="comboWidth" Margin="1015,199,205,0" VerticalAlignment="Top" Width="60" Height="48">
+        <ComboBox ItemsSource="{Binding cbItems2}" SelectedItem="{Binding SelectedcbItem2}" FontSize="20" HorizontalAlignment="Center" x:Name="comboWidth" Margin="1015,199,205,0" VerticalAlignment="Top" Width="60" Height="48">
         </ComboBox>
         <Button Content="New Game" Click="new_click" HorizontalAlignment="Center" Margin="499,163,474,454" VerticalAlignment="Center" FontSize="30px" Width="307" Height="103"/>
         <Button Content="Load Game" HorizontalAlignment="Center" Margin="499,317,474,300" VerticalAlignment="Center" FontSize="30px" Width="307" Height="103"/>

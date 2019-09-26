@@ -21,20 +21,41 @@ namespace Memory_Project
     /// </summary>
     public partial class PlayNav : Page
     {
-        string theme = "Avatar";
-        public ObservableCollection<ComboBoxItem> cbItems { get; set; }
-        public ComboBoxItem SelectedcbItem { get; set; }
+        private string theme = (string)Application.Current.Resources["Theme"];
+        public ObservableCollection<ComboBoxItem> cbItems1 { get; set; }
+        public ComboBoxItem SelectedcbItem1 { get; set; }
+        public ObservableCollection<ComboBoxItem> cbItems2 { get; set; }
+        public ComboBoxItem SelectedcbItem2 { get; set; }
 
         public PlayNav()
         {
             InitializeComponent();
-            comboboxItems();
-            string currentTheme = (string)Application.Current.Resources["Theme"];
-            BackgroundImg.Source = new BitmapImage(new Uri(@"../../images/" + currentTheme + "/MenuBackground.png", UriKind.Relative));
+            comboboxItems1();
+            comboboxItems2();
+
+            BackgroundImg.Source = new BitmapImage(new Uri(@"../../images/" + theme + "/MenuBackground.png", UriKind.Relative));
 
         }
-        private void comboboxItems()
+        private void comboboxItems1()
         {
+            Dictionary<string, int> maxCards = new Dictionary<string, int>();
+            maxCards.Add("LOTR", 32);
+
+            DataContext = this;
+            cbItems1 = new ObservableCollection<ComboBoxItem>();
+            for (int i = 0; i <= Math.Sqrt(maxCards[theme] * 2); i++)
+            {
+                if (i == 4)
+                {
+                    var cbItem = new ComboBoxItem { Content = i };
+                    SelectedcbItem1 = cbItem;
+                    cbItems1.Add(cbItem);
+                }
+                else if (i != 0 && i != 1)
+                {
+                    cbItems1.Add(new ComboBoxItem { Content = i });
+                }
+            }
             /*
              * 
             Generate Combobox items dependend on theme for the xaml
@@ -45,22 +66,26 @@ namespace Memory_Project
             ~~Thomas branch
 
             */
-            Dictionary<string, int> maxCards = new Dictionary<string, int>();
-            maxCards.Add("Avatar", 32);
-            DataContext = this;
 
-            cbItems = new ObservableCollection<ComboBoxItem>();
+        }
+        private void comboboxItems2()
+        {
+            Dictionary<string, int> maxCards = new Dictionary<string, int>();
+            maxCards.Add("LOTR", 32);
+
+            DataContext = this;
+            cbItems2 = new ObservableCollection<ComboBoxItem>();
             for (int i = 0; i <= Math.Sqrt(maxCards[theme] * 2); i++)
             {
                 if (i == 4)
                 {
                     var cbItem = new ComboBoxItem { Content = i };
-                    SelectedcbItem = cbItem;
-                    cbItems.Add(cbItem);
+                    SelectedcbItem2 = cbItem;
+                    cbItems2.Add(cbItem);
                 }
                 else if (i != 0 && i != 1)
                 {
-                    cbItems.Add(new ComboBoxItem { Content = i });
+                    cbItems2.Add(new ComboBoxItem { Content = i });
                 }
             }
         }
