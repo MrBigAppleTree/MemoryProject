@@ -132,7 +132,8 @@ namespace Memory_Project
             {
                 playGrid.Children.Clear();
                 currentPlayer.getClickedBtns().Clear();
-                Player winner = determineWinner();
+                Player winner = determineWinner(); 
+
                 Console.WriteLine("Congratulations Winner:\n" + winner.getName());
             } else
             {
@@ -202,6 +203,13 @@ namespace Memory_Project
         {
             Player winner = players.Aggregate((player1, player2) => player1.getScore() > player2.getScore() ? player1 : player1);
             return winner;
+        }
+
+        private void displayFinishScreen()
+        {
+
+            //PlayerGrid.
+
         }
     }
 }
