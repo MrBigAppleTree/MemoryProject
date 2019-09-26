@@ -60,11 +60,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="HighNav.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="HighNav2.xaml">
+    <Page Include="ThemeNav.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -82,11 +78,8 @@
     </Compile>
     <Compile Include="Card.cs" />
     <Compile Include="GameController.cs" />
-    <Compile Include="HighNav.xaml.cs">
-      <DependentUpon>HighNav.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="HighNav2.xaml.cs">
-      <DependentUpon>HighNav2.xaml</DependentUpon>
+    <Compile Include="ThemeNav.xaml.cs">
+      <DependentUpon>ThemeNav.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

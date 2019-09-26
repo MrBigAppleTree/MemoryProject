@@ -6,15 +6,75 @@
     xmlns:local="clr-namespace:Memory_Project"
     mc:Ignorable="d" 
     Title="Memory" Height="720" Width="1280">
-
+  
     <Grid HorizontalAlignment="center" VerticalAlignment="Center">
         <Image x:Name="BackgroundImg" Source="Images/NHLStenden/MenuBackground.png" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Fill"/>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="268">
-            <Button Content="Play" x:Name="play_button" Click="play_click" Width="300" Height="60" FontSize="36" Margin="0, 0, 0, 10" HorizontalAlignment="Center"/>
-            <Button Content="Theme" x:Name="theme_button" Click="theme_click" Width="300" Height="60" FontSize="36" Margin="0, 0, 0, 10" HorizontalAlignment="Center"/>
-            <Button Content="Configuration" x:Name="config_button" Click="config_click" Width="300" Height="60" FontSize="36" Margin="0, 0, 0, 10" HorizontalAlignment="Center"/>
-            <Button Content="Highscores" x:Name="high_button" Click="high_click" Width="300" Height="60" FontSize="36" Margin="0, 0, 0, 10" HorizontalAlignment="Center"/>
-            <Button Content="Close Game" x:Name="close_button" Click="close_click" Width="300" Height="60" FontSize="36" Margin="0, 0, 0, 10" HorizontalAlignment="Center"/>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Margin="30, 0, 0, 0">
+            <Label FontSize="36" HorizontalAlignment="Left" Margin="0, 0, 0, 0" Background="#00000000" BorderBrush="#00000000" Foreground="#FFFFFFFF">
+                <TextBlock>
+                    <TextBlock.TextDecorations>
+                        <TextDecoration Location="Underline" PenOffset="8" PenOffsetUnit="Pixel"/>
+                    </TextBlock.TextDecorations>
+                    Menu
+                </TextBlock>
+            </Label>
+            <Button Content="Play" x:Name="play" Click="play_click" Height="60" FontSize="36" Margin="0, 0, 0, 0" HorizontalAlignment="Left" Background="#00000000" BorderBrush="#00000000" Foreground="#FFFFFFFF"/>
+            <Button Content="Theme" x:Name="theme" Click="theme_click" Height="60" FontSize="36" Margin="0, 0, 0, 0" HorizontalAlignment="Left" Background="#00000000" BorderBrush="#00000000" Foreground="#FFFFFFFF"/>
+            <Button Content="Close Game" x:Name="close" Click="close_click" Height="60" FontSize="36" Margin="0, 0, 0, 0" HorizontalAlignment="Left" Background="#00000000" BorderBrush="#00000000" Foreground="#FFFFFFFF"/>
         </StackPanel>
+        <Border Margin="0, 0, 50, 0" HorizontalAlignment="Right" VerticalAlignment="Center" Background="#99FFFFFF" Width="404" Height="644">
+            <StackPanel Height="640" Width="400" Background="#66000000" >
+                <Label Foreground="White" FontSize="36" Margin="5, 5, 0, 0">
+                    Highscores
+                </Label>
+                <Label Foreground="White" FontSize="36" HorizontalAlignment="Right" Margin="0, -65, 69, 0">
+                    x
+                </Label>
+                <ComboBox x:Name="Width" FontSize="20" HorizontalAlignment="Right" Margin="0, -50, 100, 0" VerticalAlignment="Top" Width="45" Height="35" Background="Gray" BorderBrush="#00ACACAC" Foreground="Black">
+                    <ComboBox.ItemContainerStyle>
+                        <Style TargetType="ComboBoxItem">
+                            <Setter Property="Background" Value="Gray"/>
+                            <Setter Property="BorderBrush" Value="DarkGray"/>
+                        </Style>
+                    </ComboBox.ItemContainerStyle>
+                    <ComboBoxItem Content="2" HorizontalAlignment="Left" Width="45"/>
+                    <ComboBoxItem Content="3" HorizontalAlignment="Left" Width="45"/>
+                    <ComboBoxItem Content="4" HorizontalAlignment="Left" Width="45" IsSelected="True"/>
+                    <ComboBoxItem Content="5" HorizontalAlignment="Left" Width="45"/>
+                    <ComboBoxItem Content="6" HorizontalAlignment="Left" Width="45"/>
+                    <ComboBoxItem Content="7" HorizontalAlignment="Left" Width="45"/>
+                    <ComboBoxItem Content="8" HorizontalAlignment="Left" Width="45"/>
+                </ComboBox>
+                <ComboBox x:Name="Height" FontSize="20" HorizontalAlignment="Right" Margin="0, -50, 16, 0" VerticalAlignment="Top" Width="45" Height="35" Background="Gray" BorderBrush="#00ACACAC" Foreground="Black">
+                    <ComboBox.ItemContainerStyle>
+                        <Style TargetType="ComboBoxItem">
+                            <Setter Property="Background" Value="Gray"/>
+                            <Setter Property="BorderBrush" Value="DarkGray"/>
+                        </Style>
+                    </ComboBox.ItemContainerStyle>
+                    <ComboBoxItem Content="2" HorizontalAlignment="Left" Width="45"/>
+                    <ComboBoxItem Content="3" HorizontalAlignment="Left" Width="45"/>
+                    <ComboBoxItem Content="4" HorizontalAlignment="Left" Width="45" IsSelected="True"/>
+                    <ComboBoxItem Content="5" HorizontalAlignment="Left" Width="45"/>
+                    <ComboBoxItem Content="6" HorizontalAlignment="Left" Width="45"/>
+                    <ComboBoxItem Content="7" HorizontalAlignment="Left" Width="45"/>
+                    <ComboBoxItem Content="8" HorizontalAlignment="Left" Width="45"/>
+                </ComboBox>
+                <ComboBox x:Name="hiscr" FontSize="20" HorizontalAlignment="Left" Margin="10, 10, 0, 0" VerticalAlignment="Top" Height="35" Background="Gray" BorderBrush="#00ACACAC" Foreground="Black">
+                    <ComboBox.ItemContainerStyle>
+                        <Style TargetType="ComboBoxItem">
+                            <Setter Property="Background" Value="Gray"/>
+                            <Setter Property="BorderBrush" Value="DarkGray"/>
+                        </Style>
+                    </ComboBox.ItemContainerStyle>
+                    <ComboBoxItem Content="Singleplayer" HorizontalAlignment="Left" IsSelected="True"/>
+                    <ComboBoxItem Content="2 Players" HorizontalAlignment="Left"/>
+                    <ComboBoxItem Content="3 Players" HorizontalAlignment="Left"/>
+                    <ComboBoxItem Content="4 Players" HorizontalAlignment="Left"/>
+                    <ComboBoxItem Content="Time Trial" HorizontalAlignment="Left"/>
+                    <ComboBoxItem Content="Turn Trial" HorizontalAlignment="Left"/>
+                </ComboBox>
+            </StackPanel>
+        </Border>
     </Grid>
 </Page>

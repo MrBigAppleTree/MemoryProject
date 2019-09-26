@@ -10,30 +10,85 @@
 
     <Grid Background="White">
         <Image x:Name="BackgroundImg" Source="Images/NHLStenden/MenuBackground.png" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Fill"/>
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Center" Height="110" Margin="926,160,100,0" Stroke="Black" VerticalAlignment="Top" Width="254"/>
-        <ComboBox ItemsSource="{Binding cbItems1}" SelectedItem="{Binding SelectedcbItem1}" FontSize="20" HorizontalAlignment="Center" x:Name="comboHeight" Margin="939,199,281,0" VerticalAlignment="Top" Width="60" Height="48">
-        </ComboBox>
-        <ComboBox ItemsSource="{Binding cbItems2}" SelectedItem="{Binding SelectedcbItem2}" FontSize="20" HorizontalAlignment="Center" x:Name="comboWidth" Margin="1015,199,205,0" VerticalAlignment="Top" Width="60" Height="48">
-        </ComboBox>
-        <Button Content="New Game" Click="new_click" HorizontalAlignment="Center" Margin="499,163,474,454" VerticalAlignment="Center" FontSize="30px" Width="307" Height="103"/>
-        <Button Content="Load Game" HorizontalAlignment="Center" Margin="499,317,474,300" VerticalAlignment="Center" FontSize="30px" Width="307" Height="103"/>
-        <Button Content="Back" Click="back_click" HorizontalAlignment="Center" Margin="499,468,474,150" VerticalAlignment="Center" FontSize="30px" Width="307" Height="102"/>
-        <TextBlock Background="White" HorizontalAlignment="Center" TextAlignment="Center" Margin="941,176,282,0" TextWrapping="Wrap" Text="Height" VerticalAlignment="Top" Height="23" Width="57"/>
-        <TextBlock Background="White" HorizontalAlignment="Center" TextAlignment="Center" Margin="1015,176,205,0" TextWrapping="Wrap" Text="Width" VerticalAlignment="Top" Height="23" Width="60" RenderTransformOrigin="0.116,1.259"/>
-        <TextBlock Background="White" HorizontalAlignment="Center" TextAlignment="Center" Margin="1106,176,114,0" TextWrapping="Wrap" Text="Players" VerticalAlignment="Top" Height="23" Width="60"/>
-        <Label Background = "white" Content="GAME SELECT&#xD;&#xA;" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" HorizontalAlignment="Center" Margin="499,58,474,0" VerticalAlignment="Top" Height="57" Width="307"/>
-        <ComboBox x:Name="Players" FontSize="20" HorizontalAlignment="Center" Margin="1106,199,114,0" VerticalAlignment="Top" Width="60" Height="48">
-            <ComboBoxItem Content="1" HorizontalAlignment="Left" Width="92.8"/>
-            <ComboBoxItem IsSelected="True" Content="2" HorizontalAlignment="Left" Width="92.8"/>
-            <ComboBoxItem Content="3" HorizontalAlignment="Left" Width="92.8"/>
-            <ComboBoxItem Content="4" HorizontalAlignment="Left" Width="92.8"/>
-        </ComboBox>
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Center" Height="222" Margin="926,329,100,0" Stroke="Black" VerticalAlignment="Top" Width="254"/>
-        <Label Background="Azure" Content="Player Names" HorizontalContentAlignment="Center" FontSize="20px" Margin="953,296,123,378"/>
-        <TextBox FontSize="15px" x:Name="Player1" Text="Player1" Margin="958,350,134,327" TextAlignment="Center" Padding="10" MaxLength="10"/>
-        <TextBox FontSize="15px" x:Name="Player2" Text="Player2" Margin="958,395,134,283" TextAlignment="Center" Padding="10" MaxLength="10"/>
-        <TextBox FontSize="15px" x:Name="Player3" Text="Player3" Margin="958,439,134,238" TextAlignment="Center" Padding="10" MaxLength="10"/>
-        <TextBox FontSize="15px" x:Name="Player4" Text="Player4" Margin="958,486,134,191" TextAlignment="Center" Padding="10" MaxLength="10"/>
-        <Label Background="Azure" Content="Game Setttings" HorizontalAlignment="Center" Margin="1002,141,186,0" VerticalAlignment="Top" Height="28" Width="92"/>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Margin="30, 0, 0, 0">
+            <Label FontSize="36" HorizontalAlignment="Left" Margin="0, 0, 0, 0" Background="#00000000" BorderBrush="#00000000" Foreground="#FFFFFFFF">
+                <TextBlock>
+                    <TextBlock.TextDecorations>
+                        <TextDecoration Location="Underline" PenOffset="8" PenOffsetUnit="Pixel"/>
+                    </TextBlock.TextDecorations>
+                    Set up your game
+                </TextBlock>
+            </Label>
+            <Button Content="New Game" Click="new_click"  Height="60" FontSize="36" Margin="0, 0, 0, 0" HorizontalAlignment="Left" Background="#00000000" BorderBrush="#00000000" Foreground="#FFFFFFFF"/>
+            <Button Content="Load Game" Height="60" FontSize="36" Margin="0, 0, 0, 0" HorizontalAlignment="Left" Background="#00000000" BorderBrush="#00000000" Foreground="#FFFFFFFF"/>
+            <Button Content="Back" Click="back_click" Height="60" FontSize="36" Margin="0, 0, 0, 0" HorizontalAlignment="Left" Background="#00000000" BorderBrush="#00000000" Foreground="#FFFFFFFF"/>
+        </StackPanel>
+        <Border Margin="0, 130, 50, 0" HorizontalAlignment="Right" VerticalAlignment="top" Background="#99FFFFFF" Width="254" Height="204">
+            <StackPanel Width="250" Height="200" Background="#66000000" >
+                <Label FontSize="36" HorizontalAlignment="Center" Margin="0, 0, 0, 0" Background="#00000000" BorderBrush="#00000000" Foreground="#FFFFFFFF">
+                    <TextBlock>
+                        <TextBlock.TextDecorations>
+                            <TextDecoration Location="Underline" PenOffset="8" PenOffsetUnit="Pixel"/>
+                        </TextBlock.TextDecorations>
+                        Players
+                    </TextBlock>
+                </Label>
+                <RichTextBox FontSize="25px" x:Name="Player1" Margin="0, 10, 0, 0" Width="200" Padding="5" Background="Transparent" BorderBrush="White" Foreground="White">
+                    <FlowDocument>
+                        <Paragraph TextAlignment="Center">
+                            Player1
+                        </Paragraph>
+                    </FlowDocument>
+                </RichTextBox>
+                <RichTextBox FontSize="25px" x:Name="Player2" Margin="0, 10, 0, 0" Width="200" Padding="5" Background="Transparent" BorderBrush="White" Foreground="White">
+                    <FlowDocument>
+                        <Paragraph TextAlignment="Center">
+                            Player2
+                        </Paragraph>
+                    </FlowDocument>
+                </RichTextBox>
+            </StackPanel>
+        </Border>
+        <Border Margin="0, 0, 50, 130" HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="#99FFFFFF" Width="254" Height="204">
+            <StackPanel Width="250" Height="200" Background="#66000000" >
+                <Label FontSize="36" HorizontalAlignment="Center" Margin="0, 0, 0, 0" Background="#00000000" BorderBrush="#00000000" Foreground="#FFFFFFFF">
+                    <TextBlock>
+                        <TextBlock.TextDecorations>
+                            <TextDecoration Location="Underline" PenOffset="8" PenOffsetUnit="Pixel"/>
+                        </TextBlock.TextDecorations>
+                        Settings
+                    </TextBlock>
+                </Label>
+                <Label FontSize="30" HorizontalAlignment="Left" Margin="10, 10, 0, 0" Background="#00000000" BorderBrush="#00000000" Foreground="#FFFFFFFF">
+                    <TextBlock>
+                        Field:
+                    </TextBlock>
+                </Label>
+                <Label FontSize="30" HorizontalAlignment="Left" Margin="10, 10, 0, 0" Background="#00000000" BorderBrush="#00000000" Foreground="#FFFFFFFF">
+                    <TextBlock>
+                        Players:
+                    </TextBlock>
+                </Label>
+                <ComboBox ItemsSource="{Binding cbItems}" SelectedItem="{Binding SelectedcbItem}" FontSize="20" HorizontalAlignment="Center" x:Name="comboWidth" Margin="-20, -100, 0, 0" VerticalAlignment="Top" Width="45" Height="30">
+                </ComboBox>
+                <Label Foreground="White" FontSize="36" HorizontalAlignment="Right" Margin="0, -118, 75, 0">
+                    x
+                </Label>
+                <ComboBox ItemsSource="{Binding cbItems}" SelectedItem="{Binding SelectedcbItem}" FontSize="20" HorizontalAlignment="Center" x:Name="comboHeight" Margin="165, -100, 0, 0" VerticalAlignment="Top" Width="45" Height="30">
+                </ComboBox>
+                <ComboBox x:Name="Players" FontSize="20" HorizontalAlignment="Right" Margin="0, -65, 20, 0" VerticalAlignment="Bottom" Width="45" Height="35" Background="Gray" BorderBrush="#00ACACAC" Foreground="Black">
+                    <ComboBox.ItemContainerStyle>
+                        <Style TargetType="ComboBoxItem">
+                            <Setter Property="Background" Value="Gray"/>
+                            <Setter Property="BorderBrush" Value="DarkGray"/>
+                        </Style>
+                    </ComboBox.ItemContainerStyle>
+                    <ComboBoxItem Content="1" HorizontalAlignment="Left" Width="45"/>
+                    <ComboBoxItem Content="2" HorizontalAlignment="Left" Width="45" IsSelected="True"/>
+                    <ComboBoxItem Content="3" HorizontalAlignment="Left" Width="45"/>
+                    <ComboBoxItem Content="4" HorizontalAlignment="Left" Width="45"/>
+                </ComboBox>
+            </StackPanel>
+        </Border>
     </Grid>
 </Page>

@@ -35,17 +35,7 @@ namespace Memory_Project
 
         private void theme_click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Theme button has been pressed");
-        }
-
-        private void config_click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Configuration button has been pressed");
-        }
-
-        private void high_click(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.Navigate(new Uri("HighNav.xaml", UriKind.Relative));
+            this.NavigationService.Navigate(new Uri("ThemeNav.xaml", UriKind.Relative));
         }
 
         private void close_click(object sender, RoutedEventArgs e)
