@@ -95,6 +95,19 @@ namespace Memory_Project
             this.NavigationService.Navigate(new Uri("MainNav.xaml", UriKind.Relative));
 
         }
+        public string StringFromRichTextBox(RichTextBox rtb)
+        {
+            TextRange textRange = new TextRange(
+                // TextPointer to the start of content in the RichTextBox.
+                rtb.Document.ContentStart,
+                // TextPointer to the end of content in the RichTextBox.
+                rtb.Document.ContentEnd
+            );
+
+            // The Text property on a TextRange object returns a string
+            // representing the plain text content of the TextRange.
+            return textRange.Text;
+        }
         public void new_click(object sender, RoutedEventArgs e)
         {
             List<Player> players = new List<Player>();
@@ -104,8 +117,8 @@ namespace Memory_Project
  
             for (int i = 0; i < numPlayers; i++)
             {
-                TextBox tb = (TextBox)FindName("Player" + (i + 1));
-                players.Add(new Player(tb.Text));
+                RichTextBox rtb = (RichTextBox)FindName("Player" + (i));
+                players.Add(new Player(StringFromRichTextBox(rtb)));
             }
             GameController controller = new GameController(height, width, players);
             this.NavigationService.Navigate(controller.getView());
