@@ -49,13 +49,6 @@ namespace Memory_Project
         public BoardView getView() { return view; }
         public Board getBoard() { return board; }
 
-        private void startMusic()
-        {
-            System.Media.SoundPlayer player = new System.Media.SoundPlayer();
-            player.SoundLocation = "music/" + theme + "/BackgroundMusic.wav";
-            player.PlayLooping();
-        }
-
         public Card btnToCard(Button b)
         {
             int x = Grid.GetColumn(b);
