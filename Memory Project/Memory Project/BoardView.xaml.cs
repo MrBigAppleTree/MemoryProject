@@ -157,7 +157,7 @@ namespace Memory_Project
 
                 txt.Text = list[i].getName();
                 txt.Inlines.Add(new LineBreak());
-                txt.Inlines.Add(new LineBreak());
+               // txt.Inlines.Add(new LineBreak());
                 txt.Inlines.Add("Score: " + list[i].getScore());
 
                 PlayerGrid.Children.Add(txt);
@@ -165,7 +165,34 @@ namespace Memory_Project
 
             turnHandler();
         }
+        public void loadButtons()
+        {
+            string[] bNames = new string[] { "Back", "Save", "Reset" };
 
+            for(int i = 0; i < 3; i++)
+            {  
+                NavGrid.ColumnDefinitions.Add(new ColumnDefinition());
+                Button b = new Button();
+                b.Content = bNames[i];
+                b.Click += btnClicks; //What happends when you click
+
+                //BUTTON CSS HERE
+
+                b.Margin = new Thickness(5);
+                b.Padding = new Thickness(5);
+                b.FontSize = 30;
+
+                //===============
+                int countPlayers = players.Count();
+                b.SetValue(Grid.ColumnProperty, i);
+                NavGrid.Children.Add(b);
+            }
+           
+        }
+        public void btnClicks(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("MainNav.xaml", UriKind.Relative));
+        }
         private void setColor(int i)
         {
             TextBlock txt = (TextBlock)PlayerGrid.Children[i];
