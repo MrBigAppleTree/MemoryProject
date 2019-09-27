@@ -60,23 +60,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-<<<<<<< HEAD
-    <Page Include="ThemeNav.xaml">
-=======
-<<<<<<< Updated upstream
-    <Page Include="HighNav.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="HighNav2.xaml">
-=======
     <Page Include="FinishedView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ThemeNav.xaml">
->>>>>>> Stashed changes
->>>>>>> Milan
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
