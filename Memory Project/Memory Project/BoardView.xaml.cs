@@ -99,6 +99,10 @@ namespace Memory_Project
             await Task.Delay(2500);
             if (currentPlayer.getClickedBtns().Count == 2 && compareCards(currentPlayer.getClickedBtns()))
             {
+<<<<<<< Updated upstream
+=======
+                Thread.Sleep(500);
+>>>>>>> Stashed changes
                 List<Card> gainedCards = new List<Card>();
                 foreach(Button b in currentPlayer.getClickedBtns())
                 {
@@ -123,6 +127,34 @@ namespace Memory_Project
                 }
                 turnCounter += 1;
                 turnHandler();
+<<<<<<< Updated upstream
+=======
+            } 
+            
+        }
+
+        private void flipCard(Button btn, string imgPath)
+        {
+            int normalWidth = (int)btn.ActualWidth;
+
+            for(int i = normalWidth; i >= 0; i--)
+            {
+                btn.Width = i;
+                //Dispatcher.Invoke(new Action(() => { }), DispatcherPriority.ContextIdle, null);
+                //Thread.Sleep(1);
+            }
+
+            Image img = new Image();
+            img.Source = new BitmapImage(new Uri(imgPath, UriKind.Relative));
+            img.Stretch = Stretch.Fill;
+            btn.Content = img;
+
+            for (int i = 0; i <= normalWidth; i++)
+            {
+                btn.Width = i;
+                //Dispatcher.Invoke(new Action(() => { }), DispatcherPriority.ContextIdle, null);
+                //Thread.Sleep(1);
+>>>>>>> Stashed changes
             }
         }
 
@@ -130,9 +162,15 @@ namespace Memory_Project
         {
             if (controller.gameFin())
             {
-                playGrid.Children.Clear();
+                
                 currentPlayer.getClickedBtns().Clear();
-                Player winner = determineWinner(); 
+                Player winner = determineWinner();
+
+                // Clear the main panel of useless controls
+                mainPanel.Children.Remove(leftPanel);
+                mainPanel.Children.Remove(playGrid);
+
+                displayFinishScreen();
 
                 Console.WriteLine("Congratulations Winner:\n" + winner.getName());
             } else
@@ -208,7 +246,7 @@ namespace Memory_Project
         private void displayFinishScreen()
         {
 
-            //PlayerGrid.Children.Add()
+             NavigationService.Navigate(new Uri("FinishedView.xaml", UriKind.Relative));
 
         }
     }

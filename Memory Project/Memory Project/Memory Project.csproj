@@ -60,11 +60,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+<<<<<<< Updated upstream
     <Page Include="HighNav.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="HighNav2.xaml">
+=======
+    <Page Include="FinishedView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ThemeNav.xaml">
+>>>>>>> Stashed changes
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -81,6 +89,9 @@
       <DependentUpon>BoardView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Card.cs" />
+    <Compile Include="FinishedView.xaml.cs">
+      <DependentUpon>FinishedView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GameController.cs" />
     <Compile Include="HighNav.xaml.cs">
       <DependentUpon>HighNav.xaml</DependentUpon>
