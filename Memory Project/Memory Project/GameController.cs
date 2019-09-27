@@ -26,16 +26,17 @@ namespace Memory_Project
 
         public GameController(int height, int width, List<Player> players)
         {
-            if(height < width)
-            {
-                this.height = width;
-                this.width = height;
-            } else
+            if (height < width)
             {
                 this.height = height;
                 this.width = width;
             }
-            
+            else
+            {
+                this.height = height;
+                this.width = width;
+            }
+
             this.players = players;
 
             view = new BoardView(this);

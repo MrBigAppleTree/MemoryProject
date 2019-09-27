@@ -69,6 +69,7 @@ namespace Memory_Project
             Image img = new Image();
             img.Source = new BitmapImage(new Uri(card.getBackImg(), UriKind.Relative));
             btn.Content = img;
+            btn.Background = Brushes.Transparent;
             btn.Click += new RoutedEventHandler(card_click);
             playGrid.Children.Add(btn);
         }
