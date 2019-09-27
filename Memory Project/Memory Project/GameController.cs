@@ -26,7 +26,7 @@ namespace Memory_Project
 
         public GameController(int height, int width, List<Player> players)
         {
-            if(height < width)
+            if (height == 2 && width > 4 || height == 3 && width > 6)
             {
                 this.height = width;
                 this.width = height;
