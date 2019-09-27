@@ -201,14 +201,14 @@ namespace Memory_Project
 
         private Player determineWinner()
         {
-            Player winner = players.Aggregate((player1, player2) => player1.getScore() > player2.getScore() ? player1 : player1);
+            Player winner = players.Aggregate((player1, player2) => player1.getScore() > player2.getScore() ? player1 : player2);
             return winner;
         }
 
         private void displayFinishScreen()
         {
 
-            //PlayerGrid.
+            //PlayerGrid.Children.Add()
 
         }
     }
