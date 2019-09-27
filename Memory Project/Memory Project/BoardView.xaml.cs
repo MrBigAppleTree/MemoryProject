@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Memory_Project
 {
@@ -66,8 +68,11 @@ namespace Memory_Project
             btn.SetValue(Grid.ColumnProperty, card.getXPos());
             btn.SetValue(Grid.RowProperty, card.getYPos());
             btn.Margin = new Thickness(5);
+            btn.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+            btn.BorderThickness = new Thickness(0);
             Image img = new Image();
             img.Source = new BitmapImage(new Uri(card.getBackImg(), UriKind.Relative));
+            img.Stretch = Stretch.Fill;
             btn.Content = img;
             btn.Click += new RoutedEventHandler(card_click);
             playGrid.Children.Add(btn);
@@ -77,15 +82,15 @@ namespace Memory_Project
         {
             if(currentPlayer.getClickedBtns().Count < 2)
             {
+                this.IsHitTestVisible = false;
                 int x = Grid.GetColumn((Button)sender);
                 int y = Grid.GetRow((Button)sender);
                 string frontImgPath = controller.getBoard().getFrontImg(x, y);
 
                 Button btn = sender as Button;
-                if(currentPlayer.getClickedBtns().Count > 0 && currentPlayer.getClickedBtns()[0].Equals(btn)) { return; }
-                Image img = new Image();
-                img.Source = new BitmapImage(new Uri(frontImgPath, UriKind.Relative));
-                btn.Content = img;
+                if (currentPlayer.getClickedBtns().Count > 0 && currentPlayer.getClickedBtns()[0].Equals(btn)) { return; }
+                flipCard(btn, frontImgPath);
+                
                 Console.WriteLine(((Image)btn.Content).Source);
                 this.NavigationService.Refresh();
                 currentPlayer.getClickedBtns().Add(btn);
@@ -94,11 +99,14 @@ namespace Memory_Project
             }
         }
 
-        private async void turnCheck()
+        private void turnCheck()
         {
-            await Task.Delay(2500);
+            this.IsHitTestVisible = true;
+            Dispatcher.Invoke(new Action(() => { }), DispatcherPriority.ContextIdle, null);
+            
             if (currentPlayer.getClickedBtns().Count == 2 && compareCards(currentPlayer.getClickedBtns()))
             {
+                Thread.Sleep(1000);
                 List<Card> gainedCards = new List<Card>();
                 foreach(Button b in currentPlayer.getClickedBtns())
                 {
@@ -106,7 +114,6 @@ namespace Memory_Project
                     Card c = controller.btnToCard(b);
                     gainedCards.Add(c);
                     controller.removeCard(c);
-                    
                 }
                 Console.WriteLine("cards moved to player: " + currentPlayer.getName());
                 currentPlayer.increaseScore(100);
@@ -115,14 +122,38 @@ namespace Memory_Project
                 turnHandler();
             } else if (currentPlayer.getClickedBtns().Count == 2)
             {
+                Thread.Sleep(2000);
                 foreach (Button b in currentPlayer.getClickedBtns())
                 {
-                    Image img = new Image();
-                    img.Source = new BitmapImage(new Uri(controller.btnToCard(b).getBackImg(), UriKind.Relative));
-                    b.Content = img;
+                    flipCard(b, controller.btnToCard(b).getBackImg());
                 }
                 turnCounter += 1;
                 turnHandler();
+            } 
+            
+        }
+
+        private void flipCard(Button btn, string imgPath)
+        {
+            int normalWidth = (int)btn.ActualWidth;
+
+            for(int i = normalWidth; i >= 0; i--)
+            {
+                btn.Width = i;
+                Dispatcher.Invoke(new Action(() => { }), DispatcherPriority.ContextIdle, null);
+                Thread.Sleep(1);
+            }
+
+            Image img = new Image();
+            img.Source = new BitmapImage(new Uri(imgPath, UriKind.Relative));
+            img.Stretch = Stretch.Fill;
+            btn.Content = img;
+
+            for (int i = 0; i <= normalWidth; i++)
+            {
+                btn.Width = i;
+                Dispatcher.Invoke(new Action(() => { }), DispatcherPriority.ContextIdle, null);
+                Thread.Sleep(1);
             }
         }
 
@@ -142,6 +173,7 @@ namespace Memory_Project
                 setColor(turnCounter % players.Count);
                 Console.WriteLine("Player: " + currentPlayer.getName() + " turn");
             }
+            
         }
 
         public void loadPlayers(List<Player> list)
@@ -228,6 +260,7 @@ namespace Memory_Project
 
         private Player determineWinner()
         {
+
             Player winner = players.Aggregate((player1, player2) => player1.getScore() > player2.getScore() ? player1 : player1);
             return winner;
         }
