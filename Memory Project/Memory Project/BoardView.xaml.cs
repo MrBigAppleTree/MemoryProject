@@ -106,7 +106,9 @@ namespace Memory_Project
             
             if (currentPlayer.getClickedBtns().Count == 2 && compareCards(currentPlayer.getClickedBtns()))
             {
+
                 Thread.Sleep(1000);
+
                 List<Card> gainedCards = new List<Card>();
                 foreach(Button b in currentPlayer.getClickedBtns())
                 {
@@ -140,8 +142,10 @@ namespace Memory_Project
             for(int i = normalWidth; i >= 0; i--)
             {
                 btn.Width = i;
-                Dispatcher.Invoke(new Action(() => { }), DispatcherPriority.ContextIdle, null);
-                Thread.Sleep(1);
+
+                //Dispatcher.Invoke(new Action(() => { }), DispatcherPriority.ContextIdle, null);
+                //Thread.Sleep(1);
+
             }
 
             Image img = new Image();
@@ -152,8 +156,10 @@ namespace Memory_Project
             for (int i = 0; i <= normalWidth; i++)
             {
                 btn.Width = i;
-                Dispatcher.Invoke(new Action(() => { }), DispatcherPriority.ContextIdle, null);
-                Thread.Sleep(1);
+
+                //Dispatcher.Invoke(new Action(() => { }), DispatcherPriority.ContextIdle, null);
+                //Thread.Sleep(1);
+
             }
         }
 
@@ -161,9 +167,15 @@ namespace Memory_Project
         {
             if (controller.gameFin())
             {
-                playGrid.Children.Clear();
+                
                 currentPlayer.getClickedBtns().Clear();
-                Player winner = determineWinner(); 
+                Player winner = determineWinner();
+
+                // Clear the main panel of useless controls
+                mainPanel.Children.Remove(leftPanel);
+                mainPanel.Children.Remove(playGrid);
+
+                displayFinishScreen();
 
                 Console.WriteLine("Congratulations Winner:\n" + winner.getName());
             } else
@@ -268,7 +280,7 @@ namespace Memory_Project
         private void displayFinishScreen()
         {
 
-            //PlayerGrid.Children.Add()
+             NavigationService.Navigate(new Uri("FinishedView.xaml", UriKind.Relative));
 
         }
     }
