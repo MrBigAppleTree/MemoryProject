@@ -30,9 +30,45 @@ namespace Memory_Project
             // Set the background image based on theme
             BackgroundImg.ImageSource = new BitmapImage(new Uri(@"../../images/" + currentTheme + "/BoardBackground.png", UriKind.Relative));
 
+            // Set winner text.
+            List<Player> players = getPlayers();
+            if (players.Count == 1)
+            {
+                setSpWinnerText();
+            } else
+            {
+                setMpWinnerText();
+            }
+            
         }
 
+        private Player getWinner()
+        {
+            return (Player)Application.Current.Properties["winner"];
+        }
 
+        private List<Player> getPlayers()
+        {
+            return (List<Player>)Application.Current.Properties["players"];
+        }
 
+        private void setSpWinnerText()
+        {
+            Player winner = getWinner();
+
+            WinnerText.Text = $"Congratulations {winner.getName()} You've finished the game with {winner.getScore()} points!";
+        }
+
+        private void setMpWinnerText()
+        {
+            Player winner = getWinner();
+            List<Player> players = getPlayers();
+
+            // Set winners
+            WinnerText.Text = $"Congratulations {winner.getName()} You've finished the game with {winner.getScore()} points!";
+
+            // set other players + points in table. Left = name and Right = score + "pts"
+
+        }
     }
 }

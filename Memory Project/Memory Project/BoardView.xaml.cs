@@ -171,13 +171,7 @@ namespace Memory_Project
                 currentPlayer.getClickedBtns().Clear();
                 Player winner = determineWinner();
 
-                // Clear the main panel of useless controls
-                mainPanel.Children.Remove(leftPanel);
-                mainPanel.Children.Remove(playGrid);
-
-                displayFinishScreen();
-
-                Console.WriteLine("Congratulations Winner:\n" + winner.getName());
+                displayFinishScreen(players, winner);
             } else
             {
                 currentPlayer = players[turnCounter % players.Count];
@@ -277,10 +271,11 @@ namespace Memory_Project
             return winner;
         }
 
-        private void displayFinishScreen()
+        private void displayFinishScreen(List<Player> players, Player winner)
         {
-
-             NavigationService.Navigate(new Uri("FinishedView.xaml", UriKind.Relative));
+            Application.Current.Properties["players"] = players;
+            Application.Current.Properties["winner"] = winner;
+            NavigationService.Navigate(new Uri("FinishedView.xaml", UriKind.Relative));
 
         }
     }
