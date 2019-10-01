@@ -17,7 +17,7 @@
             <Grid x:Name="NavGrid" HorizontalAlignment="Left" VerticalAlignment="Bottom" MinWidth="280"  Background="Transparent"/>
 
         </StackPanel>
-        <Grid x:Name="playGrid" HorizontalAlignment="Left" MaxWidth="1000" Background="Transparent"/>
+        <Grid x:Name="playGrid" HorizontalAlignment="Left"  Background="Transparent"/>
 
 
 
