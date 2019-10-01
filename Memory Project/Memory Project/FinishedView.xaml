@@ -20,13 +20,12 @@
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <Label FontSize="30" BorderThickness="0 0 0 2" HorizontalAlignment="Center" Margin="10, 10, 10, 0" Background="#00000000" BorderBrush="White" Foreground="White">
-                        <TextBlock Name="WinnerText" TextWrapping="Wrap">Test</TextBlock>
+                    <Label FontSize="26" BorderThickness="0, 0, 0, 2" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="0, 10, 0, 0" Background="#00000000" BorderBrush="White" Foreground="White">
+                        <TextBlock Name="WinnerText" HorizontalAlignment="Center" TextWrapping="Wrap">Test</TextBlock>
                     </Label>
-                    <StackPanel Margin="10, 0, 0, 0" Grid.Row="1" VerticalAlignment="Bottom">
-                        <Button Content="Play" x:Name="play" Height="60" FontSize="36" Margin="0, 0, 0, 0" HorizontalAlignment="Left" Background="#00000000" BorderBrush="#00000000" Foreground="#FFFFFFFF"/>
-                        <Button Content="Theme" x:Name="theme" Height="60" FontSize="36" Margin="0, 0, 0, 0" HorizontalAlignment="Left" Background="#00000000" BorderBrush="#00000000" Foreground="#FFFFFFFF"/>
-                        <Button Content="Close Game" x:Name="close" Height="60" FontSize="36" Margin="0, 0, 0, 0" HorizontalAlignment="Left" Background="#00000000" BorderBrush="#00000000" Foreground="#FFFFFFFF"/>
+                    <StackPanel Margin="10, 0, 0, 0" Grid.Row="1" HorizontalAlignment="left" VerticalAlignment="Bottom">
+                        <Button Content="Replay" x:Name="play" Height="60" FontSize="36" Margin="0, 0, 0, 0" HorizontalAlignment="Left" Background="#00000000" BorderBrush="#00000000" Foreground="#FFFFFFFF"/>
+                        <Button Content="Back to main menu" x:Name="close" Height="60" FontSize="36" Margin="0, 0, 0, 0" HorizontalAlignment="Left" Background="#00000000" BorderBrush="#00000000" Foreground="#FFFFFFFF"/>
                     </StackPanel>
                 </Grid>
             </Border>

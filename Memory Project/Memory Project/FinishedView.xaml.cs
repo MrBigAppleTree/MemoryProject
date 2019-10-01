@@ -56,7 +56,7 @@ namespace Memory_Project
         {
             Player winner = getWinner();
 
-            WinnerText.Text = $"Congratulations {winner.getName()} You've finished the game with {winner.getScore()} points!";
+            WinnerText.Text = $"Congratulations {winner.getName()}You've finished the game with {winner.getScore()} points!";
         }
 
         private void setMpWinnerText()
@@ -65,9 +65,10 @@ namespace Memory_Project
             List<Player> players = getPlayers();
 
             // Set winners
-            WinnerText.Text = $"Congratulations {winner.getName()} You've finished the game with {winner.getScore()} points!";
+            WinnerText.Text = $"Congratulations {winner.getName()}You've finished the game with {winner.getScore()} points!";
 
             // set other players + points in table. Left = name and Right = score + "pts"
+
 
         }
     }
