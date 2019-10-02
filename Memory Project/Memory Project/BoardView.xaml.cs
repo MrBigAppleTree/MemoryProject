@@ -107,7 +107,11 @@ namespace Memory_Project
                 string frontImgPath = controller.getBoard().getFrontImg(x, y);
 
                 Button btn = sender as Button;
-                if (currentPlayer.getClickedBtns().Count > 0 && currentPlayer.getClickedBtns()[0].Equals(btn)) { return; }
+                if (currentPlayer.getClickedBtns().Count > 0 && currentPlayer.getClickedBtns()[0].Equals(btn))
+                {
+                    this.IsHitTestVisible = true;
+                    return;
+                }
                 flipCard(btn, frontImgPath);
                 
                 Console.WriteLine(((Image)btn.Content).Source);
