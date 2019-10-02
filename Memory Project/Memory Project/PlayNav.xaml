@@ -33,14 +33,14 @@
                         Players
                     </TextBlock>
                 </Label>
-                <RichTextBox FontSize="25px" x:Name="Player0" Margin="0, 10, 0, 0" Width="200" Padding="5" Background="Transparent" BorderBrush="White" Foreground="White">
+                <RichTextBox FontSize="25px" KeyDown="RichTextKeyDown0" x:Name="Player0" Margin="0, 10, 0, 0" Width="200" Padding="5" Background="Transparent" BorderBrush="White" Foreground="White">
                     <FlowDocument>
                         <Paragraph TextAlignment="Center">
                             Player1
                         </Paragraph>
                     </FlowDocument>
                 </RichTextBox>
-                <RichTextBox FontSize="25px" x:Name="Player1" Margin="0, 10, 0, 0" Width="200" Padding="5" Background="Transparent" BorderBrush="White" Foreground="White">
+                <RichTextBox FontSize="25px" KeyDown="RichTextKeyDown1" x:Name="Player1" Margin="0, 10, 0, 0" Width="200" Padding="5" Background="Transparent" BorderBrush="White" Foreground="White">
                     <FlowDocument>
                         <Paragraph TextAlignment="Center">
                             Player2

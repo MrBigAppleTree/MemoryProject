@@ -123,5 +123,46 @@ namespace Memory_Project
             GameController controller = new GameController(height, width, players);
             this.NavigationService.Navigate(controller.getView());
         }
+        //Character limit for playername input to prevent overflow on BoardView
+        //Add method per Player
+        //BUG Can still press enter in richboxtext
+        private void RichTextKeyDown0(object sender, KeyEventArgs e)
+        {
+            TextRange tr = new TextRange(Player0.Document.ContentStart, Player0.Document.ContentEnd);
+            if (e.Key == Key.Space || e.Key == Key.Enter || tr.Text.Length > 13)
+            {
+                e.Handled = true;
+                return;
+            }
+        }
+        
+        private void RichTextKeyDown1(object sender, KeyEventArgs e)
+        {
+            TextRange tr = new TextRange(Player1.Document.ContentStart, Player1.Document.ContentEnd);
+            if (e.Key == Key.Space || e.Key == Key.Enter || tr.Text.Length > 13)
+            {
+                e.Handled = true;
+                return;
+            }
+        }
+        //private void RichTextKeyDown2(object sender, KeyEventArgs e)
+        //{
+        //    TextRange tr = new TextRange(Player2.Document.ContentStart, Player2.Document.ContentEnd);
+        //    if (tr.Text.Length >= 15 || e.Key != Key.Space || e.Key != Key.Enter)
+        //    {
+        //        e.Handled = true;
+        //        return;
+        //    }
+        //}
+        //private void RichTextKeyDown3(object sender, KeyEventArgs e)
+        //{
+        //    TextRange tr = new TextRange(Player3.Document.ContentStart, Player3.Document.ContentEnd);
+        //    if (tr.Text.Length >= 15 || e.Key != Key.Space || e.Key != Key.Enter)
+        //    {
+        //        e.Handled = true;
+        //        return;
+        //    }
+        //}
     }
+
 }
