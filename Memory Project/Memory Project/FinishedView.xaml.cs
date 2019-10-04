@@ -117,5 +117,15 @@ namespace Memory_Project
 
             }
         }
+
+        private void replay_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("MainNav.xaml", UriKind.Relative));
+        }
+
+        private void close_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("MainNav.xaml", UriKind.Relative));
+        }
     }
 }
