@@ -13,8 +13,8 @@
             <ImageBrush x:Name="BackgroundImg" Stretch="Fill"/>
         </StackPanel.Background>
         <StackPanel x:Name="leftPanel" Orientation="Vertical">
-            <Grid x:Name="PlayerGrid" HorizontalAlignment="Left" MinWidth="280" Background="Transparent"/>
-            <Grid x:Name="NavGrid" HorizontalAlignment="Left" VerticalAlignment="Bottom" MinWidth="280" Background="Transparent"/>
+            <Grid x:Name="PlayerGrid" HorizontalAlignment="Left" MinWidth="280"  Background="Transparent"/>
+            <Grid x:Name="NavGrid" HorizontalAlignment="Left" VerticalAlignment="Bottom" MinWidth="280"  Background="Transparent"/>
 
         </StackPanel>
         <Grid x:Name="playGrid" HorizontalAlignment="Left"  Background="Transparent"/>

@@ -29,6 +29,10 @@ namespace Memory_Project
         List<Player> players;
         Player currentPlayer;
 
+        /// <summary>
+        /// Makes a new instance of the boardview upon which the game is played
+        /// </summary>
+        /// <param name="controller">The controller who initialised this</param>
         public BoardView(GameController controller)
         {
             InitializeComponent();
@@ -45,6 +49,11 @@ namespace Memory_Project
             }
         }
 
+        /// <summary>
+        /// Makes grid rows and columns based on the desired height and width
+        /// </summary>
+        /// <param name="height">height of the board measured in cards</param>
+        /// <param name="width">width of the board measured in cards</param>
         public void addToGrid(int height, int width)
         {
             double percentageHeight = 1 / (double)height;
@@ -62,6 +71,10 @@ namespace Memory_Project
             
         }
 
+        /// <summary>
+        /// Adds cards from the board onto the boardview by converting them to a button with an image as content
+        /// </summary>
+        /// <param name="card">The card to be converted and put on te board</param>
         public void addCard(Card card)
         {
             Button btn = new Button();
@@ -74,10 +87,16 @@ namespace Memory_Project
             img.Source = new BitmapImage(new Uri(card.getBackImg(), UriKind.Relative));
             img.Stretch = Stretch.Fill;
             btn.Content = img;
+            btn.Background = Brushes.Transparent;
             btn.Click += new RoutedEventHandler(card_click);
             playGrid.Children.Add(btn);
         }
 
+        /// <summary>
+        /// Event handler that triggers whenever a card(button) is clicked on the board
+        /// </summary>
+        /// <param name="sender">The button that has been clicked</param>
+        /// <param name="e">Event arguments</param>
         private void card_click(object sender, RoutedEventArgs e)
         {
             if(currentPlayer.getClickedBtns().Count < 2)
@@ -88,7 +107,11 @@ namespace Memory_Project
                 string frontImgPath = controller.getBoard().getFrontImg(x, y);
 
                 Button btn = sender as Button;
-                if (currentPlayer.getClickedBtns().Count > 0 && currentPlayer.getClickedBtns()[0].Equals(btn)) { return; }
+                if (currentPlayer.getClickedBtns().Count > 0 && currentPlayer.getClickedBtns()[0].Equals(btn))
+                {
+                    this.IsHitTestVisible = true;
+                    return;
+                }
                 flipCard(btn, frontImgPath);
                 
                 Console.WriteLine(((Image)btn.Content).Source);
@@ -99,6 +122,11 @@ namespace Memory_Project
             }
         }
 
+        /// <summary>
+        /// Checks whether a players turn has ended or is still ongoing.
+        /// If two cards have been selected, the card faces will be compared. If equal, these cards willbe added to the players card stack
+        /// and removed from the board. If not equal, both cards will be turned back around.
+        /// </summary>
         private void turnCheck()
         {
             this.IsHitTestVisible = true;
@@ -135,6 +163,11 @@ namespace Memory_Project
             
         }
 
+        /// <summary>
+        /// The animation component to make the card flip around to the input image
+        /// </summary>
+        /// <param name="btn">The button to be flipped</param>
+        /// <param name="imgPath">The image to flip the card to</param>
         private void flipCard(Button btn, string imgPath)
         {
             int normalWidth = (int)btn.ActualWidth;
@@ -163,6 +196,9 @@ namespace Memory_Project
             }
         }
 
+        /// <summary>
+        /// Determines whose turn it is and if the game is finished.
+        /// </summary>
         private void turnHandler()
         {
             if (controller.gameFin())
@@ -182,6 +218,10 @@ namespace Memory_Project
             
         }
 
+        /// <summary>
+        /// loads the players onto the board dynamically
+        /// </summary>
+        /// <param name="list">The list of players to be loaded onto the board</param>
         public void loadPlayers(List<Player> list)
         {
             players = list;
@@ -204,6 +244,10 @@ namespace Memory_Project
 
             turnHandler();
         }
+
+        /// <summary>
+        /// Loads the back, save and reset buttons onto the screen below the players.
+        /// </summary>
         public void loadButtons()
         {
             string[] bNames = new string[] { "Back", "Save", "Reset" };
@@ -228,10 +272,12 @@ namespace Memory_Project
             }
            
         }
+
         public void btnClicks(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("MainNav.xaml", UriKind.Relative));
         }
+
         private void setColor(int i)
         {
             TextBlock txt = (TextBlock)PlayerGrid.Children[i];
@@ -242,6 +288,9 @@ namespace Memory_Project
             txt.Foreground = Brushes.Yellow;
         }
 
+        /// <summary>
+        /// Updates the player scores on the board after every turn.
+        /// </summary>
         private void updateScore()
         {
             for(int i = 0; i < players.Count; i++)
@@ -252,6 +301,11 @@ namespace Memory_Project
             }
         }
 
+        /// <summary>
+        /// Compares the imput cards and determines if the front face is the same.
+        /// </summary>
+        /// <param name="cards">The list of cards to be compared with one another</param>
+        /// <returns>Returns whether the two cards are equal</returns>
         private bool compareCards(List<Button> cards)
         {
             try
@@ -264,6 +318,10 @@ namespace Memory_Project
             
         }
 
+        /// <summary>
+        /// Determines the player with the highest score
+        /// </summary>
+        /// <returns>Returns the player with the highest score</returns>
         private Player determineWinner()
         {
             Player winner = players.Aggregate((player1, player2) => player1.getScore() > player2.getScore() ? player1 : player2);
