@@ -113,12 +113,8 @@ namespace Memory_Project
                     return;
                 }
                 flipCard(btn, frontImgPath);
-                
-                Console.WriteLine(((Image)btn.Content).Source);
-                this.NavigationService.Refresh();
                 currentPlayer.getClickedBtns().Add(btn);
                 turnCheck();
-                return;
             }
         }
 
@@ -130,13 +126,11 @@ namespace Memory_Project
         private void turnCheck()
         {
             this.IsHitTestVisible = true;
-            Dispatcher.Invoke(new Action(() => { }), DispatcherPriority.ContextIdle, null);
+            //Dispatcher.Invoke(new Action(() => { }), DispatcherPriority.ContextIdle, null);
             
             if (currentPlayer.getClickedBtns().Count == 2 && compareCards(currentPlayer.getClickedBtns()))
             {
-
                 Thread.Sleep(1000);
-
                 List<Card> gainedCards = new List<Card>();
                 foreach(Button b in currentPlayer.getClickedBtns())
                 {
