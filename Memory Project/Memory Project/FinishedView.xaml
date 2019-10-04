@@ -15,15 +15,15 @@
 
         <Grid HorizontalAlignment="Center" Width="{Binding ElementName=mainPanel, Path=ActualWidth}">
             <Border BorderBrush="White" BorderThickness="1" Margin="0, 150, 0, 150" Width="500">
-                <Grid HorizontalAlignment="Center" Width="500" Background="#66000000">
+                <Grid Name="playerGrid" HorizontalAlignment="Center" Width="500" Background="#66000000">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <Label FontSize="26" BorderThickness="0, 0, 0, 2" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="0, 10, 0, 0" Background="#00000000" BorderBrush="White" Foreground="White">
+                    <Label FontSize="26" BorderThickness="0, 0, 0, 2" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalContentAlignment="Center" Margin="0, 10, 0, 0" Background="#00000000" BorderBrush="White" Foreground="White">
                         <TextBlock Name="WinnerText" HorizontalAlignment="Center" TextWrapping="Wrap">Test</TextBlock>
                     </Label>
-                    <StackPanel Margin="10, 0, 0, 0" Grid.Row="1" HorizontalAlignment="left" VerticalAlignment="Bottom">
+                    <StackPanel Name="menuButtons" Margin="10, 0, 0, 0" Grid.Row="1" HorizontalAlignment="left" VerticalAlignment="Bottom">
                         <Button Content="Replay" x:Name="play" Height="60" FontSize="36" Margin="0, 0, 0, 0" HorizontalAlignment="Left" Background="#00000000" BorderBrush="#00000000" Foreground="#FFFFFFFF"/>
                         <Button Content="Back to main menu" x:Name="close" Height="60" FontSize="36" Margin="0, 0, 0, 0" HorizontalAlignment="Left" Background="#00000000" BorderBrush="#00000000" Foreground="#FFFFFFFF"/>
                     </StackPanel>

@@ -92,10 +92,10 @@ namespace Memory_Project
                 flipCard(btn, frontImgPath);
                 
                 Console.WriteLine(((Image)btn.Content).Source);
-                this.NavigationService.Refresh();
+                //this.NavigationService.Refresh();
                 currentPlayer.getClickedBtns().Add(btn);
                 turnCheck();
-                return;
+                //return;
             }
         }
 
