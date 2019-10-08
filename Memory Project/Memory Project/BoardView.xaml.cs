@@ -330,10 +330,11 @@ namespace Memory_Project
             return winner;
         }
 
-        private void displayFinishScreen()
+        private void displayFinishScreen(List<Player> players, Player winner)
         {
-
-             NavigationService.Navigate(new Uri("FinishedView.xaml", UriKind.Relative));
+            Application.Current.Properties["players"] = players;
+            Application.Current.Properties["winner"] = winner;
+            NavigationService.Navigate(new Uri("FinishedView.xaml", UriKind.Relative));
 
         }
     }
