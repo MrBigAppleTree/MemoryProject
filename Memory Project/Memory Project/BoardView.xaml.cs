@@ -206,7 +206,7 @@ namespace Memory_Project
                 mainPanel.Children.Remove(leftPanel);
                 mainPanel.Children.Remove(playGrid);
 
-                displayFinishScreen();
+                displayFinishScreen(players, winner);
 
                 Console.WriteLine("Congratulations Winner:\n" + winner.getName());
             } else
