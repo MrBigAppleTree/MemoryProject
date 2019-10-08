@@ -10,6 +10,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -113,12 +114,8 @@ namespace Memory_Project
                     return;
                 }
                 flipCard(btn, frontImgPath);
-                
-                Console.WriteLine(((Image)btn.Content).Source);
-                //this.NavigationService.Refresh();
                 currentPlayer.getClickedBtns().Add(btn);
                 turnCheck();
-                //return;
             }
         }
 
@@ -127,16 +124,14 @@ namespace Memory_Project
         /// If two cards have been selected, the card faces will be compared. If equal, these cards willbe added to the players card stack
         /// and removed from the board. If not equal, both cards will be turned back around.
         /// </summary>
-        private void turnCheck()
+        private async void turnCheck()
         {
             this.IsHitTestVisible = true;
-            Dispatcher.Invoke(new Action(() => { }), DispatcherPriority.ContextIdle, null);
+            //Dispatcher.Invoke(new Action(() => { }), DispatcherPriority.ContextIdle, null);
             
             if (currentPlayer.getClickedBtns().Count == 2 && compareCards(currentPlayer.getClickedBtns()))
             {
-
-                Thread.Sleep(1000);
-
+                await Task.Delay(2000);
                 List<Card> gainedCards = new List<Card>();
                 foreach(Button b in currentPlayer.getClickedBtns())
                 {
@@ -152,7 +147,7 @@ namespace Memory_Project
                 turnHandler();
             } else if (currentPlayer.getClickedBtns().Count == 2)
             {
-                Thread.Sleep(2000);
+                await Task.Delay(2000);
                 foreach (Button b in currentPlayer.getClickedBtns())
                 {
                     flipCard(b, controller.btnToCard(b).getBackImg());
@@ -168,32 +163,32 @@ namespace Memory_Project
         /// </summary>
         /// <param name="btn">The button to be flipped</param>
         /// <param name="imgPath">The image to flip the card to</param>
-        private void flipCard(Button btn, string imgPath)
+        private async void flipCard(Button btn, string imgPath)
         {
-            int normalWidth = (int)btn.ActualWidth;
+            double normalWidth = btn.ActualWidth;
+            int animationTimeMillis = 300;
 
-            for(int i = normalWidth; i >= 0; i--)
-            {
-                btn.Width = i;
-
-                //Dispatcher.Invoke(new Action(() => { }), DispatcherPriority.ContextIdle, null);
-                //Thread.Sleep(1);
-
-            }
+            playGrid.IsHitTestVisible = false;
+            DoubleAnimation da1 = new DoubleAnimation();
+            da1.From = normalWidth;
+            da1.To = 0;
+            da1.Duration = new Duration(new TimeSpan(0,0,0,0, animationTimeMillis));
+            btn.BeginAnimation(FrameworkElement.WidthProperty, da1);
+            await Task.Delay(animationTimeMillis + 100);
 
             Image img = new Image();
             img.Source = new BitmapImage(new Uri(imgPath, UriKind.Relative));
             img.Stretch = Stretch.Fill;
             btn.Content = img;
 
-            for (int i = 0; i <= normalWidth; i++)
-            {
-                btn.Width = i;
+            DoubleAnimation da2 = new DoubleAnimation();
+            da2.From = 0;
+            da2.To = normalWidth;
+            da2.Duration = new Duration(new TimeSpan(0, 0, 0, 0, animationTimeMillis));
+            btn.BeginAnimation(FrameworkElement.WidthProperty, da2);
+            await Task.Delay(animationTimeMillis + 100);
 
-                //Dispatcher.Invoke(new Action(() => { }), DispatcherPriority.ContextIdle, null);
-                //Thread.Sleep(1);
-
-            }
+            playGrid.IsHitTestVisible = true;
         }
 
         /// <summary>
@@ -207,7 +202,13 @@ namespace Memory_Project
                 currentPlayer.getClickedBtns().Clear();
                 Player winner = determineWinner();
 
+                // Clear the main panel of useless controls
+                mainPanel.Children.Remove(leftPanel);
+                mainPanel.Children.Remove(playGrid);
+
                 displayFinishScreen(players, winner);
+
+                Console.WriteLine("Congratulations Winner:\n" + winner.getName());
             } else
             {
                 currentPlayer = players[turnCounter % players.Count];
