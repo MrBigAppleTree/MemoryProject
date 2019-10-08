@@ -186,7 +186,7 @@ namespace Memory_Project
         private void RichTextKeyDown0(object sender, KeyEventArgs e)
         {
             TextRange tr = new TextRange(Player0.Document.ContentStart, Player0.Document.ContentEnd);
-            if (tr.Text.Length >= 15 || e.Key == Key.Space || e.Key == Key.Enter)
+            if ((tr.Text.Length >= 15 || e.Key == Key.Enter) && e.Key != Key.Back)
             {
                 e.Handled = true;
                 return;
@@ -196,7 +196,7 @@ namespace Memory_Project
         private void RichTextKeyDown1(object sender, KeyEventArgs e)
         {
             TextRange tr = new TextRange(Player1.Document.ContentStart, Player1.Document.ContentEnd);
-            if (tr.Text.Length >= 15 || e.Key == Key.Space || e.Key == Key.Enter)
+            if ((tr.Text.Length >= 15 || e.Key == Key.Enter) && e.Key != Key.Back)
             {
                 e.Handled = true;
                 return;
@@ -205,7 +205,7 @@ namespace Memory_Project
         private void RichTextKeyDown2(object sender, KeyEventArgs e)
         {
             TextRange tr = new TextRange(Player2.Document.ContentStart, Player2.Document.ContentEnd);
-            if (tr.Text.Length >= 15 || e.Key == Key.Space || e.Key == Key.Enter)
+            if ((tr.Text.Length >= 15 || e.Key == Key.Enter) && e.Key != Key.Back)
             {
                 e.Handled = true;
                 return;
@@ -214,7 +214,7 @@ namespace Memory_Project
         private void RichTextKeyDown3(object sender, KeyEventArgs e)
         {
             TextRange tr = new TextRange(Player3.Document.ContentStart, Player3.Document.ContentEnd);
-            if (tr.Text.Length >= 15 || e.Key == Key.Space || e.Key == Key.Enter)
+            if ((tr.Text.Length >= 15 || e.Key == Key.Enter) && e.Key != Key.Back)
             {
                 e.Handled = true;
                 return;
