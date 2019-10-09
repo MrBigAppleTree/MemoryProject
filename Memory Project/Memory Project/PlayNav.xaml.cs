@@ -177,7 +177,7 @@ namespace Memory_Project
                     return;
                 }
             }
-            GameController controller = new GameController(height, width, players);
+            GameController controller = new GameController(height, width, players, theme);
             this.NavigationService.Navigate(controller.getView());
         }
         //Character limit for playername input to prevent overflow on BoardView
