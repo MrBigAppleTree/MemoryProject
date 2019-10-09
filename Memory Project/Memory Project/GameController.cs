@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Timers;
 using System.Windows.Media.Imaging;
+using System.Xml.Serialization;
 
 namespace Memory_Project
 {
@@ -21,7 +22,7 @@ namespace Memory_Project
         private List<Player> players;
         List<Button> selectedCards = new List<Button>();
 
-        private string theme = (string)Application.Current.Resources["Theme"];
+        private string theme;
 
         private Board board;
         private BoardView view;
@@ -32,7 +33,7 @@ namespace Memory_Project
         /// <param name="height">Height of the board</param>
         /// <param name="width">Width of the board</param>
         /// <param name="players">List of all players in this game</param>
-        public GameController(int height, int width, List<Player> players)
+        public GameController(int height, int width, List<Player> players, string theme, XmlSerializer serializer)
         {
             if (height == 2 && width > 4 || height == 3 && width > 6)
             {
@@ -45,9 +46,9 @@ namespace Memory_Project
             }
             
             this.players = players;
-
-            view = new BoardView(this);
-            board = new Board(this.height, this.width, view);
+            this.theme = theme;
+            view = new BoardView(this, theme);
+            board = new Board(this.height, this.width, view, theme);
             view.loadPlayers(players);
             view.loadButtons();
         }

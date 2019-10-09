@@ -30,13 +30,13 @@ namespace Memory_Project
         /// <param name="height">Height of the board measured in cards</param>
         /// <param name="width">Witdh of the board measured in cards</param>
         /// <param name="b">The boardview instance upon which the game will be played</param>
-        public Board(int height, int width, BoardView b)
+        public Board(int height, int width, BoardView b, string theme)
         {
             this.height = height;
             this.width = width;
             view = b;
 
-            currentTheme = (string)Application.Current.Resources["Theme"];
+            currentTheme = theme;
             backpath = "images/" + currentTheme + "/CardBack.png";
             //Console.WriteLine(backpath);
             generateImages();
