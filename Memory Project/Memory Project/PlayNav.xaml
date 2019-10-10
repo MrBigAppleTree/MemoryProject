@@ -33,28 +33,28 @@
                         Players
                     </TextBlock>
                 </Label>
-                <RichTextBox FontSize="25px" PreviewKeyDown="RichTextKeyDown0" Visibility="{Binding textBoxVisibility1}" x:Name="Player0" Margin="0, 10, 0, 0" Width="200" Padding="5" Background="Transparent" BorderBrush="White" Foreground="White">
+                <RichTextBox FontSize="20px" PreviewKeyDown="RichTextKeyDown0" Visibility="{Binding textBoxVisibility1}" x:Name="Player0" Margin="0, 10, 0, 0" Width="200" Padding="5" Background="Transparent" BorderBrush="White" Foreground="White">
                     <FlowDocument>
                         <Paragraph TextAlignment="Center">
                             Player1
                         </Paragraph>
                     </FlowDocument>
                 </RichTextBox>
-                <RichTextBox FontSize="25px" PreviewKeyDown="RichTextKeyDown1" Visibility="{Binding textBoxVisibility2}" x:Name="Player1" Margin="0, 10, 0, 0" Width="200" Padding="5" Background="Transparent" BorderBrush="White" Foreground="White">
+                <RichTextBox FontSize="20px" PreviewKeyDown="RichTextKeyDown1" Visibility="{Binding textBoxVisibility2}" x:Name="Player1" Margin="0, 10, 0, 0" Width="200" Padding="5" Background="Transparent" BorderBrush="White" Foreground="White">
                     <FlowDocument>
                         <Paragraph TextAlignment="Center">
                             Player2
                         </Paragraph>
                     </FlowDocument>
                 </RichTextBox>
-                <RichTextBox FontSize="25px" PreviewKeyDown="RichTextKeyDown2" Visibility="{Binding textBoxVisibility3}" x:Name="Player2" Margin="0,10,0,0" Width="200" Padding="5" Background="Transparent" BorderBrush="White" Foreground="White">
+                <RichTextBox FontSize="20px" PreviewKeyDown="RichTextKeyDown2" Visibility="{Binding textBoxVisibility3}" x:Name="Player2" Margin="0,10,0,0" Width="200" Padding="5" Background="Transparent" BorderBrush="White" Foreground="White">
                     <FlowDocument>
                         <Paragraph TextAlignment="Center">
                             <Run Text="Player3"/>
                         </Paragraph>
                     </FlowDocument>
                 </RichTextBox>
-                <RichTextBox FontSize="25px" PreviewKeyDown="RichTextKeyDown3" Visibility="{Binding textBoxVisibility4}" x:Name="Player3" Margin="0,10,0,0" Width="200" Padding="5" Background="Transparent" BorderBrush="White" Foreground="White">
+                <RichTextBox FontSize="20px" PreviewKeyDown="RichTextKeyDown3" Visibility="{Binding textBoxVisibility4}" x:Name="Player3" Margin="0,10,0,0" Width="200" Padding="5" Background="Transparent" BorderBrush="White" Foreground="White">
                     <FlowDocument>
                         <Paragraph TextAlignment="Center">
                             <Run Text="Player4"/>
