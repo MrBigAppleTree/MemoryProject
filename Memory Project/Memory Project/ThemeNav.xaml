@@ -19,10 +19,8 @@
                     Preview cards
                 </TextBlock>
             </Label>
-            <StackPanel Height="640" Width="400" Background="#FF000000" >
-                <Label Foreground="White" FontSize="36" Margin="5, 5, 0, 0">
-                    Cards
-                </Label>
+            <StackPanel Height="401" Background="#FF000000" >
+                <Image Source="{Binding CardImg}"/>
             </StackPanel>
         </StackPanel>
         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10, 0, 0, 10">

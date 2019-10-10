@@ -18,9 +18,10 @@ namespace Memory_Project
 {
     /// <summary>
     /// Interaction logic for HighNav.xaml
-    /// </summary>
+    /// </summary> 
     public partial class HighNav : Page
     {
+        public Image CardImg { get; set; }
         public HighNav()
         {
             CheckTheme();

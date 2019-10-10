@@ -187,7 +187,6 @@ namespace Memory_Project
         }
         //Character limit for playername input to prevent overflow on BoardView
         //Add method per Player
-        //BUG Can still press enter in richboxtext
         private void RichTextKeyDown0(object sender, KeyEventArgs e)
         {
             TextRange tr = new TextRange(Player0.Document.ContentStart, Player0.Document.ContentEnd);
