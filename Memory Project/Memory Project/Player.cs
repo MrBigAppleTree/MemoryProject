@@ -10,11 +10,13 @@ namespace Memory_Project
     /// <summary>
     /// The storage object for players.
     /// </summary>
+    [Serializable]
     public class Player
     {
         string name;
         int score;
         List<Card> collectedCards = new List<Card>();
+        [NonSerialized]
         List<Button> clickedButtons = new List<Button>();
 
         /// <summary>
@@ -45,6 +47,11 @@ namespace Memory_Project
         public void increaseScore(int increase)
         {
             this.score += increase;
+        }
+
+        public void remakeButtonList()
+        {
+            clickedButtons = new List<Button>();
         }
     }
 }

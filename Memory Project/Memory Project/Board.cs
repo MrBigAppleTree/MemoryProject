@@ -13,15 +13,19 @@ namespace Memory_Project
     /// <summary>
     /// Backend logic for the game board.
     /// </summary>
+    [Serializable]
     public class Board
     {
         private int height;
         private int width;
         private List<Card> boardList = new List<Card>();
+        [NonSerialized]
         private List<int> availableCards = new List<int>();
+        [NonSerialized]
         private List<Tuple<int, int>> availableCoords = new List<Tuple<int, int>>();
         string currentTheme;
         string backpath;
+        [NonSerialized]
         BoardView view;
 
         /// <summary>
@@ -108,7 +112,7 @@ namespace Memory_Project
         /// <summary>
         /// Adds all cards to the boardview
         /// </summary>
-        private void prepareBoard()
+        public void prepareBoard()
         {
             view.addToGrid(height, width);
             foreach(Card c in boardList)
@@ -196,6 +200,11 @@ namespace Memory_Project
         public List<Card> getBoardList()
         {
             return this.boardList;
+        }
+
+        public void setView(BoardView b)
+        {
+            this.view = b;
         }
 
     }

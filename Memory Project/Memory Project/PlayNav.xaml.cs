@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -22,6 +25,8 @@ namespace Memory_Project
     public partial class PlayNav : Page
     {
         private string theme = (string)Application.Current.Resources["Theme"];
+
+        IFormatter serializer = new BinaryFormatter();
 
         //Databinding variables for combobox items height/width
         public ObservableCollection<ComboBoxItem> cbItems1 { get; set; }
@@ -163,10 +168,7 @@ namespace Memory_Project
             int numPlayers = Convert.ToInt32(Players.Text);
             int height = Convert.ToInt32(comboHeight.Text);
             int width = Convert.ToInt32(comboWidth.Text);
-            Application.Current.Resources["cardY"] = height;
-            Application.Current.Resources["cardX"] = width;
-            
-
+ 
             for (int i = 0; i < numPlayers; i++)
             {
                 RichTextBox rtb = (RichTextBox)FindName("Player" + (i));
@@ -180,7 +182,7 @@ namespace Memory_Project
                     return;
                 }
             }
-            GameController controller = new GameController(height, width, players, theme, null);
+            GameController controller = new GameController(height, width, players, theme, serializer);
             this.NavigationService.Navigate(controller.getView());
         }
         //Character limit for playername input to prevent overflow on BoardView
@@ -222,6 +224,16 @@ namespace Memory_Project
                 e.Handled = true;
                 return;
             }
+        }
+
+        private void load_Click(object sender, RoutedEventArgs e)
+        {
+            Stream stream = new FileStream("../../Save/Save.sav", FileMode.Open, FileAccess.Read, FileShare.Read);
+            GameController controller = (GameController)serializer.Deserialize(stream);
+            controller.setSerializer(serializer);
+            stream.Close();
+            controller.createBoardView();
+            this.NavigationService.Navigate(controller.getView());
         }
     }
 

@@ -20,7 +20,7 @@
                 </TextBlock>
             </Label>
             <Button Content="New Game" Click="new_click"  Height="60" FontSize="36" Margin="0, 0, 0, 0" HorizontalAlignment="Left" Background="#00000000" BorderBrush="#00000000" Foreground="#FFFFFFFF"/>
-            <Button Content="Load Game" Height="60" FontSize="36" Margin="0, 0, 0, 0" HorizontalAlignment="Left" Background="#00000000" BorderBrush="#00000000" Foreground="#FFFFFFFF"/>
+            <Button Content="Load Game" Click="load_Click" Height="60" FontSize="36" Margin="0, 0, 0, 0" HorizontalAlignment="Left" Background="#00000000" BorderBrush="#00000000" Foreground="#FFFFFFFF"/>
             <Button Content="Back" Click="back_click" Height="60" FontSize="36" Margin="0, 0, 0, 0" HorizontalAlignment="Left" Background="#00000000" BorderBrush="#00000000" Foreground="#FFFFFFFF"/>
         </StackPanel>
         <Border Margin="0,52,50,0" HorizontalAlignment="Right" VerticalAlignment="top" Background="#99FFFFFF" Width="254" Height="300">

@@ -9,6 +9,7 @@ namespace Memory_Project
     /// <summary>
     /// Storage class for information about the card
     /// </summary>
+    [Serializable]
     public class Card
     {
         private int xPos;
