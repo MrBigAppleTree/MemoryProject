@@ -25,7 +25,7 @@ namespace Memory_Project
     {
         GameController controller;
 
-        int turnCounter = 0;
+        public int turnCounter = 0;
         string theme;
 
         List<Player> players;
@@ -277,7 +277,20 @@ namespace Memory_Project
 
         public void btnClicks(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("MainNav.xaml", UriKind.Relative));
+            switch ((string)((Button)sender).Content)
+            {
+                case "Back":
+                    NavigationService.Navigate(new Uri("MainNav.xaml", UriKind.Relative));
+                    break;
+
+                case "Save":
+                    controller.Save(turnCounter);
+                    break;
+
+                case "Reset":
+                    break;
+            }
+            
         }
 
         private void setColor(int i)
