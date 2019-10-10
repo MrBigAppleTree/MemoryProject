@@ -26,6 +26,7 @@ namespace Memory_Project
         GameController controller;
 
         int turnCounter = 0;
+        string theme;
 
         List<Player> players;
         Player currentPlayer;
@@ -34,15 +35,15 @@ namespace Memory_Project
         /// Makes a new instance of the boardview upon which the game is played
         /// </summary>
         /// <param name="controller">The controller who initialised this</param>
-        public BoardView(GameController controller)
+        public BoardView(GameController controller, string theme)
         {
             InitializeComponent();
             this.controller = controller;
             try
             {
-                string currentTheme = (string)Application.Current.Resources["Theme"];
-                Console.WriteLine(currentTheme);
-                BackgroundImg.ImageSource = new BitmapImage(new Uri(@"../../images/"+currentTheme+"/BoardBackground.png", UriKind.Relative));
+                this.theme = theme;
+                Console.WriteLine(theme);
+                BackgroundImg.ImageSource = new BitmapImage(new Uri(@"../../images/"+theme+"/BoardBackground.png", UriKind.Relative));
                 Console.WriteLine(BackgroundImg.ImageSource);
             } catch (Exception e)
             {
@@ -166,7 +167,7 @@ namespace Memory_Project
         private async void flipCard(Button btn, string imgPath)
         {
             double normalWidth = btn.ActualWidth;
-            int animationTimeMillis = 300;
+            int animationTimeMillis = 150;
 
             playGrid.IsHitTestVisible = false;
             DoubleAnimation da1 = new DoubleAnimation();
@@ -206,7 +207,7 @@ namespace Memory_Project
                 mainPanel.Children.Remove(leftPanel);
                 mainPanel.Children.Remove(playGrid);
 
-                displayFinishScreen();
+                displayFinishScreen(players, winner);
 
                 Console.WriteLine("Congratulations Winner:\n" + winner.getName());
             } else
@@ -330,10 +331,11 @@ namespace Memory_Project
             return winner;
         }
 
-        private void displayFinishScreen()
+        private void displayFinishScreen(List<Player> players, Player winner)
         {
-
-             NavigationService.Navigate(new Uri("FinishedView.xaml", UriKind.Relative));
+            Application.Current.Properties["players"] = players;
+            Application.Current.Properties["winner"] = winner;
+            NavigationService.Navigate(new Uri("FinishedView.xaml", UriKind.Relative));
 
         }
     }

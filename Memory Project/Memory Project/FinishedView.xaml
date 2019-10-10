@@ -24,8 +24,8 @@
                         <TextBlock Name="WinnerText" HorizontalAlignment="Center" TextWrapping="Wrap">Test</TextBlock>
                     </Label>
                     <StackPanel Name="menuButtons" Margin="10, 0, 0, 0" Grid.Row="1" HorizontalAlignment="left" VerticalAlignment="Bottom">
-                        <Button Content="Replay" x:Name="play" Height="60" FontSize="36" Margin="0, 0, 0, 0" HorizontalAlignment="Left" Background="#00000000" BorderBrush="#00000000" Foreground="#FFFFFFFF"/>
-                        <Button Content="Back to main menu" x:Name="close" Height="60" FontSize="36" Margin="0, 0, 0, 0" HorizontalAlignment="Left" Background="#00000000" BorderBrush="#00000000" Foreground="#FFFFFFFF"/>
+                        <Button Click="replay_Click" Content="Replay" x:Name="replay" Height="60" FontSize="36" Margin="0, 0, 0, 0" HorizontalAlignment="Left" Background="#00000000" BorderBrush="#00000000" Foreground="#FFFFFFFF"/>
+                        <Button Click="close_Click" Content="Back to main menu" x:Name="close" Height="60" FontSize="36" Margin="0, 0, 0, 0" HorizontalAlignment="Left" Background="#00000000" BorderBrush="#00000000" Foreground="#FFFFFFFF"/>
                     </StackPanel>
                 </Grid>
             </Border>
