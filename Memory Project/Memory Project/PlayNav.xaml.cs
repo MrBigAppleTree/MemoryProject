@@ -172,7 +172,7 @@ namespace Memory_Project
             for (int i = 0; i < numPlayers; i++)
             {
                 RichTextBox rtb = (RichTextBox)FindName("Player" + (i));
-                if(StringFromRichTextBox(rtb).Length < 16)
+                if(StringFromRichTextBox(rtb).Length < 17)
                 {
                     players.Add(new Player(StringFromRichTextBox(rtb)));
                 }
