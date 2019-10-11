@@ -10,6 +10,7 @@ using System.Windows.Media.Imaging;
 using System.Xml.Serialization;
 using System.Runtime.Serialization;
 using System.IO;
+using System.Media;
 
 namespace Memory_Project
 {
@@ -105,10 +106,20 @@ namespace Memory_Project
 
         public void createBoardView()
         {
-            foreach(Player p in players)
+            try
+            {
+
+                SoundPlayer player = new SoundPlayer();
+                player.Stop();
+                player.SoundLocation = "music/" + theme + "/BackgroundMusic.wav";
+                player.PlayLooping();
+            }
+            catch (Exception e) { }
+            foreach (Player p in players)
             {
                 p.remakeButtonList();
             }
+
             view = new BoardView(this, theme);
             view.turnCounter = turnCounter;
             board.setView(view);
