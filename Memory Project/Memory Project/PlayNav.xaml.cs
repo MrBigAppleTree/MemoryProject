@@ -24,7 +24,8 @@ namespace Memory_Project
     /// </summary>
     public partial class PlayNav : Page
     {
-        private string theme = (string)Application.Current.Resources["Theme"];
+        private string theme;
+        private int maxCards;
 
         IFormatter serializer = new BinaryFormatter();
 
@@ -43,6 +44,9 @@ namespace Memory_Project
         public PlayNav()
         {
             InitializeComponent();
+            theme = (string)Application.Current.Resources["Theme"];
+            maxCards = (Directory.GetFiles("../../images/" + theme).Length) - 3;
+
             InitializePlayers();
             comboboxItems1();
             comboboxItems2();
@@ -91,12 +95,12 @@ namespace Memory_Project
         }
         private void comboboxItems1()
         {
-            Dictionary<string, int> maxCards = new Dictionary<string, int>();
-            maxCards.Add(theme, 32);
+            Dictionary<string, int> maxCard = new Dictionary<string, int>();
+            maxCard.Add(theme, maxCards);
 
             DataContext = this;
             cbItems1 = new ObservableCollection<ComboBoxItem>();
-            for (int i = 0; i <= Math.Sqrt(maxCards[theme] * 2); i++)
+            for (int i = 0; i <= Math.Sqrt(maxCard[theme] * 2); i++)
             {
                 if (i == 4)
                 {
@@ -123,12 +127,13 @@ namespace Memory_Project
         }
         private void comboboxItems2()
         {
-            Dictionary<string, int> maxCards = new Dictionary<string, int>();
-            maxCards.Add(theme, 32);
+            Dictionary<string, int> maxCard = new Dictionary<string, int>();
+
+            maxCard.Add(theme, maxCards);
 
             DataContext = this;
             cbItems2 = new ObservableCollection<ComboBoxItem>();
-            for (int i = 0; i <= Math.Sqrt(maxCards[theme] * 2); i++)
+            for (int i = 0; i <= Math.Sqrt(maxCard[theme] * 2); i++)
             {
                 if (i == 4)
                 {
@@ -172,7 +177,7 @@ namespace Memory_Project
             for (int i = 0; i < numPlayers; i++)
             {
                 RichTextBox rtb = (RichTextBox)FindName("Player" + (i));
-                if(StringFromRichTextBox(rtb).Length < 17)
+                if(StringFromRichTextBox(rtb).Length < 16)
                 {
                     players.Add(new Player(StringFromRichTextBox(rtb)));
                 }
@@ -190,7 +195,7 @@ namespace Memory_Project
         private void RichTextKeyDown0(object sender, KeyEventArgs e)
         {
             TextRange tr = new TextRange(Player0.Document.ContentStart, Player0.Document.ContentEnd);
-            if ((tr.Text.Length >= 15 || e.Key == Key.Enter) && e.Key != Key.Back)
+            if ((tr.Text.Length >= 13 || e.Key == Key.Enter) && e.Key != Key.Back)
             {
                 e.Handled = true;
                 return;
@@ -200,7 +205,7 @@ namespace Memory_Project
         private void RichTextKeyDown1(object sender, KeyEventArgs e)
         {
             TextRange tr = new TextRange(Player1.Document.ContentStart, Player1.Document.ContentEnd);
-            if ((tr.Text.Length >= 15 || e.Key == Key.Enter) && e.Key != Key.Back)
+            if ((tr.Text.Length >= 13 || e.Key == Key.Enter) && e.Key != Key.Back)
             {
                 e.Handled = true;
                 return;
@@ -209,7 +214,7 @@ namespace Memory_Project
         private void RichTextKeyDown2(object sender, KeyEventArgs e)
         {
             TextRange tr = new TextRange(Player2.Document.ContentStart, Player2.Document.ContentEnd);
-            if ((tr.Text.Length >= 15 || e.Key == Key.Enter) && e.Key != Key.Back)
+            if ((tr.Text.Length >= 13 || e.Key == Key.Enter) && e.Key != Key.Back)
             {
                 e.Handled = true;
                 return;
@@ -218,7 +223,7 @@ namespace Memory_Project
         private void RichTextKeyDown3(object sender, KeyEventArgs e)
         {
             TextRange tr = new TextRange(Player3.Document.ContentStart, Player3.Document.ContentEnd);
-            if ((tr.Text.Length >= 15 || e.Key == Key.Enter) && e.Key != Key.Back)
+            if ((tr.Text.Length >= 13 || e.Key == Key.Enter) && e.Key != Key.Back)
             {
                 e.Handled = true;
                 return;
