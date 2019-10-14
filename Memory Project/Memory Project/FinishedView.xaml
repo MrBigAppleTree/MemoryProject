@@ -14,7 +14,7 @@
         </StackPanel.Background>
 
         <Grid HorizontalAlignment="Center" Width="{Binding ElementName=mainPanel, Path=ActualWidth}">
-            <Border BorderBrush="White" BorderThickness="1" Margin="0, 150, 0, 150" Width="500">
+            <Border BorderBrush="White" BorderThickness="1" Margin="0, 125, 0, 125" Width="500">
                 <Grid Name="playerGrid" HorizontalAlignment="Center" Width="500" Background="#66000000">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
