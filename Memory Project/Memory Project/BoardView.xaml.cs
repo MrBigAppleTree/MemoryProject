@@ -335,8 +335,8 @@ namespace Memory_Project
         {
             Application.Current.Properties["players"] = players;
             Application.Current.Properties["winner"] = winner;
-            NavigationService.Navigate(new Uri("FinishedView.xaml", UriKind.Relative));
 
-        }
+            NavigationService.Navigate(new Uri("FinishedView.xaml", UriKind.Relative));
+        } 
     }
 }
