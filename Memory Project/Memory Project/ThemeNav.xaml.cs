@@ -13,14 +13,20 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Media;
+using System.IO;
 
 namespace Memory_Project
 {
     /// <summary>
     /// Interaction logic for HighNav.xaml
-    /// </summary>
+    /// </summary> 
     public partial class HighNav : Page
     {
+        int n;
+        int maxCards;
+        string currentTheme;
+        
+        
         public HighNav()
         {
             CheckTheme();
@@ -34,9 +40,11 @@ namespace Memory_Project
         private void CheckTheme()
         {
             InitializeComponent();
-            string currentTheme = (string)Application.Current.Resources["Theme"];
+            currentTheme = (string)Application.Current.Resources["Theme"];
+            maxCards = (Directory.GetFiles("../../images/" + currentTheme).Length) - 3;
             BackgroundImg.Source = new BitmapImage(new Uri(@"../../images/" + currentTheme + "/MenuBackground.png", UriKind.Relative));
             startMusic(currentTheme);
+            SelectCard();
         }
 
 
@@ -56,6 +64,48 @@ namespace Memory_Project
         {
             Application.Current.Resources["Theme"] = "NHLStenden";
             CheckTheme();
+        }
+        private void SelectCard()
+        {
+            
+            n= 1;
+            string frontpath = "/images/" + currentTheme + "/card" + n + ".png";
+            CardPreview.Source = new BitmapImage(new Uri(frontpath, UriKind.RelativeOrAbsolute));
+
+        }
+        private void next_click(object sender, RoutedEventArgs e)
+        {
+            if (n < maxCards)
+            {
+                n++;
+                Console.WriteLine(n);
+                string frontpath = "/images/" + currentTheme + "/card" + n + ".png";
+                CardPreview.Source = new BitmapImage(new Uri(frontpath, UriKind.RelativeOrAbsolute));
+            }
+            else
+            {
+                n = 1;
+                Console.WriteLine(n);
+                string frontpath = "/images/" + currentTheme + "/card" + n + ".png";
+                CardPreview.Source = new BitmapImage(new Uri(frontpath, UriKind.RelativeOrAbsolute));
+            }
+
+        }
+        private void prev_click(object sender, RoutedEventArgs e)
+        {
+            if (n > 1)
+            {
+                n--;
+                string frontpath = "/images/" + currentTheme + "/card" + n + ".png";
+                CardPreview.Source = new BitmapImage(new Uri(frontpath, UriKind.RelativeOrAbsolute));
+            }
+            else
+            {
+                n = maxCards;
+                Console.WriteLine(n);
+                string frontpath = "/images/" + currentTheme + "/card" + n + ".png";
+                CardPreview.Source = new BitmapImage(new Uri(frontpath, UriKind.RelativeOrAbsolute));
+            }
         }
 
         private void startMusic(string theme)

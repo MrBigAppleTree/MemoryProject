@@ -19,10 +19,12 @@
                     Preview cards
                 </TextBlock>
             </Label>
-            <StackPanel Height="640" Width="400" Background="#FF000000" >
-                <Label Foreground="White" FontSize="36" Margin="5, 5, 0, 0">
-                    Cards
-                </Label>
+            <StackPanel Height="450">
+                <Image x:Name="CardPreview" Height="375" Margin="0,10,0,10"/>
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Prev" Click="prev_click" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" Width="75" Margin="0,0,150,0"/>
+                    <Button Content="Next" Click="next_click" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" Width="75"/>
+                </StackPanel>
             </StackPanel>
         </StackPanel>
         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10, 0, 0, 10">
