@@ -147,322 +147,12 @@
     <Resource Include="images\Avatar\BoardBackground.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="images\Avatar\Card1.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card10.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card11.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card12.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card13.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card14.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card15.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card16.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card17.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card18.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card19.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card2.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card20.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card21.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card22.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card23.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card24.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card25.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card26.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card27.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card28.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card29.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card3.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card30.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card31.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card32.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card4.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card5.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card6.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card7.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card8.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card9.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\CardBack.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="images\Avatar\MenuBackground.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\LOTR\Card1.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\LOTR\Card10.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\LOTR\Card11.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\LOTR\Card12.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\LOTR\Card13.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\LOTR\Card14.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\LOTR\Card15.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\LOTR\Card16.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\LOTR\Card17.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\LOTR\Card18.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\LOTR\Card19.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\LOTR\Card2.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\LOTR\Card20.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\LOTR\Card21.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\LOTR\Card22.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\LOTR\Card23.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\LOTR\Card24.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\LOTR\Card25.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\LOTR\Card26.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\LOTR\Card27.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\LOTR\Card28.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\LOTR\Card29.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\LOTR\Card3.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\LOTR\Card30.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\LOTR\Card31.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\LOTR\Card32.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\LOTR\Card4.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\LOTR\Card5.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\LOTR\Card6.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\LOTR\Card7.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\LOTR\Card8.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\LOTR\Card9.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\LOTR\CardBack.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="images\LOTR\MenuBackground.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\Avatar\Card33.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card34.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card35.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card36.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card37.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card38.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card39.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card40.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card41.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card42.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card43.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card44.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card45.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card46.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card47.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card48.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card49.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card50.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card51.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card52.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card53.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card54.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card55.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card56.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card57.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card58.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card59.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card60.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card61.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card62.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card63.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card64.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card65.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card66.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card67.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\Avatar\Card68.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
@@ -504,6 +194,108 @@
     <Resource Include="images\NHLStenden\Card8.png" />
     <Resource Include="images\NHLStenden\Card9.png" />
     <Resource Include="images\NHLStenden\CardBack.png" />
+    <Resource Include="images\LOTR\Card1.png" />
+    <Resource Include="images\LOTR\Card10.png" />
+    <Resource Include="images\LOTR\Card11.png" />
+    <Resource Include="images\LOTR\Card12.png" />
+    <Resource Include="images\LOTR\Card13.png" />
+    <Resource Include="images\LOTR\Card14.png" />
+    <Resource Include="images\LOTR\Card15.png" />
+    <Resource Include="images\LOTR\Card16.png" />
+    <Resource Include="images\LOTR\Card17.png" />
+    <Resource Include="images\LOTR\Card18.png" />
+    <Resource Include="images\LOTR\Card19.png" />
+    <Resource Include="images\LOTR\Card2.png" />
+    <Resource Include="images\LOTR\Card20.png" />
+    <Resource Include="images\LOTR\Card21.png" />
+    <Resource Include="images\LOTR\Card22.png" />
+    <Resource Include="images\LOTR\Card23.png" />
+    <Resource Include="images\LOTR\Card24.png" />
+    <Resource Include="images\LOTR\Card25.png" />
+    <Resource Include="images\LOTR\Card26.png" />
+    <Resource Include="images\LOTR\Card27.png" />
+    <Resource Include="images\LOTR\Card28.png" />
+    <Resource Include="images\LOTR\Card29.png" />
+    <Resource Include="images\LOTR\Card3.png" />
+    <Resource Include="images\LOTR\Card30.png" />
+    <Resource Include="images\LOTR\Card31.png" />
+    <Resource Include="images\LOTR\Card32.png" />
+    <Resource Include="images\LOTR\Card4.png" />
+    <Resource Include="images\LOTR\Card5.png" />
+    <Resource Include="images\LOTR\Card6.png" />
+    <Resource Include="images\LOTR\Card7.png" />
+    <Resource Include="images\LOTR\Card8.png" />
+    <Resource Include="images\LOTR\Card9.png" />
+    <Resource Include="images\LOTR\CardBack.png" />
+    <Resource Include="images\Avatar\Card1.png" />
+    <Resource Include="images\Avatar\Card10.png" />
+    <Resource Include="images\Avatar\Card11.png" />
+    <Resource Include="images\Avatar\Card12.png" />
+    <Resource Include="images\Avatar\Card13.png" />
+    <Resource Include="images\Avatar\Card14.png" />
+    <Resource Include="images\Avatar\Card15.png" />
+    <Resource Include="images\Avatar\Card16.png" />
+    <Resource Include="images\Avatar\Card17.png" />
+    <Resource Include="images\Avatar\Card18.png" />
+    <Resource Include="images\Avatar\Card19.png" />
+    <Resource Include="images\Avatar\Card2.png" />
+    <Resource Include="images\Avatar\Card20.png" />
+    <Resource Include="images\Avatar\Card21.png" />
+    <Resource Include="images\Avatar\Card22.png" />
+    <Resource Include="images\Avatar\Card23.png" />
+    <Resource Include="images\Avatar\Card24.png" />
+    <Resource Include="images\Avatar\Card25.png" />
+    <Resource Include="images\Avatar\Card26.png" />
+    <Resource Include="images\Avatar\Card27.png" />
+    <Resource Include="images\Avatar\Card28.png" />
+    <Resource Include="images\Avatar\Card29.png" />
+    <Resource Include="images\Avatar\Card3.png" />
+    <Resource Include="images\Avatar\Card30.png" />
+    <Resource Include="images\Avatar\Card31.png" />
+    <Resource Include="images\Avatar\Card32.png" />
+    <Resource Include="images\Avatar\Card33.png" />
+    <Resource Include="images\Avatar\Card34.png" />
+    <Resource Include="images\Avatar\Card35.png" />
+    <Resource Include="images\Avatar\Card36.png" />
+    <Resource Include="images\Avatar\Card37.png" />
+    <Resource Include="images\Avatar\Card38.png" />
+    <Resource Include="images\Avatar\Card39.png" />
+    <Resource Include="images\Avatar\Card4.png" />
+    <Resource Include="images\Avatar\Card40.png" />
+    <Resource Include="images\Avatar\Card41.png" />
+    <Resource Include="images\Avatar\Card42.png" />
+    <Resource Include="images\Avatar\Card43.png" />
+    <Resource Include="images\Avatar\Card44.png" />
+    <Resource Include="images\Avatar\Card45.png" />
+    <Resource Include="images\Avatar\Card46.png" />
+    <Resource Include="images\Avatar\Card47.png" />
+    <Resource Include="images\Avatar\Card48.png" />
+    <Resource Include="images\Avatar\Card49.png" />
+    <Resource Include="images\Avatar\Card5.png" />
+    <Resource Include="images\Avatar\Card50.png" />
+    <Resource Include="images\Avatar\Card51.png" />
+    <Resource Include="images\Avatar\Card52.png" />
+    <Resource Include="images\Avatar\Card53.png" />
+    <Resource Include="images\Avatar\Card54.png" />
+    <Resource Include="images\Avatar\Card55.png" />
+    <Resource Include="images\Avatar\Card56.png" />
+    <Resource Include="images\Avatar\Card57.png" />
+    <Resource Include="images\Avatar\Card58.png" />
+    <Resource Include="images\Avatar\Card59.png" />
+    <Resource Include="images\Avatar\Card6.png" />
+    <Resource Include="images\Avatar\Card60.png" />
+    <Resource Include="images\Avatar\Card61.png" />
+    <Resource Include="images\Avatar\Card62.png" />
+    <Resource Include="images\Avatar\Card63.png" />
+    <Resource Include="images\Avatar\Card64.png" />
+    <Resource Include="images\Avatar\Card65.png" />
+    <Resource Include="images\Avatar\Card66.png" />
+    <Resource Include="images\Avatar\Card67.png" />
+    <Resource Include="images\Avatar\Card68.png" />
+    <Resource Include="images\Avatar\Card7.png" />
+    <Resource Include="images\Avatar\Card8.png" />
+    <Resource Include="images\Avatar\Card9.png" />
+    <Resource Include="images\Avatar\CardBack.png" />
     <Content Include="music\Avatar\BackgroundMusic.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
