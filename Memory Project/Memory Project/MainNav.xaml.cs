@@ -26,7 +26,6 @@ namespace Memory_Project
             InitializeComponent();
             string currentTheme = (string)Application.Current.Resources["Theme"];
             BackgroundImg.Source = new BitmapImage(new Uri(@"../../images/" + currentTheme + "/MenuBackground.png", UriKind.Relative));
-            startMusic(currentTheme);
         }
         private void play_click(object sender, RoutedEventArgs e)
         {
@@ -37,22 +36,14 @@ namespace Memory_Project
         {
             this.NavigationService.Navigate(new Uri("ThemeNav.xaml", UriKind.Relative));
         }
+        private void config_click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("ConfigView.xaml", UriKind.Relative));
+        }
 
         private void close_click(object sender, RoutedEventArgs e)
         {
             System.Environment.Exit(1);
-        }
-
-        private void startMusic(string theme)
-        {
-            try
-            {
-                SoundPlayer player = new SoundPlayer();
-                player.SoundLocation = "music/" + theme + "/BackgroundMusic.wav";
-                player.PlayLooping();
-            }
-            catch (Exception e) { }
-            
         }
     }
 }

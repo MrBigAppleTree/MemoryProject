@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,7 +24,9 @@ namespace Memory_Project
     {
         public MainWindow()
         {
+            string currentTheme = (string)Application.Current.Resources["Theme"];
             InitializeComponent();
+            startMusic(currentTheme);
         }
 
         /// <summary>
@@ -76,6 +79,18 @@ namespace Memory_Project
             
             return rect;
         }
+        private void startMusic(string theme)
+        {
+            try
+            {
+                SoundPlayer player = new SoundPlayer();
+                player.SoundLocation = "music/" + theme + "/BackgroundMusic.wav";
+                player.PlayLooping();
+            }
+            catch (Exception e) { }
+
+        }
+
 
     }
 }

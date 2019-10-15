@@ -153,20 +153,7 @@ namespace Memory_Project
             this.NavigationService.Navigate(new Uri("MainNav.xaml", UriKind.Relative));
 
         }
-        public string StringFromRichTextBox(RichTextBox rtb)
-        {
-            TextRange textRange = new TextRange(
-                // TextPointer to the start of content in the RichTextBox.
-                rtb.Document.ContentStart,
-                // TextPointer to the end of content in the RichTextBox.
-                rtb.Document.ContentEnd
-          );
-                return textRange.Text;
 
-
-            // The Text property on a TextRange object returns a string
-            // representing the plain text content of the TextRange.
-        }
         public void new_click(object sender, RoutedEventArgs e)
         {
             List<Player> players = new List<Player>();
@@ -189,6 +176,21 @@ namespace Memory_Project
             }
             GameController controller = new GameController(height, width, players, theme, serializer);
             this.NavigationService.Navigate(controller.getView());
+        }
+
+        public string StringFromRichTextBox(RichTextBox rtb)
+        {
+            TextRange textRange = new TextRange(
+                // TextPointer to the start of content in the RichTextBox.
+                rtb.Document.ContentStart,
+                // TextPointer to the end of content in the RichTextBox.
+                rtb.Document.ContentEnd
+          );
+            return textRange.Text;
+
+
+            // The Text property on a TextRange object returns a string
+            // representing the plain text content of the TextRange.
         }
         //Character limit for playername input to prevent overflow on BoardView
         //Add method per Player
