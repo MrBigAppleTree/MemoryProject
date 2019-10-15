@@ -51,6 +51,7 @@ namespace Memory_Project
         private void generateImages()
         {
             int maxCards = (Directory.GetFiles("../../images/" + currentTheme).Length) - 3;
+            Console.WriteLine("Max:" + maxCards);
             for(int i = 1; i <= maxCards; i++)
             {
                 availableCards.Add(i);

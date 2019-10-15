@@ -32,6 +32,7 @@ namespace Memory_Project
 
             // Set winner text.
             List<Player> players = getPlayers();
+
             if (players.Count == 1)
             {
                 setSpWinnerText();
@@ -120,7 +121,22 @@ namespace Memory_Project
 
         private void replay_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("MainNav.xaml", UriKind.Relative));
+
+            List<Player> players = getPlayers();
+
+            foreach (Player p in players)
+            {
+                p.setScore(0);
+            }
+
+            int cardX = (int)Application.Current.Resources["cardX"];
+            int cardY = (int)Application.Current.Resources["cardY"];
+            string theme = (string)Application.Current.Resources["Theme"];
+            Console.WriteLine(theme);
+
+            GameController controller = new GameController(cardX, cardY, players, theme, null);
+            this.NavigationService.Navigate(controller.getView());
+
         }
 
         private void close_Click(object sender, RoutedEventArgs e)
