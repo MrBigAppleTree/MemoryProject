@@ -163,7 +163,10 @@ namespace Memory_Project
             int numPlayers = Convert.ToInt32(Players.Text);
             int height = Convert.ToInt32(comboHeight.Text);
             int width = Convert.ToInt32(comboWidth.Text);
- 
+            Application.Current.Resources["cardY"] = height;
+            Application.Current.Resources["cardX"] = width;
+            
+
             for (int i = 0; i < numPlayers; i++)
             {
                 RichTextBox rtb = (RichTextBox)FindName("Player" + (i));
