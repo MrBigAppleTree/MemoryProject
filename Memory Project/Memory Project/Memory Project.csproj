@@ -470,9 +470,6 @@
     <Resource Include="images\NHLStenden\BoardBackground.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\NHLStenden\CardBack.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="images\LOTR\BoardBackground.png" />
     <Resource Include="images\NHLStenden\Card1.png" />
     <Resource Include="images\NHLStenden\Card10.png" />
@@ -506,6 +503,7 @@
     <Resource Include="images\NHLStenden\Card7.png" />
     <Resource Include="images\NHLStenden\Card8.png" />
     <Resource Include="images\NHLStenden\Card9.png" />
+    <Resource Include="images\NHLStenden\CardBack.png" />
     <Content Include="music\Avatar\BackgroundMusic.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
