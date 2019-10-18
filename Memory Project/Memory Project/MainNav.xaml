@@ -71,8 +71,8 @@
                     <ComboBoxItem Content="2 Players" HorizontalAlignment="Left"/>
                     <ComboBoxItem Content="3 Players" HorizontalAlignment="Left"/>
                     <ComboBoxItem Content="4 Players" HorizontalAlignment="Left"/>
-                    <ComboBoxItem Content="Time Trial" HorizontalAlignment="Left"/>
-                    <ComboBoxItem Content="Turn Trial" HorizontalAlignment="Left"/>
+                    <!--<ComboBoxItem Content="Time Trial" HorizontalAlignment="Left"/>-->
+                    <!--<ComboBoxItem Content="Turn Trial" HorizontalAlignment="Left"/>-->
                 </ComboBox>
             </StackPanel>
         </Border>
