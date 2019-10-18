@@ -290,17 +290,17 @@ namespace Memory_Project
 
                 case "Reset":
 
-                        foreach (Player p in players)
-                        {
-                            p.setScore(0);
-                        }
+                    foreach (Player p in players)
+                    {
+                        p.setScore(0);
+                    }
 
-                        int cardX = (int)Application.Current.Resources["cardX"];
-                        int cardY = (int)Application.Current.Resources["cardY"];
-                        string theme = (string)Application.Current.Resources["Theme"];
+                    int cardX = (int)Application.Current.Resources["cardX"];
+                    int cardY = (int)Application.Current.Resources["cardY"];
+                    string theme = (string)Application.Current.Resources["Theme"];
 
-                        GameController resetController = new GameController(cardY, cardX, players, theme, null);
-                        this.NavigationService.Navigate(resetController.getView());
+                    GameController resetController = new GameController(cardY, cardX, players, theme, null);
+                    this.NavigationService.Navigate(resetController.getView());
 
                     break;
             }

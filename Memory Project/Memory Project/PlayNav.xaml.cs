@@ -93,6 +93,7 @@ namespace Memory_Project
             }
 
         }
+
         private void comboboxItems1()
         {
             Dictionary<string, int> maxCard = new Dictionary<string, int>();
@@ -125,6 +126,7 @@ namespace Memory_Project
             */
 
         }
+
         private void comboboxItems2()
         {
             Dictionary<string, int> maxCard = new Dictionary<string, int>();
@@ -167,6 +169,7 @@ namespace Memory_Project
             // The Text property on a TextRange object returns a string
             // representing the plain text content of the TextRange.
         }
+
         public void new_click(object sender, RoutedEventArgs e)
         {
             List<Player> players = new List<Player>();
@@ -194,6 +197,7 @@ namespace Memory_Project
             GameController controller = new GameController(height, width, players, theme, serializer);
             this.NavigationService.Navigate(controller.getView());
         }
+
         //Character limit for playername input to prevent overflow on BoardView
         //Add method per Player
         private void RichTextKeyDown0(object sender, KeyEventArgs e)
