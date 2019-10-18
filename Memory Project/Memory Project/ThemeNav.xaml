@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Memory_Project"
       mc:Ignorable="d" 
-      Height="720" Width="1280"
+      Height="auto" Width="auto"
       Title="Memory">
 
     <Grid>
