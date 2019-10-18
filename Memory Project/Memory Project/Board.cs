@@ -74,8 +74,8 @@ namespace Memory_Project
                     availableCoords.Add(new Tuple<int, int>(i, j));
                 }
             }
-            for (int i=0; i < 5; i++){
-                availableCoords.listShuffle();
+            for (int i=0; i < 3; i++){
+                availableCoords = listShuffle(availableCoords);
             }
             
         }
@@ -207,11 +207,7 @@ namespace Memory_Project
             this.view = b;
         }
 
-    }
-
-    public static class Randomization
-    {
-        public static void listShuffle<T>(this IList<T> list)
+        private List<Tuple<int, int>> listShuffle(List<Tuple<int, int>> list)
         {
             RNGCryptoServiceProvider rnd = new RNGCryptoServiceProvider();
             int i = list.Count;
@@ -228,6 +224,8 @@ namespace Memory_Project
                 list[k] = list[i];
                 list[i] = value;
             }
+            return list;
         }
+
     }
 }
