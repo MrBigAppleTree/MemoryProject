@@ -13,7 +13,7 @@ namespace Memory_Project
     [Serializable]
     public class Player
     {
-        string name;
+        protected string name;
         int score;
         List<Card> collectedCards = new List<Card>();
         [NonSerialized]

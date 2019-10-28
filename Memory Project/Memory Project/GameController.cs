@@ -88,7 +88,6 @@ namespace Memory_Project
         public void removeCard(Card c)
         {
             board.getBoardList().Remove(c);
-            Console.WriteLine(board.getBoardList().Count);
         }
 
         public bool gameFin()

@@ -116,6 +116,12 @@ namespace Memory_Project
                 }
                 flipCard(btn, frontImgPath);
                 currentPlayer.getClickedBtns().Add(btn);
+                foreach(AI a in players.OfType<AI>())
+                {
+                    a.saveCard(controller.btnToCard(btn));
+                }
+
+
                 turnCheck();
             }
         }
@@ -140,6 +146,10 @@ namespace Memory_Project
                     Card c = controller.btnToCard(b);
                     gainedCards.Add(c);
                     controller.removeCard(c);
+                    foreach (AI a in players.OfType<AI>())
+                    {
+                        a.removeCard(c);
+                    }
                 }
                 Console.WriteLine("cards moved to player: " + currentPlayer.getName());
                 currentPlayer.increaseScore(100);
@@ -152,7 +162,9 @@ namespace Memory_Project
                 foreach (Button b in currentPlayer.getClickedBtns())
                 {
                     flipCard(b, controller.btnToCard(b).getBackImg());
+                    Console.WriteLine(controller.btnToCard(b).getBackImg());
                 }
+                await Task.Delay(1000);
                 turnCounter += 1;
                 turnHandler();
             } 
@@ -216,9 +228,34 @@ namespace Memory_Project
                 currentPlayer = players[turnCounter % players.Count];
                 currentPlayer.getClickedBtns().Clear();
                 setColor(turnCounter % players.Count);
-                Console.WriteLine("Player: " + currentPlayer.getName() + " turn");
+                Console.WriteLine("Player: " + currentPlayer.getName());
+                if(currentPlayer is AI)
+                {
+                    AIRoutine();
+                }
             }
             
+        }
+
+        private void AIRoutine()
+        {
+            Thread.Sleep(200);
+            Console.WriteLine("AI processing");
+            Tuple<Card, Card> cards = ((AI)currentPlayer).determineMove(controller.getBoard());
+            Console.WriteLine("Card 1. X: " + cards.Item1.getXPos() + " Y: " + cards.Item1.getYPos());
+            Console.WriteLine("Card 2. X: " + cards.Item2.getXPos() + " Y: " + cards.Item2.getYPos());
+            currentPlayer.getClickedBtns().Clear();
+
+            Button btn1 = (Button)playGrid.Children.Cast<UIElement>().First(e => Grid.GetRow(e) == cards.Item1.getYPos() && Grid.GetColumn(e) == cards.Item1.getXPos());
+            flipCard(btn1, cards.Item1.getFrontImg());
+            Console.WriteLine(cards.Item1.getFrontImg());
+            currentPlayer.getClickedBtns().Add(btn1);
+
+            Button btn2 = (Button)playGrid.Children.Cast<UIElement>().First(e => Grid.GetRow(e) == cards.Item2.getYPos() && Grid.GetColumn(e) == cards.Item2.getXPos());
+            flipCard(btn2, cards.Item2.getFrontImg());
+            Console.WriteLine(cards.Item2.getFrontImg());
+            currentPlayer.getClickedBtns().Add(btn2);
+            turnCheck();
         }
 
         /// <summary>

@@ -182,7 +182,15 @@ namespace Memory_Project
                 RichTextBox rtb = (RichTextBox)FindName("Player" + (i));
                 if(StringFromRichTextBox(rtb).Length < 16)
                 {
-                    players.Add(new Player(StringFromRichTextBox(rtb)));
+                    if (StringFromRichTextBox(rtb).Contains("AI"))
+                    {
+                        players.Add(new AI(StringFromRichTextBox(rtb)));
+                    }
+                    else
+                    {
+                        players.Add(new Player(StringFromRichTextBox(rtb)));
+                    }
+                    
                 }
                 else
                 {
