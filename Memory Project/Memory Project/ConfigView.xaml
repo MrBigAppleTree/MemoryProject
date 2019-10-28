@@ -13,17 +13,15 @@
             <Label FontSize="36" HorizontalAlignment="Left" Margin="0, 0, 0, 0" Background="#00000000" BorderBrush="#00000000" Foreground="#FFFFFFFF">
                 <TextBlock>
                     <TextBlock.TextDecorations>
-                        <TextDecoration Location="Underline" PenOffset="8" PenOffsetUnit="Pixel"/>
+                        <TextDecoration Location="Underline" PenOffset="8" PenOffsetUnit="Pixel" />
                     </TextBlock.TextDecorations>
-                    Menu
+                    Settings
                 </TextBlock>
             </Label>
             <Button Content="Back" x:Name="back" Click="back_click" Height="60" FontSize="36" Margin="0, 0, 0, 0" HorizontalAlignment="Left" Background="#00000000" BorderBrush="#00000000" Foreground="#FFFFFFFF"/>
-            <Button Content="Theme" x:Name="theme" Click="theme_click" Height="60" FontSize="36" Margin="0, 0, 0, 0" HorizontalAlignment="Left" Background="#00000000" BorderBrush="#00000000" Foreground="#FFFFFFFF"/>
-            <Button Content="Close Game" x:Name="close" Click="close_click" Height="60" FontSize="36" Margin="0, 0, 0, 0" HorizontalAlignment="Left" Background="#00000000" BorderBrush="#00000000" Foreground="#FFFFFFFF"/>
         </StackPanel>
-        <Border Margin="0,54,245,41" HorizontalAlignment="Right" VerticalAlignment="Center" Background="#99FFFFFF" Width="679" Height="625">
-            <StackPanel Background="#66000000" Margin="0,0,-0.8,-0.2" >
+        <Border Margin="0,0,50,0" HorizontalAlignment="Right" VerticalAlignment="Center" Background="#99FFFFFF" Width="404" Height="644">
+            <StackPanel Background="#66000000" Width="400" Height="640" >
                 
                 <Label Foreground="White" FontSize="36" Margin="5, 5, 0, 0">
                     <TextBlock>
@@ -34,7 +32,7 @@
                     </TextBlock>
                 </Label>
                 
-                <Label Foreground="White" FontSize="20" Margin="5,5,0,0">
+                <!--<Label Foreground="White" FontSize="20" Margin="5,5,0,0">
                     Resolution
                 </Label>
                 <ComboBox x:Name="Resolution" DropDownClosed="Resolution_DropDownClosed" FontSize="20" HorizontalAlignment="Right" Margin="0, -65, 20, 0" VerticalAlignment="Bottom" Width="120" Height="35" Background="Gray" BorderBrush="#00ACACAC" Foreground="Black">
@@ -47,11 +45,19 @@
                     <ComboBoxItem Content="1280x720" HorizontalAlignment="Left" Width="120" IsSelected="True"/>
                     <ComboBoxItem Content="1600x900" HorizontalAlignment="Left" Width="120"/>
                     <ComboBoxItem Content="1920x1080" HorizontalAlignment="Left" Width="120"/>
-                </ComboBox>
+                </ComboBox>-->
+                <Label Foreground="White" FontSize="20" Margin="5,5,0,0">
+                    Fullscreen
+                </Label>
+                <CheckBox x:Name="FullscreenToggle" Checked="FullscreenToggle_Checked" Unchecked="FullscreenToggle_Unchecked" HorizontalAlignment="Right" Margin="0, -65, 20, 0" VerticalAlignment="Bottom" Width="20" Height="20" Background="White">
+                    <CheckBox.LayoutTransform>
+                        <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+                    </CheckBox.LayoutTransform>
+                </CheckBox>
                 <Label Foreground="White" FontSize="20" Margin="5,5,0,0">
                     Mute Sound
                 </Label>
-                <CheckBox x:Name="SoundToggle" IsChecked="{Binding checkBoxState}" Checked="SoundToggle_Checked" Unchecked="SoundToggle_Unchecked" HorizontalAlignment="Right" Margin="0, -65, 20, 0" VerticalAlignment="Bottom" Width="20" Height="20" Background="White">
+                <CheckBox x:Name="SoundToggle" Checked="SoundToggle_Checked" Unchecked="SoundToggle_Unchecked" HorizontalAlignment="Right" Margin="0, -65, 20, 0" VerticalAlignment="Bottom" Width="20" Height="20" Background="White">
                     <CheckBox.LayoutTransform>
                         <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
                     </CheckBox.LayoutTransform>

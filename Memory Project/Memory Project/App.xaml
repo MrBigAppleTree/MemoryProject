@@ -6,8 +6,9 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <sys:String x:Key="Theme">LOTR</sys:String>
-        <sys:Boolean x:Key="MusicToggle">true</sys:Boolean>
-        <sys:Int32 x:Key="Width">1280</sys:Int32>
-        <sys:Int32 x:Key="Height">720</sys:Int32>
+        <sys:Boolean x:Key="MusicToggle">false</sys:Boolean>
+        <sys:Boolean x:Key="FullscreenToggle">true</sys:Boolean>
+        <sys:Double x:Key="Width">1280</sys:Double>
+        <sys:Double x:Key="Height">720</sys:Double>
     </Application.Resources>
 </Application>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Memory_Project"
         mc:Ignorable="d"
-        Title="Memory"  ResizeMode="NoResize" WindowState="Maximized" WindowStyle="None"  >
+        Title="Memory"  ResizeMode="NoResize" WindowState="Maximized" WindowStyle="None" Height="{StaticResource Height}" Width="{StaticResource Width}">
     <Grid>
         <Frame  NavigationUIVisibility="Hidden" x:Name="frame1" Source="MainNav.xaml" />
     </Grid>
