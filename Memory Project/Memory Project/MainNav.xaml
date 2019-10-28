@@ -5,7 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     xmlns:local="clr-namespace:Memory_Project"
     mc:Ignorable="d" 
-    Title="Memory" Height="720" Width="1280">
+    Title="Memory" Height="auto" Width="auto">
   
     <Grid HorizontalAlignment="center" VerticalAlignment="Center">
         <Image x:Name="BackgroundImg" Source="Images/NHLStenden/MenuBackground.png" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Fill"/>
@@ -71,8 +71,8 @@
                     <ComboBoxItem Content="2 Players" HorizontalAlignment="Left"/>
                     <ComboBoxItem Content="3 Players" HorizontalAlignment="Left"/>
                     <ComboBoxItem Content="4 Players" HorizontalAlignment="Left"/>
-                    <ComboBoxItem Content="Time Trial" HorizontalAlignment="Left"/>
-                    <ComboBoxItem Content="Turn Trial" HorizontalAlignment="Left"/>
+                    <!--<ComboBoxItem Content="Time Trial" HorizontalAlignment="Left"/>-->
+                    <!--<ComboBoxItem Content="Turn Trial" HorizontalAlignment="Left"/>-->
                 </ComboBox>
             </StackPanel>
         </Border>
