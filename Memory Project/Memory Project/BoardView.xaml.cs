@@ -142,7 +142,7 @@ namespace Memory_Project
                     controller.removeCard(c);
                 }
                 Console.WriteLine("cards moved to player: " + currentPlayer.getName());
-                currentPlayer.increaseScore(100);
+                currentPlayer.increaseScore(scoreincrease());
                 updateScore();
                 currentPlayer.addCards(gainedCards);
                 turnHandler();
@@ -157,6 +157,28 @@ namespace Memory_Project
                 turnHandler();
             } 
             
+        }
+
+        private int scoreincrease()
+        {
+            //turnCounter
+            int totalcards = controller.getHeight() + controller.getWidth();
+            int temp1 = (totalcards / 4);
+            int temp2 = totalcards / 2;
+            if (turnCounter < temp1)
+            {
+                return 125;
+            }
+            else if (turnCounter > temp2)
+            {
+                return 50;
+            }
+            else
+            {
+                return 100;
+            }
+           
+
         }
 
         /// <summary>
