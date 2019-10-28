@@ -43,7 +43,8 @@ namespace Memory_Project
             currentTheme = (string)Application.Current.Resources["Theme"];
             maxCards = (Directory.GetFiles("../../images/" + currentTheme).Length) - 3;
             BackgroundImg.Source = new BitmapImage(new Uri(@"../../images/" + currentTheme + "/MenuBackground.png", UriKind.Relative));
-            startMusic(currentTheme);
+            ConfigView config = new ConfigView();
+            config.MusicToggle(currentTheme);
             SelectCard();
         }
 
@@ -106,19 +107,6 @@ namespace Memory_Project
                 string frontpath = "/images/" + currentTheme + "/card" + n + ".png";
                 CardPreview.Source = new BitmapImage(new Uri(frontpath, UriKind.RelativeOrAbsolute));
             }
-        }
-
-        private void startMusic(string theme)
-        {
-            try
-            {
-
-                SoundPlayer player = new SoundPlayer();
-                player.Stop();
-                player.SoundLocation = "music/" + theme + "/BackgroundMusic.wav";
-                player.PlayLooping();
-            }
-            catch (Exception e) { }
         }
     }
 }

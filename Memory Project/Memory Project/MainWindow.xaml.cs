@@ -22,9 +22,13 @@ namespace Memory_Project
     
     public partial class MainWindow : Window
     {
+        public int configWidth { get; set; }
+        public int configHeight { get; set; }
         public MainWindow()
         {
             string currentTheme = (string)Application.Current.Resources["Theme"];
+            configWidth = (int)Application.Current.Resources["Width"]; 
+            configHeight = (int)Application.Current.Resources["Height"];
             InitializeComponent();
             startMusic(currentTheme);
         }

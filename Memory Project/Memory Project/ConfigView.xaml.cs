@@ -22,10 +22,12 @@ namespace Memory_Project
     public partial class ConfigView : Page
     {
         public string currentTheme;
+        public bool checkBoxState { get; set; }
         public ConfigView()
         {
             InitializeComponent();
             currentTheme = (string)Application.Current.Resources["Theme"];
+            checkBoxState = (bool)Application.Current.Resources["MusicToggle"]; //page change doesn't keep visual checked value
             BackgroundImg.Source = new BitmapImage(new Uri(@"../../images/" + currentTheme + "/MenuBackground.png", UriKind.Relative));
         }
         private void back_click(object sender, RoutedEventArgs e)
@@ -46,38 +48,63 @@ namespace Memory_Project
 
         private void SoundToggle_Checked(object sender, RoutedEventArgs e)
         {
-            stopMusic(currentTheme);
+            Application.Current.Resources["MusicToggle"] = true;
+            MusicToggle(currentTheme);
         }
 
         private void SoundToggle_Unchecked(object sender, RoutedEventArgs e)
         {
-            startMusic(currentTheme);
+            Application.Current.Resources["MusicToggle"] = false;
+            MusicToggle(currentTheme);
         }
 
-        private void Resolution_DropDownClosed(object sender, EventArgs e)
-        {
 
-        }
-        private void stopMusic(string theme)
+        //Changed to always fullscreen
+
+        //private void Resolution_DropDownClosed(object sender, EventArgs e)
+        //{
+        //    switch (Resolution.SelectedIndex)
+        //    {
+        //        case 0:
+        //            Application.Current.Resources["Width"] = 1280;
+        //            Application.Current.Resources["Height"] = 720;
+        //            break;
+        //        case 1:
+        //            Application.Current.Resources["Width"] = 1600;
+        //            Application.Current.Resources["Height"] = 900;
+        //            break;
+        //        case 2:
+        //            Application.Current.Resources["Width"] = 1920;
+        //            Application.Current.Resources["Height"] = 1080;
+        //            break;
+
+        //    }
+        //    this.NavigationService.Refresh();
+        //}
+        public void MusicToggle(string theme)
         {
-            try
+            bool musicToggle = (bool)Application.Current.Resources["MusicToggle"];
+            if (musicToggle)
             {
-                SoundPlayer player = new SoundPlayer();
-                player.SoundLocation = "music/" + theme + "/BackgroundMusic.wav";
-                player.Stop();
+                try
+                {
+                    SoundPlayer player = new SoundPlayer();
+                    player.SoundLocation = "music/" + theme + "/BackgroundMusic.wav";
+                    player.Stop();
+                }
+                catch (Exception e) { }
             }
-            catch (Exception e) { }
-
-        }
-        private void startMusic(string theme)
-        {
-            try
+            else
             {
-                SoundPlayer player = new SoundPlayer();
-                player.SoundLocation = "music/" + theme + "/BackgroundMusic.wav";
-                player.PlayLooping();
+                try
+                {
+                    SoundPlayer player = new SoundPlayer();
+                    player.SoundLocation = "music/" + theme + "/BackgroundMusic.wav";
+                    player.PlayLooping();
+                }
+                catch (Exception e) { }
             }
-            catch (Exception e) { }
+
 
         }
     }
