@@ -361,6 +361,8 @@ namespace Memory_Project
                 if (p.getScore() > highestScore)
                 {
                     highestScore = p.getScore();
+                    winnerList.Clear();
+                    winnerList.Add(p);
 
                 } else if (p.getScore() == highestScore && p.getScore() > 0)
                 {
