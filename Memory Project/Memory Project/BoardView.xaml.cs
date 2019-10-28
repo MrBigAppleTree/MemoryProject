@@ -107,10 +107,15 @@ namespace Memory_Project
                 Button btn = sender as Button;
                 if (controller.btnToCard(btn).isLonely())
                 {
-                    currentPlayer.increaseScore(100);
+                    LonelyCard(btn);
                 }
-
+                else
+                {
+                    turnCounter++;
+                    turnHandler();
+                }
                 select = false;
+                this.IsHitTestVisible = true;
                 return;
             }
 
@@ -131,6 +136,17 @@ namespace Memory_Project
                 currentPlayer.getClickedBtns().Add(btn);
                 turnCheck();
             }
+        }
+
+        private async void LonelyCard(Button btn)
+        {
+            this.IsHitTestVisible = false;
+            await flipCard(btn, controller.btnToCard(btn).getFrontImg());
+            await Task.Delay(500);
+            currentPlayer.increaseScore(scoreincrease() * 2);
+            updateScore();
+            controller.removeCard(controller.btnToCard(btn));
+            btn.Visibility = Visibility.Hidden;
         }
 
         /// <summary>
@@ -198,7 +214,7 @@ namespace Memory_Project
         /// </summary>
         /// <param name="btn">The button to be flipped</param>
         /// <param name="imgPath">The image to flip the card to</param>
-        private async void flipCard(Button btn, string imgPath)
+        private async Task flipCard(Button btn, string imgPath)
         {
             double normalWidth = btn.ActualWidth;
             int animationTimeMillis = 100;
