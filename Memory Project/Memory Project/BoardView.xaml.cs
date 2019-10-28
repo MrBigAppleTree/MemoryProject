@@ -167,7 +167,7 @@ namespace Memory_Project
         private async void flipCard(Button btn, string imgPath)
         {
             double normalWidth = btn.ActualWidth;
-            int animationTimeMillis = 150;
+            int animationTimeMillis = 100;
 
             playGrid.IsHitTestVisible = false;
             DoubleAnimation da1 = new DoubleAnimation();
@@ -207,6 +207,7 @@ namespace Memory_Project
                 mainPanel.Children.Remove(leftPanel);
                 mainPanel.Children.Remove(playGrid);
 
+                // Display the finish screen
                 displayFinishScreen(players, winner);
 
                 Console.WriteLine("Congratulations Winner:\n" + winner.getName());
@@ -288,6 +289,19 @@ namespace Memory_Project
                     break;
 
                 case "Reset":
+
+                        foreach (Player p in players)
+                        {
+                            p.setScore(0);
+                        }
+
+                        int cardX = (int)Application.Current.Resources["cardX"];
+                        int cardY = (int)Application.Current.Resources["cardY"];
+                        string theme = (string)Application.Current.Resources["Theme"];
+
+                        GameController resetController = new GameController(cardY, cardX, players, theme, null);
+                        this.NavigationService.Navigate(resetController.getView());
+
                     break;
             }
             
@@ -348,8 +362,8 @@ namespace Memory_Project
         {
             Application.Current.Properties["players"] = players;
             Application.Current.Properties["winner"] = winner;
-            NavigationService.Navigate(new Uri("FinishedView.xaml", UriKind.Relative));
 
+            NavigationService.Navigate(new Uri("FinishedView.xaml", UriKind.Relative));
         }
     }
 }
