@@ -177,8 +177,6 @@ namespace Memory_Project
             {
                 return 100;
             }
-           
-
         }
 
         /// <summary>
