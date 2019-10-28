@@ -61,26 +61,28 @@ namespace Memory_Project
 
         //Changed to always fullscreen
 
-        //private void Resolution_DropDownClosed(object sender, EventArgs e)
-        //{
-        //    switch (Resolution.SelectedIndex)
-        //    {
-        //        case 0:
-        //            Application.Current.Resources["Width"] = 1280;
-        //            Application.Current.Resources["Height"] = 720;
-        //            break;
-        //        case 1:
-        //            Application.Current.Resources["Width"] = 1600;
-        //            Application.Current.Resources["Height"] = 900;
-        //            break;
-        //        case 2:
-        //            Application.Current.Resources["Width"] = 1920;
-        //            Application.Current.Resources["Height"] = 1080;
-        //            break;
+        private void Resolution_DropDownClosed(object sender, EventArgs e)
+        {
+            switch (Resolution.SelectedIndex)
+            {
+                case 0:
+                    Application.Current.Resources["Width"] = 1280;
+                    Application.Current.Resources["Height"] = 720;
+                    break;
+                case 1:
+                    Application.Current.Resources["Width"] = 1600;
+                    Application.Current.Resources["Height"] = 900;
+                    break;
+                case 2:
+                    Application.Current.Resources["Width"] = 1920;
+                    Application.Current.Resources["Height"] = 1080;
+                    break;
 
-        //    }
-        //    this.NavigationService.Refresh();
-        //}
+            }
+            Application.Current.MainWindow.Width = 1600;
+            Application.Current.MainWindow.Height = 900;
+            //this.NavigationService.Refresh();
+        }
         public void MusicToggle(string theme)
         {
             bool musicToggle = (bool)Application.Current.Resources["MusicToggle"];

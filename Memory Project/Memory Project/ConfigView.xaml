@@ -34,7 +34,7 @@
                     </TextBlock>
                 </Label>
                 
-                <!--<Label Foreground="White" FontSize="20" Margin="5,5,0,0">
+                <Label Foreground="White" FontSize="20" Margin="5,5,0,0">
                     Resolution
                 </Label>
                 <ComboBox x:Name="Resolution" DropDownClosed="Resolution_DropDownClosed" FontSize="20" HorizontalAlignment="Right" Margin="0, -65, 20, 0" VerticalAlignment="Bottom" Width="120" Height="35" Background="Gray" BorderBrush="#00ACACAC" Foreground="Black">
@@ -47,7 +47,7 @@
                     <ComboBoxItem Content="1280x720" HorizontalAlignment="Left" Width="120" IsSelected="True"/>
                     <ComboBoxItem Content="1600x900" HorizontalAlignment="Left" Width="120"/>
                     <ComboBoxItem Content="1920x1080" HorizontalAlignment="Left" Width="120"/>
-                </ComboBox>-->
+                </ComboBox>
                 <Label Foreground="White" FontSize="20" Margin="5,5,0,0">
                     Mute Sound
                 </Label>
