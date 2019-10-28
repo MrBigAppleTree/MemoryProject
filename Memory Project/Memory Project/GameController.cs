@@ -59,6 +59,10 @@ namespace Memory_Project
             board = new Board(this.height, this.width, view, theme);
             view.loadPlayers(players);
             view.loadButtons();
+            if((height*width)%2 != 0)
+            {
+                view.loadUnevenButton();
+            }
         }
 
         //Getters for height and width

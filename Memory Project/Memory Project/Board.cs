@@ -105,7 +105,9 @@ namespace Memory_Project
                 string frontpath = "images/" + currentTheme + "/card" + img + ".png";
                 Tuple<int, int> coord = coords();
                 Card temp = new Card(coord.Item1, coord.Item2, frontpath, backpath);
+                temp.setLonely();
                 boardList.Add(temp);
+
             }
         }
 
