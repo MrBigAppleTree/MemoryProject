@@ -27,6 +27,7 @@ namespace Memory_Project
 
         public int turnCounter = 0;
         string theme;
+        private bool select = false;
 
         List<Player> players;
         Player currentPlayer;
@@ -101,6 +102,18 @@ namespace Memory_Project
         /// <param name="e">Event arguments</param>
         private void card_click(object sender, RoutedEventArgs e)
         {
+            if (select)
+            {
+                Button btn = sender as Button;
+                if (controller.btnToCard(btn).isLonely())
+                {
+                    currentPlayer.increaseScore(100);
+                }
+
+                select = false;
+                return;
+            }
+
             if(currentPlayer.getClickedBtns().Count < 2)
             {
                 this.IsHitTestVisible = false;
@@ -146,7 +159,8 @@ namespace Memory_Project
                 updateScore();
                 currentPlayer.addCards(gainedCards);
                 turnHandler();
-            } else if (currentPlayer.getClickedBtns().Count == 2)
+            }
+            else if (currentPlayer.getClickedBtns().Count == 2)
             {
                 await Task.Delay(2000);
                 foreach (Button b in currentPlayer.getClickedBtns())
@@ -155,7 +169,7 @@ namespace Memory_Project
                 }
                 turnCounter += 1;
                 turnHandler();
-            } 
+            }
             
         }
 
@@ -255,6 +269,8 @@ namespace Memory_Project
         {
             string[] bNames = new string[] { "Back", "Save", "Reset" };
 
+
+
             for(int i = 0; i < 3; i++)
             {  
                 NavGrid.ColumnDefinitions.Add(new ColumnDefinition());
@@ -274,6 +290,24 @@ namespace Memory_Project
                 NavGrid.Children.Add(b);
             }
            
+        }
+
+        public void loadUnevenButton()
+        {
+            Button btn = new Button();
+            btn.Content = "Find the lonely card!";
+            btn.Click += unevenClick;
+
+            btn.Margin = new Thickness(5);
+            btn.Padding = new Thickness(5);
+            btn.FontSize = 30;
+
+            btnGrid.Children.Add(btn);
+        }
+
+        public void unevenClick(object sender, RoutedEventArgs e)
+        {
+            select = true;
         }
 
         public void btnClicks(object sender, RoutedEventArgs e)
