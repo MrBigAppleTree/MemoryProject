@@ -272,6 +272,7 @@ namespace Memory_Project
 
             } else
             {
+                updateTurnCounter();
                 currentPlayer = players[turnCounter % players.Count];
                 currentPlayer.getClickedBtns().Clear();
                 setColor(turnCounter % players.Count);
@@ -280,12 +281,27 @@ namespace Memory_Project
             
         }
 
+        private void updateTurnCounter()
+        {
+            TextBlock tcn = (TextBlock)TurnGrid.Children[0];
+            tcn.Text = "Turn: " + (turnCounter+1);
+        }
+
         /// <summary>
         /// loads the players onto the board dynamically
         /// </summary>
         /// <param name="list">The list of players to be loaded onto the board</param>
         public void loadPlayers(List<Player> list)
         {
+            // tcn = turn counter display
+            TextBlock tcn = new TextBlock();
+            tcn.Name = "tcn";
+            tcn.TextAlignment = TextAlignment.Center;
+            tcn.FontSize = 30;
+            tcn.Foreground = Brushes.White;
+            tcn.Text = "Turn: " + (turnCounter+1);
+            TurnGrid.Children.Add(tcn);
+
             players = list;
             for (int i=0; i < list.Count; i++)
             {
