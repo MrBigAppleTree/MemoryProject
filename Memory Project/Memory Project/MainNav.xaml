@@ -31,13 +31,7 @@
                 <Label Foreground="White" FontSize="36" HorizontalAlignment="Right" Margin="0, -65, 69, 0">
                     x
                 </Label>
-                <ComboBox x:Name="Width" FontSize="20" HorizontalAlignment="Right" Margin="0, -50, 100, 0" VerticalAlignment="Top" Width="45" Height="35" Background="Gray" BorderBrush="#00ACACAC" Foreground="Black">
-                    <ComboBox.ItemContainerStyle>
-                        <Style TargetType="ComboBoxItem">
-                            <Setter Property="Background" Value="Gray"/>
-                            <Setter Property="BorderBrush" Value="DarkGray"/>
-                        </Style>
-                    </ComboBox.ItemContainerStyle>
+                <ComboBox x:Name="Width" FontSize="20" HorizontalAlignment="Right" Margin="0, -50, 100, 0" VerticalAlignment="Top" Width="45" Height="35" Background="Gray" BorderBrush="#00ACACAC" Foreground="White">
                     <ComboBoxItem Content="2" HorizontalAlignment="Left" Width="45"/>
                     <ComboBoxItem Content="3" HorizontalAlignment="Left" Width="45"/>
                     <ComboBoxItem Content="4" HorizontalAlignment="Left" Width="45" IsSelected="True"/>
@@ -46,13 +40,7 @@
                     <ComboBoxItem Content="7" HorizontalAlignment="Left" Width="45"/>
                     <ComboBoxItem Content="8" HorizontalAlignment="Left" Width="45"/>
                 </ComboBox>
-                <ComboBox x:Name="Height" FontSize="20" HorizontalAlignment="Right" Margin="0, -50, 16, 0" VerticalAlignment="Top" Width="45" Height="35" Background="Gray" BorderBrush="#00ACACAC" Foreground="Black">
-                    <ComboBox.ItemContainerStyle>
-                        <Style TargetType="ComboBoxItem">
-                            <Setter Property="Background" Value="Gray"/>
-                            <Setter Property="BorderBrush" Value="DarkGray"/>
-                        </Style>
-                    </ComboBox.ItemContainerStyle>
+                <ComboBox x:Name="Height" FontSize="20" HorizontalAlignment="Right" Margin="0, -50, 16, 0" VerticalAlignment="Top" Width="45" Height="35" Background="Gray" BorderBrush="#00ACACAC" Foreground="White">
                     <ComboBoxItem Content="2" HorizontalAlignment="Left" Width="45"/>
                     <ComboBoxItem Content="3" HorizontalAlignment="Left" Width="45"/>
                     <ComboBoxItem Content="4" HorizontalAlignment="Left" Width="45" IsSelected="True"/>
@@ -61,13 +49,7 @@
                     <ComboBoxItem Content="7" HorizontalAlignment="Left" Width="45"/>
                     <ComboBoxItem Content="8" HorizontalAlignment="Left" Width="45"/>
                 </ComboBox>
-                <ComboBox x:Name="hiscr" FontSize="20" HorizontalAlignment="Left" Margin="10, 10, 0, 0" VerticalAlignment="Top" Height="35" Background="Gray" BorderBrush="#00ACACAC" Foreground="Black">
-                    <ComboBox.ItemContainerStyle>
-                        <Style TargetType="ComboBoxItem">
-                            <Setter Property="Background" Value="Gray"/>
-                            <Setter Property="BorderBrush" Value="DarkGray"/>
-                        </Style>
-                    </ComboBox.ItemContainerStyle>
+                <ComboBox x:Name="hiscr" FontSize="20" HorizontalAlignment="Left" Margin="10, 10, 0, 0" VerticalAlignment="Top" Height="35" Background="Gray" BorderBrush="#00ACACAC" Foreground="White">
                     <ComboBoxItem Content="Singleplayer" HorizontalAlignment="Left" IsSelected="True"/>
                     <ComboBoxItem Content="2 Players" HorizontalAlignment="Left"/>
                     <ComboBoxItem Content="3 Players" HorizontalAlignment="Left"/>
