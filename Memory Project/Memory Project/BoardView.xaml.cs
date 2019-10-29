@@ -198,9 +198,9 @@ namespace Memory_Project
         private int scoreincrease()
         {
             //turnCounter
-            int totalcards = controller.getHeight() + controller.getWidth();
-            int temp1 = (totalcards / 4);
-            int temp2 = totalcards / 2;
+            double totalcards = controller.getHeight() + controller.getWidth();
+            double temp1 = (totalcards / 4);
+            double temp2 = totalcards / 2;
             if (turnCounter < temp1)
             {
                 return 125;
