@@ -83,20 +83,14 @@
                         Players:
                     </TextBlock>
                 </Label>
-                <ComboBox ItemsSource="{Binding cbItems1}" SelectedItem="{Binding SelectedcbItem1}" FontSize="20" HorizontalAlignment="Center" x:Name="comboWidth" Margin="-20, -100, 0, 0" VerticalAlignment="Top" Width="45" Height="30">
+                <ComboBox ItemsSource="{Binding cbItems1}" SelectedItem="{Binding SelectedcbItem1}" FontSize="20" HorizontalAlignment="Center" x:Name="comboWidth" Margin="-20, -100, 0, 0" VerticalAlignment="Top" Width="45" Height="30" Foreground="White">
                 </ComboBox>
                 <Label Foreground="White" FontSize="36" HorizontalAlignment="Right" Margin="0, -118, 75, 0">
                     x
                 </Label>
-                <ComboBox ItemsSource="{Binding cbItems2}" SelectedItem="{Binding SelectedcbItem2}" FontSize="20" HorizontalAlignment="Center" x:Name="comboHeight" Margin="165, -100, 0, 0" VerticalAlignment="Top" Width="45" Height="30">
+                <ComboBox ItemsSource="{Binding cbItems2}" SelectedItem="{Binding SelectedcbItem2}" FontSize="20" HorizontalAlignment="Center" x:Name="comboHeight" Margin="165, -100, 0, 0" VerticalAlignment="Top" Width="45" Height="30" Foreground="White">
                 </ComboBox>
-                <ComboBox x:Name="Players" DropDownClosed="PlayerChanged" FontSize="20" HorizontalAlignment="Right" Margin="0, -65, 20, 0" VerticalAlignment="Bottom" Width="45" Height="35" Background="Gray" BorderBrush="#00ACACAC" Foreground="Black">
-                    <ComboBox.ItemContainerStyle>
-                        <Style TargetType="ComboBoxItem">
-                            <Setter Property="Background" Value="Gray"/>
-                            <Setter Property="BorderBrush" Value="DarkGray"/>
-                        </Style>
-                    </ComboBox.ItemContainerStyle>
+                <ComboBox x:Name="Players" DropDownClosed="PlayerChanged" FontSize="20" HorizontalAlignment="Right" Margin="0, -65, 20, 0" VerticalAlignment="Bottom" Width="45" Height="35" BorderBrush="#00ACACAC" Foreground="White">
                     <ComboBoxItem Content="1" HorizontalAlignment="Left" Width="45"/>
                     <ComboBoxItem Content="2" HorizontalAlignment="Left" Width="45" IsSelected="True"/>
                     <ComboBoxItem Content="3" HorizontalAlignment="Left" Width="45"/>
