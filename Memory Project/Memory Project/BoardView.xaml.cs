@@ -272,6 +272,7 @@ namespace Memory_Project
 
             } else
             {
+                controller.Save(turnCounter);
                 updateTurnCounter();
                 currentPlayer = players[turnCounter % players.Count];
                 currentPlayer.getClickedBtns().Clear();
