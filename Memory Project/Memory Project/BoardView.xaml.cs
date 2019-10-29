@@ -251,7 +251,7 @@ namespace Memory_Project
             {
                 
                 currentPlayer.getClickedBtns().Clear();
-                Player winner = determineWinner();
+                List<Player> winner = determineWinner();
 
                 // Clear the main panel of useless controls
                 mainPanel.Children.Remove(leftPanel);
@@ -260,7 +260,6 @@ namespace Memory_Project
                 // Display the finish screen
                 displayFinishScreen(players, winner);
 
-                Console.WriteLine("Congratulations Winner:\n" + winner.getName());
             } else
             {
                 currentPlayer = players[turnCounter % players.Count];
@@ -360,17 +359,17 @@ namespace Memory_Project
 
                 case "Reset":
 
-                        foreach (Player p in players)
-                        {
-                            p.setScore(0);
-                        }
+                    foreach (Player p in players)
+                    {
+                        p.setScore(0);
+                    }
 
-                        int cardX = (int)Application.Current.Resources["cardX"];
-                        int cardY = (int)Application.Current.Resources["cardY"];
-                        string theme = (string)Application.Current.Resources["Theme"];
+                    int cardX = (int)Application.Current.Resources["cardX"];
+                    int cardY = (int)Application.Current.Resources["cardY"];
+                    string theme = (string)Application.Current.Resources["Theme"];
 
-                        GameController resetController = new GameController(cardY, cardX, players, theme, null);
-                        this.NavigationService.Navigate(resetController.getView());
+                    GameController resetController = new GameController(cardY, cardX, players, theme, null);
+                    this.NavigationService.Navigate(resetController.getView());
 
                     break;
             }
@@ -421,14 +420,32 @@ namespace Memory_Project
         /// Determines the player with the highest score
         /// </summary>
         /// <returns>Returns the player with the highest score</returns>
-        private Player determineWinner()
+        private List<Player> determineWinner()
         {
-            Player winner = players.Aggregate((player1, player2) => player1.getScore() > player2.getScore() ? player1 : player2);
 
-            return winner;
+            int highestScore = 0;
+            List<Player> winnerList = new List<Player>();
+
+            foreach (Player p in players)
+            {
+                if (p.getScore() > highestScore)
+                {
+                    highestScore = p.getScore();
+                    winnerList.Clear();
+                    winnerList.Add(p);
+
+                } else if (p.getScore() == highestScore && p.getScore() > 0)
+                {
+                    winnerList.Add(p);
+                }
+            }
+
+            //Player winner = players.Aggregate((player1, player2) => player1.getScore() > player2.getScore() ? player1 : player2);
+
+            return winnerList;
         }
 
-        private void displayFinishScreen(List<Player> players, Player winner)
+        private void displayFinishScreen(List<Player> players, List<Player> winner)
         {
             Application.Current.Properties["players"] = players;
             Application.Current.Properties["winner"] = winner;
