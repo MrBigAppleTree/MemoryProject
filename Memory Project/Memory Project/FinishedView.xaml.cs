@@ -43,9 +43,9 @@ namespace Memory_Project
             
         }
 
-        private Player getWinner()
+        private List<Player> getWinner()
         {
-            return (Player)Application.Current.Properties["winner"];
+            return (List<Player>)Application.Current.Properties["winner"];
         }
 
         private List<Player> getPlayers()
@@ -55,16 +55,18 @@ namespace Memory_Project
 
         private void setSpWinnerText()
         {
-            Player winner = getWinner();
+            List<Player> winner = getWinner();
 
-            WinnerText.Text = $"Congratulations {winner.getName()}You've finished the game with {winner.getScore()} points!";
+            WinnerText.Text = $"Congratulations {winner[0].getName()}You've finished the game with {winner[0].getScore()} points!";
         }
 
         private void setMpWinnerText()
         {
 
-            Player winner = getWinner();
+            List<Player> winner = getWinner();
             List<Player> players = getPlayers();
+
+            Console.WriteLine(winner[0]);
             // Count for the forEach to assign rows.
             int count = 0;
 
@@ -77,8 +79,24 @@ namespace Memory_Project
             scoreBoard.ColumnDefinitions.Add(new ColumnDefinition());
             scoreBoard.ColumnDefinitions.Add(new ColumnDefinition());
 
-            // Set winners
-            WinnerText.Text = $"Congratulations {winner.getName()}You've finished the game with {winner.getScore()} points!";
+            if (winner.Count == 1)
+            {
+                // Set winner if only 1 guy won
+                WinnerText.Text = $"Congratulations {winner[0].getName()}! You've finished the game with {winner[0].getScore()} points!";
+            } else if (winner.Count == 2)
+            {
+                WinnerText.Text = $"Congratulations {winner[0].getName()} and {winner[1].getName()}! You've tied the game with {winner[0].getScore()} points!";
+            } else if (winner.Count > 2)
+            {
+                string tiedWinners = "";
+                // Set winners if multiple people won
+                foreach (Player p in winner)
+                {
+                    tiedWinners += p.getName() + ", ";
+                }
+                WinnerText.Text = $"Congratulations { tiedWinners }! You've tied the game with {winner[0].getScore()} points!";
+            }
+            
 
             playerGrid.RowDefinitions.Add(new RowDefinition());
             playerGrid.Children.Add(scoreBoard);

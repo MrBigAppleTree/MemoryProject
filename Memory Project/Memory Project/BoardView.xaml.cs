@@ -27,6 +27,7 @@ namespace Memory_Project
 
         public int turnCounter = 0;
         string theme;
+        private bool select = false;
 
         List<Player> players;
         Player currentPlayer;
@@ -101,6 +102,23 @@ namespace Memory_Project
         /// <param name="e">Event arguments</param>
         private void card_click(object sender, RoutedEventArgs e)
         {
+            if (select)
+            {
+                Button btn = sender as Button;
+                if (controller.btnToCard(btn).isLonely())
+                {
+                    LonelyCard(btn);
+                }
+                else
+                {
+                    turnCounter++;
+                    turnHandler();
+                }
+                select = false;
+                this.IsHitTestVisible = true;
+                return;
+            }
+
             if(currentPlayer.getClickedBtns().Count < 2)
             {
                 this.IsHitTestVisible = false;
@@ -118,6 +136,17 @@ namespace Memory_Project
                 currentPlayer.getClickedBtns().Add(btn);
                 turnCheck();
             }
+        }
+
+        private async void LonelyCard(Button btn)
+        {
+            this.IsHitTestVisible = false;
+            await flipCard(btn, controller.btnToCard(btn).getFrontImg());
+            await Task.Delay(500);
+            currentPlayer.increaseScore(scoreincrease() * 2);
+            updateScore();
+            controller.removeCard(controller.btnToCard(btn));
+            btn.Visibility = Visibility.Hidden;
         }
 
         /// <summary>
@@ -146,7 +175,8 @@ namespace Memory_Project
                 updateScore();
                 currentPlayer.addCards(gainedCards);
                 turnHandler();
-            } else if (currentPlayer.getClickedBtns().Count == 2)
+            }
+            else if (currentPlayer.getClickedBtns().Count == 2)
             {
                 await Task.Delay(2000);
                 foreach (Button b in currentPlayer.getClickedBtns())
@@ -155,7 +185,7 @@ namespace Memory_Project
                 }
                 turnCounter += 1;
                 turnHandler();
-            } 
+            }
             
         }
 
@@ -184,7 +214,7 @@ namespace Memory_Project
         /// </summary>
         /// <param name="btn">The button to be flipped</param>
         /// <param name="imgPath">The image to flip the card to</param>
-        private async void flipCard(Button btn, string imgPath)
+        private async Task flipCard(Button btn, string imgPath)
         {
             double normalWidth = btn.ActualWidth;
             int animationTimeMillis = 100;
@@ -221,7 +251,7 @@ namespace Memory_Project
             {
                 
                 currentPlayer.getClickedBtns().Clear();
-                Player winner = determineWinner();
+                List<Player> winner = determineWinner();
 
                 // Clear the main panel of useless controls
                 mainPanel.Children.Remove(leftPanel);
@@ -230,7 +260,6 @@ namespace Memory_Project
                 // Display the finish screen
                 displayFinishScreen(players, winner);
 
-                Console.WriteLine("Congratulations Winner:\n" + winner.getName());
             } else
             {
                 currentPlayer = players[turnCounter % players.Count];
@@ -274,6 +303,8 @@ namespace Memory_Project
         {
             string[] bNames = new string[] { "Back", "Save", "Reset" };
 
+
+
             for(int i = 0; i < 3; i++)
             {  
                 NavGrid.ColumnDefinitions.Add(new ColumnDefinition());
@@ -295,6 +326,24 @@ namespace Memory_Project
            
         }
 
+        public void loadUnevenButton()
+        {
+            Button btn = new Button();
+            btn.Content = "Find the lonely card!";
+            btn.Click += unevenClick;
+
+            btn.Margin = new Thickness(5);
+            btn.Padding = new Thickness(5);
+            btn.FontSize = 30;
+
+            btnGrid.Children.Add(btn);
+        }
+
+        public void unevenClick(object sender, RoutedEventArgs e)
+        {
+            select = true;
+        }
+
         public void btnClicks(object sender, RoutedEventArgs e)
         {
             switch ((string)((Button)sender).Content)
@@ -309,17 +358,17 @@ namespace Memory_Project
 
                 case "Reset":
 
-                        foreach (Player p in players)
-                        {
-                            p.setScore(0);
-                        }
+                    foreach (Player p in players)
+                    {
+                        p.setScore(0);
+                    }
 
-                        int cardX = (int)Application.Current.Resources["cardX"];
-                        int cardY = (int)Application.Current.Resources["cardY"];
-                        string theme = (string)Application.Current.Resources["Theme"];
+                    int cardX = (int)Application.Current.Resources["cardX"];
+                    int cardY = (int)Application.Current.Resources["cardY"];
+                    string theme = (string)Application.Current.Resources["Theme"];
 
-                        GameController resetController = new GameController(cardY, cardX, players, theme, null);
-                        this.NavigationService.Navigate(resetController.getView());
+                    GameController resetController = new GameController(cardY, cardX, players, theme, null);
+                    this.NavigationService.Navigate(resetController.getView());
 
                     break;
             }
@@ -372,14 +421,32 @@ namespace Memory_Project
         /// Determines the player with the highest score
         /// </summary>
         /// <returns>Returns the player with the highest score</returns>
-        private Player determineWinner()
+        private List<Player> determineWinner()
         {
-            Player winner = players.Aggregate((player1, player2) => player1.getScore() > player2.getScore() ? player1 : player2);
 
-            return winner;
+            int highestScore = 0;
+            List<Player> winnerList = new List<Player>();
+
+            foreach (Player p in players)
+            {
+                if (p.getScore() > highestScore)
+                {
+                    highestScore = p.getScore();
+                    winnerList.Clear();
+                    winnerList.Add(p);
+
+                } else if (p.getScore() == highestScore && p.getScore() > 0)
+                {
+                    winnerList.Add(p);
+                }
+            }
+
+            //Player winner = players.Aggregate((player1, player2) => player1.getScore() > player2.getScore() ? player1 : player2);
+
+            return winnerList;
         }
 
-        private void displayFinishScreen(List<Player> players, Player winner)
+        private void displayFinishScreen(List<Player> players, List<Player> winner)
         {
             Application.Current.Properties["players"] = players;
             Application.Current.Properties["winner"] = winner;
