@@ -70,7 +70,7 @@ namespace Memory_Project
                         HighGrid.RowDefinitions.Add(new RowDefinition());
                         TextBlock hisc = new TextBlock();
                         hisc.TextAlignment = TextAlignment.Center;
-                        hisc.FontSize = 20;
+                        hisc.FontSize = 15;
                         hisc.Foreground = Brushes.White;
                         hisc.SetValue(Grid.RowProperty, i);
                         hisc.Text = i + 1 + ". " + HighScreen[i].Key + HighScreen[i].Value;
