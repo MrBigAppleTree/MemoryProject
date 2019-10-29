@@ -95,12 +95,12 @@ namespace Memory_Project
         }
         private void comboboxItems1()
         {
-            Dictionary<string, int> maxCard = new Dictionary<string, int>();
-            maxCard.Add(theme, maxCards);
+            //Dictionary<string, int> maxCard = new Dictionary<string, int>();
+            //maxCard.Add(theme, maxCards);
 
             DataContext = this;
             cbItems1 = new ObservableCollection<ComboBoxItem>();
-            for (int i = 0; i <= Math.Sqrt(maxCard[theme] * 2); i++)
+            for (int i = 0; i <= Math.Sqrt(maxCards * 2); i++)
             {
                 if (i == 4)
                 {
@@ -127,13 +127,13 @@ namespace Memory_Project
         }
         private void comboboxItems2()
         {
-            Dictionary<string, int> maxCard = new Dictionary<string, int>();
+            //Dictionary<string, int> maxCard = new Dictionary<string, int>();
 
-            maxCard.Add(theme, maxCards);
+            //maxCard.Add(theme, maxCards);
 
             DataContext = this;
             cbItems2 = new ObservableCollection<ComboBoxItem>();
-            for (int i = 0; i <= Math.Sqrt(maxCard[theme] * 2); i++)
+            for (int i = 0; i <= Math.Sqrt(maxCards * 2); i++)
             {
                 if (i == 4)
                 {

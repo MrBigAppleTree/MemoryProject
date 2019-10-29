@@ -256,11 +256,10 @@ namespace Memory_Project
                 txt.FontSize = 30;
                 txt.Foreground = Brushes.White;
                 txt.SetValue(Grid.RowProperty, i);
-
                 txt.Text = list[i].getName();
                 txt.Inlines.Add(new LineBreak());
-               // txt.Inlines.Add(new LineBreak());
                 txt.Inlines.Add("Score: " + list[i].getScore());
+                txt.Inlines.Add(new LineBreak());                
 
                 PlayerGrid.Children.Add(txt);
             }
@@ -346,7 +345,9 @@ namespace Memory_Project
             {
                 TextBlock txt = (TextBlock)PlayerGrid.Children[i];
                 txt.Inlines.Remove(txt.Inlines.LastInline);
+                txt.Inlines.Remove(txt.Inlines.LastInline);
                 txt.Inlines.Add("Score: " + players[i].getScore());
+                txt.Inlines.Add(new LineBreak());
             }
         }
 
