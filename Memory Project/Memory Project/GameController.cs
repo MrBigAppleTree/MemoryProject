@@ -137,5 +137,10 @@ namespace Memory_Project
         {
             this.serializer = serializer;
         }
+
+        public IFormatter getSerializer()
+        {
+            return serializer;
+        }
     }
 }

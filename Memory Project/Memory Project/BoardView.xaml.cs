@@ -359,6 +359,7 @@ namespace Memory_Project
             switch ((string)((Button)sender).Content)
             {
                 case "Back":
+                    controller.Save(turnCounter);
                     NavigationService.Navigate(new Uri("MainNav.xaml", UriKind.Relative));
                     break;
 
@@ -377,7 +378,7 @@ namespace Memory_Project
                     int cardY = (int)Application.Current.Resources["cardY"];
                     string theme = (string)Application.Current.Resources["Theme"];
 
-                    GameController resetController = new GameController(cardY, cardX, players, theme, null);
+                    GameController resetController = new GameController(cardY, cardX, players, theme, controller.getSerializer());
                     this.NavigationService.Navigate(resetController.getView());
 
                     break;
