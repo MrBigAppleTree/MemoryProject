@@ -42,7 +42,6 @@ namespace Memory_Project
 
             currentTheme = theme;
             backpath = "images/" + currentTheme + "/CardBack.png";
-            //Console.WriteLine(backpath);
             generateImages();
             generateCoords();
             prepareCards();

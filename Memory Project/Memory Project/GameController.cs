@@ -45,7 +45,8 @@ namespace Memory_Project
             {
                 this.height = width;
                 this.width = height;
-            } else
+            }
+            else
             {
                 this.height = height;
                 this.width = width;

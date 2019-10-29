@@ -206,7 +206,10 @@ namespace Memory_Project
                 // Clear the main panel of useless controls
                 mainPanel.Children.Remove(leftPanel);
                 mainPanel.Children.Remove(playGrid);
-
+                foreach (Player p in players)
+                {
+                    HighScores h = new HighScores(controller.getWidth(), controller.getHeight(), p.getScore(), p.getName(), players);
+                }
                 displayFinishScreen(players, winner);
 
                 Console.WriteLine("Congratulations Winner:\n" + winner.getName());

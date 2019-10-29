@@ -26,7 +26,6 @@ namespace Memory_Project
         int maxCards;
         string currentTheme;
         
-        
         public HighNav()
         {
             CheckTheme();
@@ -118,7 +117,14 @@ namespace Memory_Project
                 player.SoundLocation = "music/" + theme + "/BackgroundMusic.wav";
                 player.PlayLooping();
             }
-            catch (Exception e) { }
+            catch (Exception e)
+            {
+            }
+        }
+
+        private void Mute_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
