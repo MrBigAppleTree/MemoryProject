@@ -43,6 +43,7 @@
                 <Button Content="LOTR" x:Name="LOTR" Click="LOTR_Click" Height="60" FontSize="36" Margin="0, 0, 0, 0" HorizontalAlignment="Center" Background="#00000000" BorderBrush="#00000000" Foreground="#FFFFFFFF"/>
                 <Button Content="Avatar" x:Name="Avatar" Click="Avatar_Click" Height="60" FontSize="36" Margin="0, 0, 0, 0" HorizontalAlignment="Center" Background="#00000000" BorderBrush="#00000000" Foreground="#FFFFFFFF"/>
                 <Button Content="NHL Stenden" x:Name="NHLStenden" Click="NHLStenden_Click" Height="60" FontSize="36" Margin="0, 0, 0, 0" HorizontalAlignment="Center" Background="#00000000" BorderBrush="#00000000" Foreground="#FFFFFFFF"/>
+                <Button Content="images/MuteBtn" x:Name="Mute" Click="Mute_Click" Height="60" VerticalAlignment="Bottom" HorizontalAlignment="Right"></Button>
             </StackPanel>
         </Border>
     </Grid>

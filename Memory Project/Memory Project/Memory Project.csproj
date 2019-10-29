@@ -92,6 +92,7 @@
       <DependentUpon>FinishedView.xaml</DependentUpon>
     </Compile>
     <Compile Include="GameController.cs" />
+    <Compile Include="HighScores.cs" />
     <Compile Include="ThemeNav.xaml.cs">
       <DependentUpon>ThemeNav.xaml</DependentUpon>
     </Compile>
