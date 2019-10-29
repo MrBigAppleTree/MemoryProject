@@ -102,7 +102,7 @@ namespace Memory_Project
         /// <param name="e">Event arguments</param>
         private void card_click(object sender, RoutedEventArgs e)
         {
-            if (select)
+            if (select && currentPlayer.getClickedBtns().Count == 0)
             {
                 Button btn = sender as Button;
                 if (controller.btnToCard(btn).isLonely())
@@ -116,6 +116,11 @@ namespace Memory_Project
                 }
                 select = false;
                 this.IsHitTestVisible = true;
+                return;
+            }
+            else if (select)
+            {
+                select = false;
                 return;
             }
 
@@ -147,6 +152,7 @@ namespace Memory_Project
             updateScore();
             controller.removeCard(controller.btnToCard(btn));
             btn.Visibility = Visibility.Hidden;
+            btnGrid.Children.Clear();
         }
 
         /// <summary>
