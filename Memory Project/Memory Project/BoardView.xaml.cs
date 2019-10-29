@@ -260,6 +260,8 @@ namespace Memory_Project
                 {
                     HighScores h = new HighScores(controller.getWidth(), controller.getHeight(), p.getScore(), p.getName(), players);
                 }
+
+                // Display the finish screen
                 displayFinishScreen(players, winner);
 
             } else
