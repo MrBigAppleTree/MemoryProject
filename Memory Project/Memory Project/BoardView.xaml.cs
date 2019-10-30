@@ -272,6 +272,8 @@ namespace Memory_Project
 
             } else
             {
+                controller.Save(turnCounter);
+                updateTurnCounter();
                 currentPlayer = players[turnCounter % players.Count];
                 currentPlayer.getClickedBtns().Clear();
                 setColor(turnCounter % players.Count);
@@ -280,12 +282,27 @@ namespace Memory_Project
             
         }
 
+        private void updateTurnCounter()
+        {
+            TextBlock tcn = (TextBlock)TurnGrid.Children[0];
+            tcn.Text = "Turn: " + (turnCounter+1);
+        }
+
         /// <summary>
         /// loads the players onto the board dynamically
         /// </summary>
         /// <param name="list">The list of players to be loaded onto the board</param>
         public void loadPlayers(List<Player> list)
         {
+            // tcn = turn counter display
+            TextBlock tcn = new TextBlock();
+            tcn.Name = "tcn";
+            tcn.TextAlignment = TextAlignment.Center;
+            tcn.FontSize = 30;
+            tcn.Foreground = Brushes.White;
+            tcn.Text = "Turn: " + (turnCounter+1);
+            TurnGrid.Children.Add(tcn);
+
             players = list;
             for (int i=0; i < list.Count; i++)
             {
@@ -359,6 +376,7 @@ namespace Memory_Project
             switch ((string)((Button)sender).Content)
             {
                 case "Back":
+                    controller.Save(turnCounter);
                     NavigationService.Navigate(new Uri("MainNav.xaml", UriKind.Relative));
                     break;
 
@@ -377,7 +395,7 @@ namespace Memory_Project
                     int cardY = (int)Application.Current.Resources["cardY"];
                     string theme = (string)Application.Current.Resources["Theme"];
 
-                    GameController resetController = new GameController(cardY, cardX, players, theme, null);
+                    GameController resetController = new GameController(cardY, cardX, players, theme, controller.getSerializer());
                     this.NavigationService.Navigate(resetController.getView());
 
                     break;
