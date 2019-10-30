@@ -150,7 +150,6 @@ namespace Memory_Project
             int cardX = (int)Application.Current.Resources["cardX"];
             int cardY = (int)Application.Current.Resources["cardY"];
             string theme = (string)Application.Current.Resources["Theme"];
-            Console.WriteLine(theme);
 
             GameController controller = new GameController(cardX, cardY, players, theme, null);
             this.NavigationService.Navigate(controller.getView());
