@@ -75,10 +75,6 @@ namespace Memory_Project
             }
             List<KeyValuePair<string, int>> tijdelijk = q.MainDic[mode].ToList();
             tijdelijk.Sort((x, y) => (y.Value.CompareTo(x.Value)));
-            if (tijdelijk.Count > 10)
-            {
-                tijdelijk.RemoveAt(tijdelijk.Count - 1);
-            }
             q.MainDic[mode] = tijdelijk.ToDictionary(pair => pair.Key, pair => pair.Value);
             Save(q);
         }

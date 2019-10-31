@@ -68,13 +68,32 @@ namespace Memory_Project
                     try
                     {
                         HighGrid.RowDefinitions.Add(new RowDefinition());
-                        TextBlock hisc = new TextBlock();
-                        hisc.TextAlignment = TextAlignment.Center;
-                        hisc.FontSize = 15;
-                        hisc.Foreground = Brushes.White;
-                        hisc.SetValue(Grid.RowProperty, i);
-                        hisc.Text = i + 1 + ". " + HighScreen[i].Key + HighScreen[i].Value;
-                        HighGrid.Children.Add(hisc);
+                        TextBlock Position = new TextBlock();
+                        Position.TextAlignment = TextAlignment.Left;
+                        Position.FontSize = 25;
+                        Position.Foreground = Brushes.White;
+                        Position.SetValue(Grid.RowProperty, i);
+                        Position.SetValue(Grid.ColumnProperty, 0);
+                        Position.Text = i + 1 + ".";
+                        HighGrid.Children.Add(Position);
+
+                        TextBlock PlayerName = new TextBlock();
+                        PlayerName.TextAlignment = TextAlignment.Left;
+                        PlayerName.FontSize = 25;
+                        PlayerName.Foreground = Brushes.White;
+                        PlayerName.SetValue(Grid.RowProperty, i);
+                        PlayerName.SetValue(Grid.ColumnProperty, 1);
+                        PlayerName.Text = HighScreen[i].Key;
+                        HighGrid.Children.Add(PlayerName);
+
+                        TextBlock Scores = new TextBlock();
+                        Scores.TextAlignment = TextAlignment.Left;
+                        Scores.FontSize = 25;
+                        Scores.Foreground = Brushes.White;
+                        Scores.SetValue(Grid.RowProperty, i);
+                        Scores.SetValue(Grid.ColumnProperty, 2);
+                        Scores.Text = Convert.ToString(HighScreen[i].Value);
+                        HighGrid.Children.Add(Scores);
                     }
                     catch
                     {
