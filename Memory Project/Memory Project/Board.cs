@@ -13,15 +13,19 @@ namespace Memory_Project
     /// <summary>
     /// Backend logic for the game board.
     /// </summary>
+    [Serializable]
     public class Board
     {
         private int height;
         private int width;
         private List<Card> boardList = new List<Card>();
+        [NonSerialized]
         private List<int> availableCards = new List<int>();
+        [NonSerialized]
         private List<Tuple<int, int>> availableCoords = new List<Tuple<int, int>>();
         string currentTheme;
         string backpath;
+        [NonSerialized]
         BoardView view;
 
         /// <summary>
@@ -30,15 +34,14 @@ namespace Memory_Project
         /// <param name="height">Height of the board measured in cards</param>
         /// <param name="width">Witdh of the board measured in cards</param>
         /// <param name="b">The boardview instance upon which the game will be played</param>
-        public Board(int height, int width, BoardView b)
+        public Board(int height, int width, BoardView b, string theme)
         {
             this.height = height;
             this.width = width;
             view = b;
 
-            currentTheme = (string)Application.Current.Resources["Theme"];
+            currentTheme = theme;
             backpath = "images/" + currentTheme + "/CardBack.png";
-            //Console.WriteLine(backpath);
             generateImages();
             generateCoords();
             prepareCards();
@@ -51,6 +54,7 @@ namespace Memory_Project
         private void generateImages()
         {
             int maxCards = (Directory.GetFiles("../../images/" + currentTheme).Length) - 3;
+            Console.WriteLine("Max:" + maxCards);
             for(int i = 1; i <= maxCards; i++)
             {
                 availableCards.Add(i);
@@ -69,8 +73,8 @@ namespace Memory_Project
                     availableCoords.Add(new Tuple<int, int>(i, j));
                 }
             }
-            for (int i=0; i < 5; i++){
-                availableCoords.listShuffle();
+            for (int i=0; i < 3; i++){
+                availableCoords = listShuffle(availableCoords);
             }
             
         }
@@ -100,14 +104,16 @@ namespace Memory_Project
                 string frontpath = "images/" + currentTheme + "/card" + img + ".png";
                 Tuple<int, int> coord = coords();
                 Card temp = new Card(coord.Item1, coord.Item2, frontpath, backpath);
+                temp.setLonely();
                 boardList.Add(temp);
+
             }
         }
 
         /// <summary>
         /// Adds all cards to the boardview
         /// </summary>
-        private void prepareBoard()
+        public void prepareBoard()
         {
             view.addToGrid(height, width);
             foreach(Card c in boardList)
@@ -197,11 +203,12 @@ namespace Memory_Project
             return this.boardList;
         }
 
-    }
+        public void setView(BoardView b)
+        {
+            this.view = b;
+        }
 
-    public static class Randomization
-    {
-        public static void listShuffle<T>(this IList<T> list)
+        private List<Tuple<int, int>> listShuffle(List<Tuple<int, int>> list)
         {
             RNGCryptoServiceProvider rnd = new RNGCryptoServiceProvider();
             int i = list.Count;
@@ -218,6 +225,8 @@ namespace Memory_Project
                 list[k] = list[i];
                 list[i] = value;
             }
+            return list;
         }
+
     }
 }

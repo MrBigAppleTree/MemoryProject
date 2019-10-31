@@ -13,62 +13,136 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Media;
+using System.IO;
 
 namespace Memory_Project
 {
     /// <summary>
     /// Interaction logic for HighNav.xaml
-    /// </summary>
+    /// </summary> 
     public partial class HighNav : Page
     {
+        int cardNumber;
+        int maxCards;
+        string currentTheme;
+        
         public HighNav()
         {
-            CheckTheme();
+
+            SetTheme();
+
         }
 
         private void back_click(object sender, RoutedEventArgs e)
         {
+
             this.NavigationService.Navigate(new Uri("MainNav.xaml", UriKind.Relative));
+
         }
 
-        private void CheckTheme()
+        private void SetTheme()
         {
+
             InitializeComponent();
-            string currentTheme = (string)Application.Current.Resources["Theme"];
+
+            currentTheme = (string)Application.Current.Resources["Theme"];
+            maxCards = (Directory.GetFiles("../../images/" + currentTheme).Length) - 3;
             BackgroundImg.Source = new BitmapImage(new Uri(@"../../images/" + currentTheme + "/MenuBackground.png", UriKind.Relative));
-            startMusic(currentTheme);
+
+            ConfigView config = new ConfigView();
+            config.MusicToggle(currentTheme);
+
+            SelectCard();
+
         }
 
 
         private void LOTR_Click(object sender, RoutedEventArgs e)
         {
+
             Application.Current.Resources["Theme"] = "LOTR";
-            CheckTheme();
+
+            SetTheme();
+
         }
 
         private void Avatar_Click(object sender, RoutedEventArgs e)
         {
+
             Application.Current.Resources["Theme"] = "Avatar";
-            CheckTheme();
+
+            SetTheme();
+
         }
 
         private void NHLStenden_Click(object sender, RoutedEventArgs e)
         {
+
             Application.Current.Resources["Theme"] = "NHLStenden";
-            CheckTheme();
+
+            SetTheme();
+
         }
 
+        private void SelectCard()
+        {
+
+            cardNumber = 1;
+            string frontpath = "/images/" + currentTheme + "/card" + cardNumber + ".png";
+            CardPreview.Source = new BitmapImage(new Uri(frontpath, UriKind.RelativeOrAbsolute));
+
+        }
+
+        private void next_click(object sender, RoutedEventArgs e)
+        {
+
+            if (cardNumber < maxCards)
+            {
+                cardNumber++;
+                
+                string frontpath = "/images/" + currentTheme + "/card" + cardNumber + ".png";
+                CardPreview.Source = new BitmapImage(new Uri(frontpath, UriKind.RelativeOrAbsolute));
+            }
+            else
+            {
+                cardNumber = 1;
+                
+                string frontpath = "/images/" + currentTheme + "/card" + cardNumber + ".png";
+                CardPreview.Source = new BitmapImage(new Uri(frontpath, UriKind.RelativeOrAbsolute));
+            }
+
+        }
+
+        private void prev_click(object sender, RoutedEventArgs e)
+        {
+
+            if (cardNumber > 1)
+            {
+                cardNumber--;
+                string frontpath = "/images/" + currentTheme + "/card" + cardNumber + ".png";
+                CardPreview.Source = new BitmapImage(new Uri(frontpath, UriKind.RelativeOrAbsolute));
+            }
+
+            else
+            {
+                cardNumber = maxCards;
+                string frontpath = "/images/" + currentTheme + "/card" + cardNumber + ".png";
+                CardPreview.Source = new BitmapImage(new Uri(frontpath, UriKind.RelativeOrAbsolute));
+            }
+
+        }
         private void startMusic(string theme)
         {
+
             try
             {
-
                 SoundPlayer player = new SoundPlayer();
                 player.Stop();
                 player.SoundLocation = "music/" + theme + "/BackgroundMusic.wav";
                 player.PlayLooping();
             }
             catch (Exception e) { }
+
         }
     }
 }

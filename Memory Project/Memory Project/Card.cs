@@ -9,12 +9,14 @@ namespace Memory_Project
     /// <summary>
     /// Storage class for information about the card
     /// </summary>
+    [Serializable]
     public class Card
     {
         private int xPos;
         private int yPos;
         private string frontImgPath;
         private string backImgPath;
+        private bool lonely = false;
 
         /// <summary>
         /// Creates an instance of the card class
@@ -46,6 +48,19 @@ namespace Memory_Project
         public bool locationCheck(int x, int y)
         {
             return (x == xPos && y == yPos);
+        }
+
+        /// <summary>
+        /// Sets the lonely boolean if this card has no pair on the board
+        /// </summary>
+        public void setLonely()
+        {
+            this.lonely = true;
+        }
+
+        public bool isLonely()
+        {
+            return lonely;
         }
     }
 }

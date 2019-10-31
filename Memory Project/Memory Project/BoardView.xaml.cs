@@ -10,6 +10,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -24,7 +25,9 @@ namespace Memory_Project
     {
         GameController controller;
 
-        int turnCounter = 0;
+        public int turnCounter = 0;
+        string theme;
+        private bool select = false;
 
         List<Player> players;
         Player currentPlayer;
@@ -33,15 +36,15 @@ namespace Memory_Project
         /// Makes a new instance of the boardview upon which the game is played
         /// </summary>
         /// <param name="controller">The controller who initialised this</param>
-        public BoardView(GameController controller)
+        public BoardView(GameController controller, string theme)
         {
             InitializeComponent();
             this.controller = controller;
             try
             {
-                string currentTheme = (string)Application.Current.Resources["Theme"];
-                Console.WriteLine(currentTheme);
-                BackgroundImg.ImageSource = new BitmapImage(new Uri(@"../../images/"+currentTheme+"/BoardBackground.png", UriKind.Relative));
+                this.theme = theme;
+                Console.WriteLine(theme);
+                BackgroundImg.ImageSource = new BitmapImage(new Uri(@"../../images/"+theme+"/BoardBackground.png", UriKind.Relative));
                 Console.WriteLine(BackgroundImg.ImageSource);
             } catch (Exception e)
             {
@@ -99,6 +102,28 @@ namespace Memory_Project
         /// <param name="e">Event arguments</param>
         private void card_click(object sender, RoutedEventArgs e)
         {
+            if (select && currentPlayer.getClickedBtns().Count == 0)
+            {
+                Button btn = sender as Button;
+                if (controller.btnToCard(btn).isLonely())
+                {
+                    LonelyCard(btn);
+                }
+                else
+                {
+                    turnCounter++;
+                    turnHandler();
+                }
+                select = false;
+                this.IsHitTestVisible = true;
+                return;
+            }
+            else if (select)
+            {
+                select = false;
+                return;
+            }
+
             if(currentPlayer.getClickedBtns().Count < 2)
             {
                 this.IsHitTestVisible = false;
@@ -113,13 +138,21 @@ namespace Memory_Project
                     return;
                 }
                 flipCard(btn, frontImgPath);
-                
-                Console.WriteLine(((Image)btn.Content).Source);
-                //this.NavigationService.Refresh();
                 currentPlayer.getClickedBtns().Add(btn);
                 turnCheck();
-                //return;
             }
+        }
+
+        private async void LonelyCard(Button btn)
+        {
+            this.IsHitTestVisible = false;
+            await flipCard(btn, controller.btnToCard(btn).getFrontImg());
+            await Task.Delay(500);
+            currentPlayer.increaseScore(scoreincrease() * 2);
+            updateScore();
+            controller.removeCard(controller.btnToCard(btn));
+            btn.Visibility = Visibility.Hidden;
+            btnGrid.Children.Clear();
         }
 
         /// <summary>
@@ -127,16 +160,14 @@ namespace Memory_Project
         /// If two cards have been selected, the card faces will be compared. If equal, these cards willbe added to the players card stack
         /// and removed from the board. If not equal, both cards will be turned back around.
         /// </summary>
-        private void turnCheck()
+        private async void turnCheck()
         {
             this.IsHitTestVisible = true;
-            Dispatcher.Invoke(new Action(() => { }), DispatcherPriority.ContextIdle, null);
+            //Dispatcher.Invoke(new Action(() => { }), DispatcherPriority.ContextIdle, null);
             
             if (currentPlayer.getClickedBtns().Count == 2 && compareCards(currentPlayer.getClickedBtns()))
             {
-
-                Thread.Sleep(1000);
-
+                await Task.Delay(2000);
                 List<Card> gainedCards = new List<Card>();
                 foreach(Button b in currentPlayer.getClickedBtns())
                 {
@@ -146,21 +177,42 @@ namespace Memory_Project
                     controller.removeCard(c);
                 }
                 Console.WriteLine("cards moved to player: " + currentPlayer.getName());
-                currentPlayer.increaseScore(100);
+                currentPlayer.increaseScore(scoreincrease());
                 updateScore();
                 currentPlayer.addCards(gainedCards);
                 turnHandler();
-            } else if (currentPlayer.getClickedBtns().Count == 2)
+            }
+            else if (currentPlayer.getClickedBtns().Count == 2)
             {
-                Thread.Sleep(2000);
+                await Task.Delay(2000);
                 foreach (Button b in currentPlayer.getClickedBtns())
                 {
                     flipCard(b, controller.btnToCard(b).getBackImg());
                 }
                 turnCounter += 1;
                 turnHandler();
-            } 
+            }
             
+        }
+
+        private int scoreincrease()
+        {
+            //turnCounter
+            double totalcards = controller.getHeight() + controller.getWidth();
+            double temp1 = (totalcards / 4);
+            double temp2 = totalcards / 2;
+            if (turnCounter < temp1)
+            {
+                return 125;
+            }
+            else if (turnCounter > temp2)
+            {
+                return 50;
+            }
+            else
+            {
+                return 100;
+            }
         }
 
         /// <summary>
@@ -168,32 +220,32 @@ namespace Memory_Project
         /// </summary>
         /// <param name="btn">The button to be flipped</param>
         /// <param name="imgPath">The image to flip the card to</param>
-        private void flipCard(Button btn, string imgPath)
+        private async Task flipCard(Button btn, string imgPath)
         {
-            int normalWidth = (int)btn.ActualWidth;
+            double normalWidth = btn.ActualWidth;
+            int animationTimeMillis = 100;
 
-            for(int i = normalWidth; i >= 0; i--)
-            {
-                btn.Width = i;
-
-                //Dispatcher.Invoke(new Action(() => { }), DispatcherPriority.ContextIdle, null);
-                //Thread.Sleep(1);
-
-            }
+            playGrid.IsHitTestVisible = false;
+            DoubleAnimation da1 = new DoubleAnimation();
+            da1.From = normalWidth;
+            da1.To = 0;
+            da1.Duration = new Duration(new TimeSpan(0,0,0,0, animationTimeMillis));
+            btn.BeginAnimation(FrameworkElement.WidthProperty, da1);
+            await Task.Delay(animationTimeMillis + 100);
 
             Image img = new Image();
             img.Source = new BitmapImage(new Uri(imgPath, UriKind.Relative));
             img.Stretch = Stretch.Fill;
             btn.Content = img;
 
-            for (int i = 0; i <= normalWidth; i++)
-            {
-                btn.Width = i;
+            DoubleAnimation da2 = new DoubleAnimation();
+            da2.From = 0;
+            da2.To = normalWidth;
+            da2.Duration = new Duration(new TimeSpan(0, 0, 0, 0, animationTimeMillis));
+            btn.BeginAnimation(FrameworkElement.WidthProperty, da2);
+            await Task.Delay(animationTimeMillis + 100);
 
-                //Dispatcher.Invoke(new Action(() => { }), DispatcherPriority.ContextIdle, null);
-                //Thread.Sleep(1);
-
-            }
+            playGrid.IsHitTestVisible = true;
         }
 
         /// <summary>
@@ -205,11 +257,23 @@ namespace Memory_Project
             {
                 
                 currentPlayer.getClickedBtns().Clear();
-                Player winner = determineWinner();
+                List<Player> winner = determineWinner();
 
+                // Clear the main panel of useless controls
+                mainPanel.Children.Remove(leftPanel);
+                mainPanel.Children.Remove(playGrid);
+                foreach (Player p in players)
+                {
+                    HighScores h = new HighScores(controller.getWidth(), controller.getHeight(), p.getScore(), p.getName(), players);
+                }
+
+                // Display the finish screen
                 displayFinishScreen(players, winner);
+
             } else
             {
+                controller.Save(turnCounter);
+                updateTurnCounter();
                 currentPlayer = players[turnCounter % players.Count];
                 currentPlayer.getClickedBtns().Clear();
                 setColor(turnCounter % players.Count);
@@ -218,12 +282,27 @@ namespace Memory_Project
             
         }
 
+        private void updateTurnCounter()
+        {
+            TextBlock tcn = (TextBlock)TurnGrid.Children[0];
+            tcn.Text = "Turn: " + (turnCounter+1);
+        }
+
         /// <summary>
         /// loads the players onto the board dynamically
         /// </summary>
         /// <param name="list">The list of players to be loaded onto the board</param>
         public void loadPlayers(List<Player> list)
         {
+            // tcn = turn counter display
+            TextBlock tcn = new TextBlock();
+            tcn.Name = "tcn";
+            tcn.TextAlignment = TextAlignment.Center;
+            tcn.FontSize = 30;
+            tcn.Foreground = Brushes.White;
+            tcn.Text = "Turn: " + (turnCounter+1);
+            TurnGrid.Children.Add(tcn);
+
             players = list;
             for (int i=0; i < list.Count; i++)
             {
@@ -233,11 +312,10 @@ namespace Memory_Project
                 txt.FontSize = 30;
                 txt.Foreground = Brushes.White;
                 txt.SetValue(Grid.RowProperty, i);
-
                 txt.Text = list[i].getName();
                 txt.Inlines.Add(new LineBreak());
-               // txt.Inlines.Add(new LineBreak());
                 txt.Inlines.Add("Score: " + list[i].getScore());
+                txt.Inlines.Add(new LineBreak());                
 
                 PlayerGrid.Children.Add(txt);
             }
@@ -251,6 +329,8 @@ namespace Memory_Project
         public void loadButtons()
         {
             string[] bNames = new string[] { "Back", "Save", "Reset" };
+
+
 
             for(int i = 0; i < 3; i++)
             {  
@@ -273,9 +353,54 @@ namespace Memory_Project
            
         }
 
+        public void loadUnevenButton()
+        {
+            Button btn = new Button();
+            btn.Content = "Find the lonely card!";
+            btn.Click += unevenClick;
+
+            btn.Margin = new Thickness(5);
+            btn.Padding = new Thickness(5);
+            btn.FontSize = 30;
+
+            btnGrid.Children.Add(btn);
+        }
+
+        public void unevenClick(object sender, RoutedEventArgs e)
+        {
+            select = true;
+        }
+
         public void btnClicks(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("MainNav.xaml", UriKind.Relative));
+            switch ((string)((Button)sender).Content)
+            {
+                case "Back":
+                    controller.Save(turnCounter);
+                    NavigationService.Navigate(new Uri("MainNav.xaml", UriKind.Relative));
+                    break;
+
+                case "Save":
+                    controller.Save(turnCounter);
+                    break;
+
+                case "Reset":
+
+                    foreach (Player p in players)
+                    {
+                        p.setScore(0);
+                    }
+
+                    int cardX = (int)Application.Current.Resources["cardX"];
+                    int cardY = (int)Application.Current.Resources["cardY"];
+                    string theme = (string)Application.Current.Resources["Theme"];
+
+                    GameController resetController = new GameController(cardY, cardX, players, theme, controller.getSerializer());
+                    this.NavigationService.Navigate(resetController.getView());
+
+                    break;
+            }
+            
         }
 
         private void setColor(int i)
@@ -297,7 +422,9 @@ namespace Memory_Project
             {
                 TextBlock txt = (TextBlock)PlayerGrid.Children[i];
                 txt.Inlines.Remove(txt.Inlines.LastInline);
+                txt.Inlines.Remove(txt.Inlines.LastInline);
                 txt.Inlines.Add("Score: " + players[i].getScore());
+                txt.Inlines.Add(new LineBreak());
             }
         }
 
@@ -322,19 +449,37 @@ namespace Memory_Project
         /// Determines the player with the highest score
         /// </summary>
         /// <returns>Returns the player with the highest score</returns>
-        private Player determineWinner()
+        private List<Player> determineWinner()
         {
-            Player winner = players.Aggregate((player1, player2) => player1.getScore() > player2.getScore() ? player1 : player2);
 
-            return winner;
+            int highestScore = 0;
+            List<Player> winnerList = new List<Player>();
+
+            foreach (Player p in players)
+            {
+                if (p.getScore() > highestScore)
+                {
+                    highestScore = p.getScore();
+                    winnerList.Clear();
+                    winnerList.Add(p);
+
+                } else if (p.getScore() == highestScore && p.getScore() > 0)
+                {
+                    winnerList.Add(p);
+                }
+            }
+
+            //Player winner = players.Aggregate((player1, player2) => player1.getScore() > player2.getScore() ? player1 : player2);
+
+            return winnerList;
         }
 
-        private void displayFinishScreen(List<Player> players, Player winner)
+        private void displayFinishScreen(List<Player> players, List<Player> winner)
         {
             Application.Current.Properties["players"] = players;
             Application.Current.Properties["winner"] = winner;
-            NavigationService.Navigate(new Uri("FinishedView.xaml", UriKind.Relative));
 
+            NavigationService.Navigate(new Uri("FinishedView.xaml", UriKind.Relative));
         }
     }
 }

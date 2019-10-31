@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,7 +24,10 @@ namespace Memory_Project
     /// </summary>
     public partial class PlayNav : Page
     {
-        private string theme = (string)Application.Current.Resources["Theme"];
+        private string theme;
+        private int maxCards;
+
+        IFormatter serializer = new BinaryFormatter();
 
         //Databinding variables for combobox items height/width
         public ObservableCollection<ComboBoxItem> cbItems1 { get; set; }
@@ -38,6 +44,9 @@ namespace Memory_Project
         public PlayNav()
         {
             InitializeComponent();
+            theme = (string)Application.Current.Resources["Theme"];
+            maxCards = (Directory.GetFiles("../../images/" + theme).Length) - 3;
+
             InitializePlayers();
             comboboxItems1();
             comboboxItems2();
@@ -84,14 +93,15 @@ namespace Memory_Project
             }
 
         }
+
         private void comboboxItems1()
         {
-            Dictionary<string, int> maxCards = new Dictionary<string, int>();
-            maxCards.Add(theme, 32);
+            //Dictionary<string, int> maxCard = new Dictionary<string, int>();
+            //maxCard.Add(theme, maxCards);
 
             DataContext = this;
             cbItems1 = new ObservableCollection<ComboBoxItem>();
-            for (int i = 0; i <= Math.Sqrt(maxCards[theme] * 2); i++)
+            for (int i = 0; i <= Math.Sqrt(maxCards * 2); i++)
             {
                 if (i == 4)
                 {
@@ -116,14 +126,16 @@ namespace Memory_Project
             */
 
         }
+
         private void comboboxItems2()
         {
-            Dictionary<string, int> maxCards = new Dictionary<string, int>();
-            maxCards.Add(theme, 32);
+            //Dictionary<string, int> maxCard = new Dictionary<string, int>();
+
+            //maxCard.Add(theme, maxCards);
 
             DataContext = this;
             cbItems2 = new ObservableCollection<ComboBoxItem>();
-            for (int i = 0; i <= Math.Sqrt(maxCards[theme] * 2); i++)
+            for (int i = 0; i <= Math.Sqrt(maxCards * 2); i++)
             {
                 if (i == 4)
                 {
@@ -143,27 +155,19 @@ namespace Memory_Project
             this.NavigationService.Navigate(new Uri("MainNav.xaml", UriKind.Relative));
 
         }
-        public string StringFromRichTextBox(RichTextBox rtb)
-        {
-            TextRange textRange = new TextRange(
-                // TextPointer to the start of content in the RichTextBox.
-                rtb.Document.ContentStart,
-                // TextPointer to the end of content in the RichTextBox.
-                rtb.Document.ContentEnd
-          );
-                return textRange.Text;
-
 
             // The Text property on a TextRange object returns a string
             // representing the plain text content of the TextRange.
-        }
         public void new_click(object sender, RoutedEventArgs e)
         {
             List<Player> players = new List<Player>();
             int numPlayers = Convert.ToInt32(Players.Text);
             int height = Convert.ToInt32(comboHeight.Text);
             int width = Convert.ToInt32(comboWidth.Text);
- 
+            Application.Current.Resources["cardY"] = height;
+            Application.Current.Resources["cardX"] = width;
+            
+
             for (int i = 0; i < numPlayers; i++)
             {
                 RichTextBox rtb = (RichTextBox)FindName("Player" + (i));
@@ -177,16 +181,32 @@ namespace Memory_Project
                     return;
                 }
             }
-            GameController controller = new GameController(height, width, players);
+
+            GameController controller = new GameController(height, width, players, theme, serializer);
             this.NavigationService.Navigate(controller.getView());
         }
+
+        public string StringFromRichTextBox(RichTextBox rtb)
+        {
+            TextRange textRange = new TextRange(
+                // TextPointer to the start of content in the RichTextBox.
+                rtb.Document.ContentStart,
+                // TextPointer to the end of content in the RichTextBox.
+                rtb.Document.ContentEnd
+          );
+            return textRange.Text;
+
+
+            // The Text property on a TextRange object returns a string
+            // representing the plain text content of the TextRange.
+        }
+
         //Character limit for playername input to prevent overflow on BoardView
         //Add method per Player
-        //BUG Can still press enter in richboxtext
         private void RichTextKeyDown0(object sender, KeyEventArgs e)
         {
             TextRange tr = new TextRange(Player0.Document.ContentStart, Player0.Document.ContentEnd);
-            if (tr.Text.Length >= 15 || e.Key == Key.Space || e.Key == Key.Enter)
+            if ((tr.Text.Length >= 13 || e.Key == Key.Enter) && e.Key != Key.Back)
             {
                 e.Handled = true;
                 return;
@@ -196,7 +216,7 @@ namespace Memory_Project
         private void RichTextKeyDown1(object sender, KeyEventArgs e)
         {
             TextRange tr = new TextRange(Player1.Document.ContentStart, Player1.Document.ContentEnd);
-            if (tr.Text.Length >= 15 || e.Key == Key.Space || e.Key == Key.Enter)
+            if ((tr.Text.Length >= 13 || e.Key == Key.Enter) && e.Key != Key.Back)
             {
                 e.Handled = true;
                 return;
@@ -205,7 +225,7 @@ namespace Memory_Project
         private void RichTextKeyDown2(object sender, KeyEventArgs e)
         {
             TextRange tr = new TextRange(Player2.Document.ContentStart, Player2.Document.ContentEnd);
-            if (tr.Text.Length >= 15 || e.Key == Key.Space || e.Key == Key.Enter)
+            if ((tr.Text.Length >= 13 || e.Key == Key.Enter) && e.Key != Key.Back)
             {
                 e.Handled = true;
                 return;
@@ -214,11 +234,21 @@ namespace Memory_Project
         private void RichTextKeyDown3(object sender, KeyEventArgs e)
         {
             TextRange tr = new TextRange(Player3.Document.ContentStart, Player3.Document.ContentEnd);
-            if (tr.Text.Length >= 15 || e.Key == Key.Space || e.Key == Key.Enter)
+            if ((tr.Text.Length >= 13 || e.Key == Key.Enter) && e.Key != Key.Back)
             {
                 e.Handled = true;
                 return;
             }
+        }
+
+        private void load_Click(object sender, RoutedEventArgs e)
+        {
+            Stream stream = new FileStream("../../Save/Save.sav", FileMode.Open, FileAccess.Read, FileShare.Read);
+            GameController controller = (GameController)serializer.Deserialize(stream);
+            controller.setSerializer(serializer);
+            stream.Close();
+            controller.createBoardView();
+            this.NavigationService.Navigate(controller.getView());
         }
     }
 
