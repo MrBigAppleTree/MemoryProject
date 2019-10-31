@@ -20,7 +20,7 @@
             </Label>
             <Button Content="Play" x:Name="play" Click="play_click" Height="60" FontSize="36" Margin="0, 0, 0, 0" HorizontalAlignment="Left" Background="#00000000" BorderBrush="#00000000" Foreground="#FFFFFFFF"/>
             <Button Content="Theme" x:Name="theme" Click="theme_click" Height="60" FontSize="36" Margin="0, 0, 0, 0" HorizontalAlignment="Left" Background="#00000000" BorderBrush="#00000000" Foreground="#FFFFFFFF"/>
-            <Button Content="Config" x:Name="config" Click="config_click" Height="60" FontSize="36" Margin="0, 0, 0, 0" HorizontalAlignment="Left" Background="#00000000" BorderBrush="#00000000" Foreground="#FFFFFFFF"/>
+            <Button Content="Configuration" x:Name="config" Click="config_click" Height="60" FontSize="36" Margin="0, 0, 0, 0" HorizontalAlignment="Left" Background="#00000000" BorderBrush="#00000000" Foreground="#FFFFFFFF"/>
             <Button Content="Close Game" x:Name="close" Click="close_click" Height="60" FontSize="36" Margin="0, 0, 0, 0" HorizontalAlignment="Left" Background="#00000000" BorderBrush="#00000000" Foreground="#FFFFFFFF"/>
         </StackPanel>
         <Border Margin="0, 0, 50, 0" HorizontalAlignment="Right" VerticalAlignment="Center" Background="#99FFFFFF" Width="404" Height="644">

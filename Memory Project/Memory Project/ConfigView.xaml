@@ -28,7 +28,7 @@
                         <TextBlock.TextDecorations>
                             <TextDecoration Location="Underline" PenOffset="8" PenOffsetUnit="Pixel"/>
                         </TextBlock.TextDecorations>
-                    Config
+                    Configuration
                     </TextBlock>
                 </Label>
                 
