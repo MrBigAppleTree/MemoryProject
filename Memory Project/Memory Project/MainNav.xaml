@@ -33,29 +33,29 @@
                 </Label>
 
                 <ComboBox x:Name="Width" DropDownClosed="Mode_Change" FontSize="20" HorizontalAlignment="Right" Margin="0, -50, 100, 0" VerticalAlignment="Top" Width="45" Height="35" Background="Gray" BorderBrush="#00ACACAC" Foreground="White">
-                    <ComboBoxItem Content="2" HorizontalAlignment="Left" Width="45"/>
-                    <ComboBoxItem Content="3" HorizontalAlignment="Left" Width="45"/>
-                    <ComboBoxItem Content="4" HorizontalAlignment="Left" Width="45" IsSelected="True"/>
-                    <ComboBoxItem Content="5" HorizontalAlignment="Left" Width="45"/>
-                    <ComboBoxItem Content="6" HorizontalAlignment="Left" Width="45"/>
-                    <ComboBoxItem Content="7" HorizontalAlignment="Left" Width="45"/>
-                    <ComboBoxItem Content="8" HorizontalAlignment="Left" Width="45"/>
+                    <ComboBoxItem Content="2" HorizontalAlignment="Left" Width="45" Template="{DynamicResource ComboBoxItemControlTemplate1}"/>
+                    <ComboBoxItem Content="3" HorizontalAlignment="Left" Width="45" Template="{DynamicResource ComboBoxItemControlTemplate1}"/>
+                    <ComboBoxItem Content="4" HorizontalAlignment="Left" Width="45" IsSelected="True" Template="{DynamicResource ComboBoxItemControlTemplate1}"/>
+                    <ComboBoxItem Content="5" HorizontalAlignment="Left" Width="45" Template="{DynamicResource ComboBoxItemControlTemplate1}"/>
+                    <ComboBoxItem Content="6" HorizontalAlignment="Left" Width="45" Template="{DynamicResource ComboBoxItemControlTemplate1}"/>
+                    <ComboBoxItem Content="7" HorizontalAlignment="Left" Width="45" Template="{DynamicResource ComboBoxItemControlTemplate1}"/>
+                    <ComboBoxItem Content="8" HorizontalAlignment="Left" Width="45" Template="{DynamicResource ComboBoxItemControlTemplate1}"/>
                 </ComboBox>
 
                 <ComboBox x:Name="Height" DropDownClosed="Mode_Change" FontSize="20" HorizontalAlignment="Right" Margin="0, -50, 16, 0" VerticalAlignment="Top" Width="45" Height="35" Background="Gray" BorderBrush="#00ACACAC" Foreground="White">
-                    <ComboBoxItem Content="2" HorizontalAlignment="Left" Width="45"/>
-                    <ComboBoxItem Content="3" HorizontalAlignment="Left" Width="45"/>
-                    <ComboBoxItem Content="4" HorizontalAlignment="Left" Width="45" IsSelected="True"/>
-                    <ComboBoxItem Content="5" HorizontalAlignment="Left" Width="45"/>
-                    <ComboBoxItem Content="6" HorizontalAlignment="Left" Width="45"/>
-                    <ComboBoxItem Content="7" HorizontalAlignment="Left" Width="45"/>
-                    <ComboBoxItem Content="8" HorizontalAlignment="Left" Width="45"/>
+                    <ComboBoxItem Content="2" HorizontalAlignment="Left" Width="45" Template="{DynamicResource ComboBoxItemControlTemplate1}"/>
+                    <ComboBoxItem Content="3" HorizontalAlignment="Left" Width="45" Template="{DynamicResource ComboBoxItemControlTemplate1}"/>
+                    <ComboBoxItem Content="4" HorizontalAlignment="Left" Width="45" IsSelected="True" Template="{DynamicResource ComboBoxItemControlTemplate1}"/>
+                    <ComboBoxItem Content="5" HorizontalAlignment="Left" Width="45" Template="{DynamicResource ComboBoxItemControlTemplate1}"/>
+                    <ComboBoxItem Content="6" HorizontalAlignment="Left" Width="45" Template="{DynamicResource ComboBoxItemControlTemplate1}"/>
+                    <ComboBoxItem Content="7" HorizontalAlignment="Left" Width="45" Template="{DynamicResource ComboBoxItemControlTemplate1}"/>
+                    <ComboBoxItem Content="8" HorizontalAlignment="Left" Width="45" Template="{DynamicResource ComboBoxItemControlTemplate1}"/>
                 </ComboBox>
-                <ComboBox x:Name="hiscr" DropDownClosed="Mode_Change" FontSize="20" HorizontalAlignment="Left" Margin="10, 10, 0, 0" VerticalAlignment="Top" Height="35" Background="Gray" BorderBrush="#00ACACAC" Foreground="White">
-                    <ComboBoxItem Content="Singleplayer" HorizontalAlignment="Left" IsSelected="True"/>
-                    <ComboBoxItem Content="2 Players" HorizontalAlignment="Left"/>
-                    <ComboBoxItem Content="3 Players" HorizontalAlignment="Left"/>
-                    <ComboBoxItem Content="4 Players" HorizontalAlignment="Left"/>
+                <ComboBox x:Name="hiscr" DropDownClosed="Mode_Change" FontSize="20" HorizontalAlignment="Left" Margin="10, 10, 0, 0" VerticalAlignment="Top" Height="35" Background="Gray" BorderBrush="#FFFFFFFF" Foreground="White">
+                    <ComboBoxItem Content="Singleplayer" IsSelected="True" Template="{DynamicResource ComboBoxItemControlTemplate1}"/>
+                    <ComboBoxItem Content="2 Players" Template="{DynamicResource ComboBoxItemControlTemplate1}"/>
+                    <ComboBoxItem Content="3 Players" Template="{DynamicResource ComboBoxItemControlTemplate1}"/>
+                    <ComboBoxItem Content="4 Players" Template="{DynamicResource ComboBoxItemControlTemplate1}"/>
                     <!--<ComboBoxItem Content="Time Trial" HorizontalAlignment="Left"/>-->
                     <!--<ComboBoxItem Content="Turn Trial" HorizontalAlignment="Left"/>-->
                 </ComboBox>
