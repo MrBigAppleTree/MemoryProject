@@ -101,17 +101,22 @@ namespace Memory_Project
 
             DataContext = this;
             cbItems1 = new ObservableCollection<ComboBoxItem>();
+
+            // Get the comboBoxItems template and put it in the template property of the dynamically added cb items
+            ControlTemplate CBITemplate;
+            CBITemplate = (ControlTemplate)this.FindResource("ComboBoxItemControlTemplate1");
+
             for (int i = 0; i <= Math.Sqrt(maxCards * 2); i++)
             {
                 if (i == 4)
                 {
-                    var cbItem = new ComboBoxItem { Content = i };
+                    var cbItem = new ComboBoxItem { Content = i, Template = CBITemplate };
                     SelectedcbItem1 = cbItem;
                     cbItems1.Add(cbItem);
                 }
                 else if (i != 0 && i != 1)
                 {
-                    cbItems1.Add(new ComboBoxItem { Content = i });
+                    cbItems1.Add(new ComboBoxItem { Content = i, Template = CBITemplate });
                 }
             }
             /*
@@ -135,17 +140,22 @@ namespace Memory_Project
 
             DataContext = this;
             cbItems2 = new ObservableCollection<ComboBoxItem>();
+
+            // Get the comboBoxItems template and put it in the template property of the dynamically added cb items
+            ControlTemplate CBITemplate;
+            CBITemplate = (ControlTemplate)this.FindResource("ComboBoxItemControlTemplate1");
+
             for (int i = 0; i <= Math.Sqrt(maxCards * 2); i++)
             {
                 if (i == 4)
                 {
-                    var cbItem = new ComboBoxItem { Content = i };
+                    var cbItem = new ComboBoxItem { Content = i, Template = CBITemplate };
                     SelectedcbItem2 = cbItem;
                     cbItems2.Add(cbItem);
                 }
                 else if (i != 0 && i != 1)
                 {
-                    cbItems2.Add(new ComboBoxItem { Content = i });
+                    cbItems2.Add(new ComboBoxItem { Content = i, Template = CBITemplate });
                 }
             }
         }
