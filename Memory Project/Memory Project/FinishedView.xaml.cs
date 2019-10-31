@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -17,15 +18,27 @@ namespace Memory_Project
 {
     public partial class FinishedView : Page
     {
-        public FinishedView()
+        IFormatter serializer;
+        string theme;
+
+        int cardX;
+        int cardY;
+
+        public FinishedView(string theme, IFormatter serializer, int height, int width)
         {
             InitializeComponent();
 
+            cardX = width;
+            cardY = height;
+
+            //Set the Serializer
+            this.serializer = serializer;
+
             // Set the Theme
-            string currentTheme = (string)Application.Current.Resources["Theme"];
+            this.theme = theme;
 
             // Set the background image based on theme
-            BackgroundImg.ImageSource = new BitmapImage(new Uri(@"../../images/" + currentTheme + "/BoardBackground.png", UriKind.Relative));
+            BackgroundImg.ImageSource = new BitmapImage(new Uri(@"../../images/" + theme + "/BoardBackground.png", UriKind.Relative));
 
             // Set winner text based on gamemode.
             setWinnerText();
@@ -152,11 +165,7 @@ namespace Memory_Project
                 p.setScore(0);
             }
 
-            int cardX = (int)Application.Current.Resources["cardX"];
-            int cardY = (int)Application.Current.Resources["cardY"];
-            string theme = (string)Application.Current.Resources["Theme"];
-
-            GameController controller = new GameController(cardX, cardY, players, theme, null);
+            GameController controller = new GameController(cardX, cardY, players, theme, serializer);
             this.NavigationService.Navigate(controller.getView());
 
         }

@@ -36,6 +36,7 @@ namespace Memory_Project
         /// Makes a new instance of the boardview upon which the game is played
         /// </summary>
         /// <param name="controller">The controller who initialised this</param>
+        /// <param name="theme">The set theme of the game</param>
         public BoardView(GameController controller, string theme)
         {
             InitializeComponent();
@@ -479,7 +480,9 @@ namespace Memory_Project
             Application.Current.Properties["players"] = players;
             Application.Current.Properties["winner"] = winner;
 
-            NavigationService.Navigate(new Uri("FinishedView.xaml", UriKind.Relative));
+            FinishedView finished = new FinishedView(this.theme, controller.getSerializer(), controller.getHeight(), controller.getWidth());
+            NavigationService.Navigate(finished);
+            //NavigationService.Navigate(new Uri("FinishedView.xaml", UriKind.Relative));
         }
     }
 }
