@@ -91,10 +91,10 @@
                 <ComboBox ItemsSource="{Binding cbItems2}" SelectedItem="{Binding SelectedcbItem2}" FontSize="20" HorizontalAlignment="Center" x:Name="comboHeight" Margin="165, -100, 0, 0" VerticalAlignment="Top" Width="45" Height="30" Foreground="White">
                 </ComboBox>
                 <ComboBox x:Name="Players" DropDownClosed="PlayerChanged" FontSize="20" HorizontalAlignment="Right" Margin="0, -65, 20, 0" VerticalAlignment="Bottom" Width="45" Height="35" BorderBrush="#00ACACAC" Foreground="White">
-                    <ComboBoxItem Content="1" HorizontalAlignment="Left" Width="45"/>
-                    <ComboBoxItem Content="2" HorizontalAlignment="Left" Width="45" IsSelected="True"/>
-                    <ComboBoxItem Content="3" HorizontalAlignment="Left" Width="45"/>
-                    <ComboBoxItem Content="4" HorizontalAlignment="Left" Width="45"/>
+                    <ComboBoxItem Content="1" HorizontalAlignment="Left" Width="45" Template="{DynamicResource ComboBoxItemControlTemplate1}"/>
+                    <ComboBoxItem Content="2" HorizontalAlignment="Left" Width="45" IsSelected="True" Template="{DynamicResource ComboBoxItemControlTemplate1}"/>
+                    <ComboBoxItem Content="3" HorizontalAlignment="Left" Width="45" Template="{DynamicResource ComboBoxItemControlTemplate1}"/>
+                    <ComboBoxItem Content="4" HorizontalAlignment="Left" Width="45" Template="{DynamicResource ComboBoxItemControlTemplate1}"/>
                 </ComboBox>
             </StackPanel>
         </Border>
