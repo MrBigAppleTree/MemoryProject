@@ -379,6 +379,8 @@ namespace Memory_Project
                 case "Back":
                     controller.Save(turnCounter);
                     NavigationService.Navigate(new Uri("MainNav.xaml", UriKind.Relative));
+                    ConfigView config = new ConfigView();
+                    config.MusicToggle((string)Application.Current.Resources["Theme"]);
                     break;
 
                 case "Save":
