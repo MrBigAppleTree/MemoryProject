@@ -59,8 +59,16 @@
                     <!--<ComboBoxItem Content="Time Trial" HorizontalAlignment="Left"/>-->
                     <!--<ComboBoxItem Content="Turn Trial" HorizontalAlignment="Left"/>-->
                 </ComboBox>
-                <StackPanel Margin="0, 30, 0, 0" HorizontalAlignment="Center" Width="375" Height="450">
-                    <Grid x:Name="HighGrid" HorizontalAlignment="Left" MinWidth="375"  Background="Transparent"/>
+                <StackPanel Margin="0, 30, 0, 0" Width="375" Height="450">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" Width="375" Height="450">
+                        <Grid x:Name="HighGrid" Width="375" Background="Transparent">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="220"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                        </Grid>
+                    </ScrollViewer>
                 </StackPanel>
             </StackPanel>
         </Border>
