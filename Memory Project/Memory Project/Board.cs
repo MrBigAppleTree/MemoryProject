@@ -203,11 +203,20 @@ namespace Memory_Project
             return this.boardList;
         }
 
+        /// <summary>
+        /// sets the boardview after loading a stored game.
+        /// </summary>
+        /// <param name="b">The boardview upon which the game will be played</param>
         public void setView(BoardView b)
         {
             this.view = b;
         }
 
+        /// <summary>
+        /// Shuffles the coordinate list created upon start of a new game to randomize card locations more.
+        /// </summary>
+        /// <param name="list">The list to be shuffled</param>
+        /// <returns>The shuffled list</returns>
         private List<Tuple<int, int>> listShuffle(List<Tuple<int, int>> list)
         {
             RNGCryptoServiceProvider rnd = new RNGCryptoServiceProvider();
