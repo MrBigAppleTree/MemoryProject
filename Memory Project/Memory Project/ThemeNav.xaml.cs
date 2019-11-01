@@ -131,18 +131,5 @@ namespace Memory_Project
             }
 
         }
-        private void startMusic(string theme)
-        {
-
-            try
-            {
-                SoundPlayer player = new SoundPlayer();
-                player.Stop();
-                player.SoundLocation = "music/" + theme + "/BackgroundMusic.wav";
-                player.PlayLooping();
-            }
-            catch (Exception e) { }
-
-        }
     }
 }
