@@ -56,41 +56,44 @@ namespace Memory_Project
 
         }
 
-
+        /// <summary>
+        /// changes the Theme stored in app.xaml to LOTR, also reloads the theme and music
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LOTR_Click(object sender, RoutedEventArgs e)
         {
-
             Application.Current.Resources["Theme"] = "LOTR";
-
             SetTheme();
-
         }
 
+        /// <summary>
+        /// changes the Theme stored in app.xaml to Avatar, also reloads the theme and music
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Avatar_Click(object sender, RoutedEventArgs e)
         {
-
             Application.Current.Resources["Theme"] = "Avatar";
-
             SetTheme();
-
         }
 
+        /// <summary>
+        /// changes the Theme stored in app.xaml to NHLStenden, also reloads the theme and music
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NHLStenden_Click(object sender, RoutedEventArgs e)
         {
-
             Application.Current.Resources["Theme"] = "NHLStenden";
-
             SetTheme();
-
         }
 
         private void SelectCard()
         {
-
             cardNumber = 1;
             string frontpath = "/images/" + currentTheme + "/card" + cardNumber + ".png";
             CardPreview.Source = new BitmapImage(new Uri(frontpath, UriKind.RelativeOrAbsolute));
-
         }
 
         private void next_click(object sender, RoutedEventArgs e)

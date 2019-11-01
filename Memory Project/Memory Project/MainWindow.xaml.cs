@@ -79,6 +79,10 @@ namespace Memory_Project
             
             return rect;
         }
+        /// <summary>
+        /// starts the music for a specified theme which will loop when it ends
+        /// </summary>
+        /// <param name="theme">the theme for which the music is played</param>
         private void startMusic(string theme)
         {
             try
