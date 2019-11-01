@@ -470,9 +470,9 @@ namespace Memory_Project
         }
 
         /// <summary>
-        /// Determines the player with the highest score
+        /// Determines the player (or players) with the highest score 
         /// </summary>
-        /// <returns>Returns the player with the highest score</returns>
+        /// <returns>Returns the player with the highest score or players with the highest score if tied</returns>
         private List<Player> determineWinner()
         {
 
@@ -493,11 +493,15 @@ namespace Memory_Project
                 }
             }
 
-            //Player winner = players.Aggregate((player1, player2) => player1.getScore() > player2.getScore() ? player1 : player2);
-
             return winnerList;
         }
 
+        /// <summary>
+        ///     Write the players and winners in application memory and 
+        ///     navigate to the finish screen by creating a new finishedView object
+        /// </summary>
+        /// <param name="players">All the players in the game</param>
+        /// <param name="winner">The winner (or winners if tied) in the game</param>
         private void displayFinishScreen(List<Player> players, List<Player> winner)
         {
             Application.Current.Properties["players"] = players;

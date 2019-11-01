@@ -30,7 +30,8 @@ namespace Memory_Project
         }
 
         /// <summary>
-        ///     Creates a rectangle with the given arguments
+        ///     Creates a rectangle with the given arguments.
+        ///     I'm pretty sure this method isn't used anywhere BUT DON'T TOUCH MAH BABY
         /// </summary>
         /// <param name="width">Width of the rectangle</param>
         /// <param name="height">Height of the rectangle</param>
