@@ -200,7 +200,11 @@ namespace Memory_Project
             }
             
         }
-
+        /// <summary>
+        /// determines how much the score is increased by depending on the amount of turns that have passed and the total amount of cards
+        /// for example: with a 4x4 boardsize you wil get 125 points per pair until turn 16, the 100 points until turn 32 after which you'll get 50 points
+        /// </summary>
+        /// <returns>returns an int with the score increase</returns>
         private int scoreincrease()
         {
             //turnCounter
