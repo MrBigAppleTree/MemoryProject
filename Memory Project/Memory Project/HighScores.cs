@@ -31,6 +31,19 @@ namespace Memory_Project
         //Dictionary<(string mode), Dictionary<(string playername), (int score)>>
         public Dictionary<string, Dictionary<string, int>> MainDic = new Dictionary<string, Dictionary<string, int>>();
 
+        /// <summary>
+        /// They use all the parameters to make a string called "mode", this string is used to save the scores of the
+        /// player, if this player already exists in this mode this code will compare both scores and save the one with
+        /// the highest amount.
+        /// If the mode does not exist is will make a dictionary for this new mode and after that will add the players 
+        /// and their scores to the mode dictionary.
+        /// After saving a player the code will compare all scores and sort them based on the scores.
+        /// </summary>
+        /// <param name="width">int, this is the width of the game</param>
+        /// <param name="height">int, this is the height of the game</param>
+        /// <param name="score">int, this is the amount of points the player has gained in the game</param>
+        /// <param name="name">string, this is the name of te player</param>
+        /// <param name="players">int, this is the amount of players that were in this game</param>
         public HighScores(int width, int height, int score, string name, List<Player> players)
         {
             this.players = players;
@@ -97,7 +110,10 @@ namespace Memory_Project
             Save(q);
         }
 
-        //Dit is de save methode, hier slaat hij de data op in "highscores.txt"
+        /// <summary>
+        /// Saves the dictionary with players and scores onto the highscores.txt file.
+        /// </summary>
+        /// <param name="load">Uses the Save(q) from the HighScores method to save.</param>
         public static void Save(HighScores load)
         {
             Stream stream = new FileStream("../../highscores.txt", FileMode.OpenOrCreate, FileAccess.Write, FileShare.None);
@@ -105,7 +121,13 @@ namespace Memory_Project
             stream.Close();
         }
 
-        //Dit is de load methode, hier laadt hij de data vannuit "highscores.txt"
+        /// <summary>
+        /// Loads the highscores.txt file and tries to load the data from it, if this file is empty it will return nothing.
+        /// </summary>
+        /// <returns>
+        /// The highscores from the highscores.txt file.
+        /// If the file is empty it will return nothing or "null".
+        /// </returns>
         public static HighScores Load()
         {
             Stream stream = new FileStream("../../highscores.txt", FileMode.Open, FileAccess.Read, FileShare.Read);
