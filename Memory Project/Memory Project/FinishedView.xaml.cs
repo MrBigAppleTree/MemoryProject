@@ -115,7 +115,7 @@ namespace Memory_Project
                 WinnerText.Text = $"Congratulations { tiedWinners }! You've tied the game with {winner[0].getScore()} points!".Replace(Environment.NewLine, "");
             }
             
-            playerGrid.RowDefinitions.Add(new RowDefinition());
+            //playerGrid.RowDefinitions.Add(new RowDefinition());
             playerGrid.Children.Add(scoreBoard);
 
             Grid.SetRow(menuButtons, 2);
