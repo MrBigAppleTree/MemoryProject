@@ -97,7 +97,8 @@ namespace Memory_Project
         }
 
         /// <summary>
-        /// Event handler that triggers whenever a card(button) is clicked on the board
+        /// Event handler that triggers whenever a card(button) is clicked on the board.
+        /// Also handles the selection of the lonely (odd) card on odd numbered boards.
         /// </summary>
         /// <param name="sender">The button that has been clicked</param>
         /// <param name="e">Event arguments</param>
@@ -143,7 +144,11 @@ namespace Memory_Project
                 turnCheck();
             }
         }
-
+        /// <summary>
+        /// Handles the animation, related score increase and removal of the single card on boards with odd amounts of cards.
+        /// Only triggers via the 'Find Lonely Card' button
+        /// </summary>
+        /// <param name="btn">The button which is the lonely card</param>
         private async void LonelyCard(Button btn)
         {
             this.IsHitTestVisible = false;
@@ -353,7 +358,9 @@ namespace Memory_Project
             }
            
         }
-
+        /// <summary>
+        /// Loads the 'Find lonely card' button onscreen incase of an uneven numbered board.
+        /// </summary>
         public void loadUnevenButton()
         {
             Button btn = new Button();
@@ -367,6 +374,12 @@ namespace Memory_Project
             btnGrid.Children.Add(btn);
         }
 
+        /// <summary>
+        /// Event handler for the 'Find lonely card' button.
+        /// Sets select boolean to make the card click handler deal with the upcoming single card click.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void unevenClick(object sender, RoutedEventArgs e)
         {
             select = true;
@@ -406,6 +419,10 @@ namespace Memory_Project
             
         }
 
+        /// <summary>
+        /// Sets all player text to white, then sets current players color to yellow.
+        /// </summary>
+        /// <param name="i">The index of the player whose turn it is</param>
         private void setColor(int i)
         {
             TextBlock txt = (TextBlock)PlayerGrid.Children[i];

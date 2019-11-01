@@ -57,7 +57,10 @@ namespace Memory_Project
         {
             this.lonely = true;
         }
-
+        /// <summary>
+        /// Returns the lonely boolean to check whether this card is a lonely card
+        /// </summary>
+        /// <returns>The lonely boolean</returns>
         public bool isLonely()
         {
             return lonely;
