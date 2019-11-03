@@ -292,6 +292,9 @@ namespace Memory_Project
             
         }
 
+        /// <summary>
+        /// updates the onscreen turn counter
+        /// </summary>
         private void updateTurnCounter()
         {
             TextBlock tcn = (TextBlock)TurnGrid.Children[0];
@@ -389,6 +392,11 @@ namespace Memory_Project
             select = true;
         }
 
+        /// <summary>
+        /// Handles the interactions for the back, save and load buttons
+        /// </summary>
+        /// <param name="sender">The pressed button</param>
+        /// <param name="e"></param>
         public void btnClicks(object sender, RoutedEventArgs e)
         {
             switch ((string)((Button)sender).Content)
