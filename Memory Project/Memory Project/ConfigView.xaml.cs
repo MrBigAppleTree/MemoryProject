@@ -22,6 +22,9 @@ namespace Memory_Project
     public partial class ConfigView : Page
     {
         public string currentTheme;
+        /// <summary>
+        /// Constructer for ConfigView
+        /// </summary>
         public ConfigView()
         {
 
@@ -31,23 +34,42 @@ namespace Memory_Project
             currentTheme = (string)Application.Current.Resources["Theme"];
             BackgroundImg.Source = new BitmapImage(new Uri(@"../../images/" + currentTheme + "/MenuBackground.png", UriKind.Relative));
         }
+        /// <summary>
+        /// Navigates to previous page
+        /// </summary>
+        /// <param name="sender">Button that has been clicked</param>
+        /// <param name="e">Event arguments</param>
         private void back_click(object sender, RoutedEventArgs e)
         {
 
             this.NavigationService.Navigate(new Uri("MainNav.xaml", UriKind.Relative));
 
         }
+        /// <summary>
+        /// Toggles music muting for when checkbox is checked
+        /// </summary>
+        /// <param name="sender">Checkbox that has been clicked</param>
+        /// <param name="e">Event arguments</param>
         private void SoundToggle_Checked(object sender, RoutedEventArgs e)
         {
             Application.Current.Resources["MusicToggle"] = true;
             MusicToggle(currentTheme);
         }
-
+        /// <summary>
+        /// Toggles music muting for when checkbox is unchecked
+        /// </summary>
+        /// <param name="sender">Checkbox that has been clicked</param>
+        /// <param name="e">Event arguments</param>
         private void SoundToggle_Unchecked(object sender, RoutedEventArgs e)
         {
             Application.Current.Resources["MusicToggle"] = false;
             MusicToggle(currentTheme);
         }
+        /// <summary>
+        /// Toggles fullscreen for when checkbox is checked
+        /// </summary>
+        /// <param name="sender">Checkbox that has been clicked</param>
+        /// <param name="e">Event arguments</param>
         private void FullscreenToggle_Checked(object sender, RoutedEventArgs e)
         {
             Application.Current.MainWindow.WindowState = WindowState.Maximized;
@@ -55,6 +77,11 @@ namespace Memory_Project
             Application.Current.MainWindow.ResizeMode = ResizeMode.NoResize;
             Application.Current.Resources["FullscreenToggle"] = true;
         }
+        /// <summary>
+        /// Toggles fullscreen for when checkbox is unchecked
+        /// </summary>
+        /// <param name="sender">Checkbox that has been clicked</param>
+        /// <param name="e">Event arguments</param>
         private void FullscreenToggle_Unchecked(object sender, RoutedEventArgs e)
         {
             Application.Current.MainWindow.WindowState = WindowState.Normal;
@@ -88,6 +115,11 @@ namespace Memory_Project
         //    }
 
         //}
+
+        /// <summary>
+        /// Toggles music muting
+        /// </summary>
+        /// <param name="theme">Current theme</param>
         public void MusicToggle(string theme)
         {
             bool musicToggle = (bool)Application.Current.Resources["MusicToggle"];

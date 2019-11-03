@@ -20,7 +20,7 @@ using System.Windows.Shapes;
 namespace Memory_Project
 {
     /// <summary>
-    /// Interaction logic for Page2.xaml
+    /// Interaction logic for PlayNav.xaml
     /// </summary>
     public partial class PlayNav : Page
     {
@@ -41,6 +41,9 @@ namespace Memory_Project
         public Visibility textBoxVisibility3 { get; set; }
         public Visibility textBoxVisibility4 { get; set; }
 
+        /// <summary>
+        /// Constructer for PlayNav
+        /// </summary>
         public PlayNav()
         {
             InitializeComponent();
@@ -55,8 +58,13 @@ namespace Memory_Project
             BackgroundImg.Source = new BitmapImage(new Uri(@"../../images/" + theme + "/MenuBackground.png", UriKind.Relative));
 
         }
+        //Standard player selection is 2, so show only 2 player richtextboxes by changing visibility\
 
-        //Standard player selection is 2, so show only 2 player richtextboxes by changing visibility
+
+        /// <summary>
+        /// Which playername textboxes are visable at page load.
+        /// </summary>      
+
         private void InitializePlayers()
         {
             textBoxVisibility1 = Visibility.Visible;
@@ -66,6 +74,12 @@ namespace Memory_Project
         }
 
         //When the (number of) Players combobox is dropped down it triggers event to match number of richtextboxes to value of Players combobox
+
+        /// <summary>
+        /// Changes visable textboxes based on nummer of player selected chance
+        /// </summary>
+        /// <param name="sender">Combobox that has been clicked</param>
+        /// <param name="e">Event argument</param>
         private void PlayerChanged(object sender, EventArgs e)
         {
             if(Players.IsLoaded) //To prevent triggering before complete page load
@@ -93,7 +107,9 @@ namespace Memory_Project
             }
 
         }
-
+        /// <summary>
+        /// Fills databinded combobox with value's depending on theme selected
+        /// </summary>
         private void comboboxItems1()
         {
 
@@ -117,14 +133,12 @@ namespace Memory_Project
                     cbItems1.Add(new ComboBoxItem { Content = i, Template = CBITemplate });
                 }
             }
-            /*
 
-            Generate Combobox items dependend on theme for the xaml
-
-            */
 
         }
-
+        /// <summary>
+        /// Fills databinded combobox with value's depending on theme selected
+        /// </summary>
         private void comboboxItems2()
         {
             //Dictionary<string, int> maxCard = new Dictionary<string, int>();
@@ -151,6 +165,11 @@ namespace Memory_Project
                 }
             }
         }
+        /// <summary>
+        /// Navigates to previous page
+        /// </summary>
+        /// <param name="sender">Button that has been clicked</param>
+        /// <param name="e">Event arguments</param>
         private void back_click(object sender, RoutedEventArgs e)
         {
 
@@ -158,8 +177,13 @@ namespace Memory_Project
 
         }
 
-            // The Text property on a TextRange object returns a string
-            // representing the plain text content of the TextRange.
+        // The Text property on a TextRange object returns a string
+        // representing the plain text content of the TextRange.
+        /// <summary>
+        /// Starts a new game based on selected options
+        /// </summary>
+        /// <param name="sender">Button that has been clicked</param>
+        /// <param name="e">Event arguments</param>
         public void new_click(object sender, RoutedEventArgs e)
         {
             List<Player> players = new List<Player>();
@@ -187,7 +211,10 @@ namespace Memory_Project
             GameController controller = new GameController(height, width, players, theme, serializer);
             this.NavigationService.Navigate(controller.getView());
         }
-
+        /// <summary>
+        /// Gets the string from richtextbox
+        /// </summary>
+        /// <param name="rtb">The selected richtextbox</param>
         public string StringFromRichTextBox(RichTextBox rtb)
         {
             TextRange textRange = new TextRange(
@@ -205,6 +232,11 @@ namespace Memory_Project
 
         //Character limit for playername input to prevent overflow on BoardView
         //Add method per Player
+        /// <summary>
+        /// Character limit for richtextbox
+        /// </summary>
+        /// <param name="sender">Button that has been clicked</param>
+        /// <param name="e">Event arguments</param>
         private void RichTextKeyDown0(object sender, KeyEventArgs e)
         {
             TextRange tr = new TextRange(Player0.Document.ContentStart, Player0.Document.ContentEnd);
@@ -214,7 +246,11 @@ namespace Memory_Project
                 return;
             }
         }
-        
+        /// <summary>
+        /// Character limit for richtextbox
+        /// </summary>
+        /// <param name="sender">Button that has been clicked</param>
+        /// <param name="e">Event arguments</param>
         private void RichTextKeyDown1(object sender, KeyEventArgs e)
         {
             TextRange tr = new TextRange(Player1.Document.ContentStart, Player1.Document.ContentEnd);
@@ -224,6 +260,11 @@ namespace Memory_Project
                 return;
             }
         }
+        /// <summary>
+        /// Character limit for richtextbox
+        /// </summary>
+        /// <param name="sender">Button that has been clicked</param>
+        /// <param name="e">Event arguments</param>
         private void RichTextKeyDown2(object sender, KeyEventArgs e)
         {
             TextRange tr = new TextRange(Player2.Document.ContentStart, Player2.Document.ContentEnd);
@@ -233,6 +274,11 @@ namespace Memory_Project
                 return;
             }
         }
+        /// <summary>
+        /// Character limit for richtextbox
+        /// </summary>
+        /// <param name="sender">Button that has been clicked</param>
+        /// <param name="e">Event arguments</param>
         private void RichTextKeyDown3(object sender, KeyEventArgs e)
         {
             TextRange tr = new TextRange(Player3.Document.ContentStart, Player3.Document.ContentEnd);

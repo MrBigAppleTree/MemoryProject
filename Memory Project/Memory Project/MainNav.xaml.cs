@@ -17,7 +17,7 @@ using System.Media;
 namespace Memory_Project
 {
     /// <summary>
-    /// Interaction logic for Page1.xaml
+    /// Interaction logic for MainNav.xaml
     /// </summary>
     public partial class MainNav : Page
     {
