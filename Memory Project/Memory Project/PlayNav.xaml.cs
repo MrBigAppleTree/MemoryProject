@@ -243,6 +243,11 @@ namespace Memory_Project
             }
         }
 
+        /// <summary>
+        /// Handles the loading of a stored game.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void load_Click(object sender, RoutedEventArgs e)
         {
             Stream stream = new FileStream("../../Save/Save.sav", FileMode.Open, FileAccess.Read, FileShare.Read);

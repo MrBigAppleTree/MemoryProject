@@ -51,17 +51,16 @@
                     <ComboBoxItem Content="7" HorizontalAlignment="Left" Width="45" Template="{DynamicResource ComboBoxItemControlTemplate1}"/>
                     <ComboBoxItem Content="8" HorizontalAlignment="Left" Width="45" Template="{DynamicResource ComboBoxItemControlTemplate1}"/>
                 </ComboBox>
+
                 <ComboBox x:Name="hiscr" DropDownClosed="Mode_Change" FontSize="20" HorizontalAlignment="Left" Margin="10, 10, 0, 0" VerticalAlignment="Top" Height="35" Background="Gray" BorderBrush="#FFFFFFFF" Foreground="White">
                     <ComboBoxItem Content="Singleplayer" IsSelected="True" Template="{DynamicResource ComboBoxItemControlTemplate1}"/>
                     <ComboBoxItem Content="2 Players" Template="{DynamicResource ComboBoxItemControlTemplate1}"/>
                     <ComboBoxItem Content="3 Players" Template="{DynamicResource ComboBoxItemControlTemplate1}"/>
                     <ComboBoxItem Content="4 Players" Template="{DynamicResource ComboBoxItemControlTemplate1}"/>
-                    <!--<ComboBoxItem Content="Time Trial" HorizontalAlignment="Left"/>-->
-                    <!--<ComboBoxItem Content="Turn Trial" HorizontalAlignment="Left"/>-->
                 </ComboBox>
                 <StackPanel Margin="0, 30, 0, 0" Width="375" Height="450">
-                    <ScrollViewer VerticalScrollBarVisibility="Auto" Width="375" Height="450">
-                        <Grid x:Name="HighGrid" Width="375" Background="Transparent">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" Width="375" Height="auto">
+                        <Grid x:Name="HighGrid" Width="375"  Background="Transparent">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="50"/>
                                 <ColumnDefinition Width="220"/>

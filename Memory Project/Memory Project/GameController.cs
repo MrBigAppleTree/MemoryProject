@@ -96,11 +96,20 @@ namespace Memory_Project
             Console.WriteLine(board.getBoardList().Count);
         }
 
+        /// <summary>
+        /// checks whether the game is over.
+        /// </summary>
+        /// <returns>Boolean if the game has finished</returns>
         public bool gameFin()
         {
             return board.getBoardList().Count <= 1;
         }
 
+        /// <summary>
+        /// Saves the current game state to save.sav file.
+        /// Requires the turncounter as input because the boardview cannot be stored itself, thus it has to be saved here.
+        /// </summary>
+        /// <param name="turnCounter">The turncounter of the running game</param>
         public void Save(int turnCounter)
         {
             this.turnCounter = turnCounter;
@@ -109,15 +118,20 @@ namespace Memory_Project
             stream.Close();
         }
 
+        /// <summary>
+        /// Recreates the boardview upon loading a stored game.
+        /// </summary>
         public void createBoardView()
         {
             try
             {
-
-                SoundPlayer player = new SoundPlayer();
-                player.Stop();
-                player.SoundLocation = "music/" + theme + "/BackgroundMusic.wav";
-                player.PlayLooping();
+                if (!(bool)Application.Current.Resources["MusicToggle"])
+                {
+                    SoundPlayer player = new SoundPlayer();
+                    player.Stop();
+                    player.SoundLocation = "music/" + theme + "/BackgroundMusic.wav";
+                    player.PlayLooping();
+                }
             }
             catch (Exception e) { }
             foreach (Player p in players)
@@ -133,11 +147,20 @@ namespace Memory_Project
             view.loadButtons();
         }
 
+        /// <summary>
+        /// Sets the serializer of the Loaded gamecontroller.
+        /// Needed due to the inability to save the serializer itself, thus needing to be set as to make the Save function work again. 
+        /// </summary>
+        /// <param name="serializer"></param>
         public void setSerializer(IFormatter serializer)
         {
             this.serializer = serializer;
         }
 
+        /// <summary>
+        /// Returns the serializer currently in use by the game.
+        /// </summary>
+        /// <returns>The serializer</returns>
         public IFormatter getSerializer()
         {
             return serializer;

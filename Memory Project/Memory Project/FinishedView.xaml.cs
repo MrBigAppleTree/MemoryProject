@@ -24,6 +24,13 @@ namespace Memory_Project
         int cardX;
         int cardY;
 
+        /// <summary>
+        ///     Constructor for the finished view
+        /// </summary>
+        /// <param name="theme">Sets the theme</param>
+        /// <param name="serializer">Sets the serializer</param>
+        /// <param name="height">Sets the amount of cards in the Y axis</param>
+        /// <param name="width">Sets the amount of cards in the X axis</param>
         public FinishedView(string theme, IFormatter serializer, int height, int width)
         {
             InitializeComponent();
@@ -45,16 +52,31 @@ namespace Memory_Project
 
         }
 
+        /// <summary>
+        ///     Gets the winner from application storage (Or winners if tied)
+        /// </summary>
+        /// <returns>A list with all the winners as player objects</returns>
         private List<Player> getWinner()
         {
             return (List<Player>)Application.Current.Properties["winner"];
         }
 
+        /// <summary>
+        ///     Gets the players from application storage and sorts them from high to low.
+        /// </summary>
+        /// <returns>Returns all the players in a list as player objects</returns>
         private List<Player> getPlayers()
         {
-            return (List<Player>)Application.Current.Properties["players"];
+
+            List<Player> players = (List<Player>)Application.Current.Properties["players"];
+            players.Sort((x, y) => (y.getScore().CompareTo(x.getScore())));
+
+            return players;
         }
 
+        /// <summary>
+        ///     Sets the winner text based on Multiplayer or singleplayer games.
+        /// </summary>
         private void setWinnerText()
         {
 
@@ -154,7 +176,11 @@ namespace Memory_Project
             }
         }
 
-        // Handle the replay button logic (Still needs XMLSerialiser for save.)
+        /// <summary>
+        ///     Handle the replay button logic. get all the players, set their score to 0 and reinstantiate the gamecontroller with the previous values.
+        /// </summary>
+        /// <param name="sender">The button pressed</param>
+        /// <param name="e">?</param>
         private void replay_Click(object sender, RoutedEventArgs e)
         {
 
@@ -170,7 +196,11 @@ namespace Memory_Project
 
         }
 
-        // Go back to the main menu.
+        /// <summary>
+        ///     Navigates to a new tab
+        /// </summary>
+        /// <param name="sender">The button pressed</param>
+        /// <param name="e">?</param>
         private void close_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("MainNav.xaml", UriKind.Relative));
