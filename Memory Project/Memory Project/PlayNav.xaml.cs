@@ -96,8 +96,6 @@ namespace Memory_Project
 
         private void comboboxItems1()
         {
-            //Dictionary<string, int> maxCard = new Dictionary<string, int>();
-            //maxCard.Add(theme, maxCards);
 
             DataContext = this;
             cbItems1 = new ObservableCollection<ComboBoxItem>();
@@ -120,13 +118,8 @@ namespace Memory_Project
                 }
             }
             /*
-             * 
+
             Generate Combobox items dependend on theme for the xaml
-
-            TO DO: -Dynamicly fill combobox dependend on height/width selected, for example with 32 cards having a 10*3 board selection
-            
-
-            ~~Thomas branch
 
             */
 
@@ -135,7 +128,6 @@ namespace Memory_Project
         private void comboboxItems2()
         {
             //Dictionary<string, int> maxCard = new Dictionary<string, int>();
-
             //maxCard.Add(theme, maxCards);
 
             DataContext = this;
