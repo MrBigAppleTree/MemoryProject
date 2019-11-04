@@ -151,7 +151,7 @@ namespace Memory_Project
         /// Sets the serializer of the Loaded gamecontroller.
         /// Needed due to the inability to save the serializer itself, thus needing to be set as to make the Save function work again. 
         /// </summary>
-        /// <param name="serializer"></param>
+        /// <param name="serializer">The serializer to be used for saving the game</param>
         public void setSerializer(IFormatter serializer)
         {
             this.serializer = serializer;
