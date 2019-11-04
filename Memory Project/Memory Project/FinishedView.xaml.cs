@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -15,58 +16,73 @@ using System.Windows.Shapes;
 
 namespace Memory_Project
 {
-    /// <summary>
-    /// Interaction logic for FinishedView.xaml
-    /// </summary>
     public partial class FinishedView : Page
     {
-        public FinishedView()
+        IFormatter serializer;
+        string theme;
+
+        int cardX;
+        int cardY;
+
+        /// <summary>
+        ///     Constructor for the finished view
+        /// </summary>
+        /// <param name="theme">Sets the theme</param>
+        /// <param name="serializer">Sets the serializer</param>
+        /// <param name="height">Sets the amount of cards in the Y axis</param>
+        /// <param name="width">Sets the amount of cards in the X axis</param>
+        public FinishedView(string theme, IFormatter serializer, int height, int width)
         {
             InitializeComponent();
 
+            cardX = width;
+            cardY = height;
+
+            //Set the Serializer
+            this.serializer = serializer;
+
             // Set the Theme
-            string currentTheme = (string)Application.Current.Resources["Theme"];
+            this.theme = theme;
 
             // Set the background image based on theme
-            BackgroundImg.ImageSource = new BitmapImage(new Uri(@"../../images/" + currentTheme + "/BoardBackground.png", UriKind.Relative));
+            BackgroundImg.ImageSource = new BitmapImage(new Uri(@"../../images/" + theme + "/BoardBackground.png", UriKind.Relative));
 
-            // Set winner text.
-            List<Player> players = getPlayers();
+            // Set winner text based on gamemode.
+            setWinnerText();
 
-            if (players.Count == 1)
-            {
-                setSpWinnerText();
-            } else
-            {
-                setMpWinnerText();
-            }
-            
         }
 
+        /// <summary>
+        ///     Gets the winner from application storage (Or winners if tied)
+        /// </summary>
+        /// <returns>A list with all the winners as player objects</returns>
         private List<Player> getWinner()
         {
             return (List<Player>)Application.Current.Properties["winner"];
         }
 
+        /// <summary>
+        ///     Gets the players from application storage and sorts them from high to low.
+        /// </summary>
+        /// <returns>Returns all the players in a list as player objects</returns>
         private List<Player> getPlayers()
         {
-            return (List<Player>)Application.Current.Properties["players"];
+
+            List<Player> players = (List<Player>)Application.Current.Properties["players"];
+            players.Sort((x, y) => (y.getScore().CompareTo(x.getScore())));
+
+            return players;
         }
 
-        private void setSpWinnerText()
-        {
-            List<Player> winner = getWinner();
-
-            WinnerText.Text = $"Congratulations {winner[0].getName()}You've finished the game with {winner[0].getScore()} points!";
-        }
-
-        private void setMpWinnerText()
+        /// <summary>
+        ///     Sets the winner text based on Multiplayer or singleplayer games.
+        /// </summary>
+        private void setWinnerText()
         {
 
             List<Player> winner = getWinner();
             List<Player> players = getPlayers();
 
-            Console.WriteLine(winner[0]);
             // Count for the forEach to assign rows.
             int count = 0;
 
@@ -81,24 +97,47 @@ namespace Memory_Project
 
             if (winner.Count == 1)
             {
-                // Set winner if only 1 guy won
-                WinnerText.Text = $"Congratulations {winner[0].getName()}! You've finished the game with {winner[0].getScore()} points!";
+                // Set winner if only 1 player won
+                WinnerText.Text = $"Congratulations {winner[0].getName()}! You've finished the game with {winner[0].getScore()} points!".Replace(Environment.NewLine, "");
             } else if (winner.Count == 2)
             {
-                WinnerText.Text = $"Congratulations {winner[0].getName()} and {winner[1].getName()}! You've tied the game with {winner[0].getScore()} points!";
-            } else if (winner.Count > 2)
+                // Set winner if 2 players tied.
+                WinnerText.Text = $"Congratulations {winner[0].getName()} and {winner[1].getName()}! You've tied the game with {winner[0].getScore()} points!".Replace(Environment.NewLine, "");
+            } else
             {
+                // Set winners if 3 or more players tied.
                 string tiedWinners = "";
-                // Set winners if multiple people won
+                int winnerCount = 0;
+                int winnerAmount = winner.Count;
+                
                 foreach (Player p in winner)
-                {
-                    tiedWinners += p.getName() + ", ";
+                {   
+
+                    // First winner in sentence doesn't need a comma prefix,
+                    // all !first !last winners in sentence don't need the 'and' prefix
+                    // Last needs 'and' prefix. winnerAmount - 1 = last
+                    if (winnerCount == 0)
+                    {
+                        tiedWinners += p.getName();
+
+                    } else if (winnerCount != winnerAmount - 1)
+                    {
+                        tiedWinners += ", " + p.getName();
+
+                    } else 
+                    {
+                        tiedWinners += " and " + p.getName();
+
+                    }
+
+                    winnerCount++;
+
                 }
-                WinnerText.Text = $"Congratulations { tiedWinners }! You've tied the game with {winner[0].getScore()} points!";
+
+                WinnerText.Text = $"Congratulations { tiedWinners }! You've tied the game with {winner[0].getScore()} points!".Replace(Environment.NewLine, "");
             }
             
-
-            playerGrid.RowDefinitions.Add(new RowDefinition());
+            //playerGrid.RowDefinitions.Add(new RowDefinition());
             playerGrid.Children.Add(scoreBoard);
 
             Grid.SetRow(menuButtons, 2);
@@ -137,6 +176,11 @@ namespace Memory_Project
             }
         }
 
+        /// <summary>
+        ///     Handle the replay button logic. get all the players, set their score to 0 and reinstantiate the gamecontroller with the previous values.
+        /// </summary>
+        /// <param name="sender">The button pressed</param>
+        /// <param name="e">?</param>
         private void replay_Click(object sender, RoutedEventArgs e)
         {
 
@@ -147,16 +191,16 @@ namespace Memory_Project
                 p.setScore(0);
             }
 
-            int cardX = (int)Application.Current.Resources["cardX"];
-            int cardY = (int)Application.Current.Resources["cardY"];
-            string theme = (string)Application.Current.Resources["Theme"];
-            Console.WriteLine(theme);
-
-            GameController controller = new GameController(cardX, cardY, players, theme, null);
+            GameController controller = new GameController(cardX, cardY, players, theme, serializer);
             this.NavigationService.Navigate(controller.getView());
 
         }
 
+        /// <summary>
+        ///     Navigates to a new tab
+        /// </summary>
+        /// <param name="sender">The button pressed</param>
+        /// <param name="e">?</param>
         private void close_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("MainNav.xaml", UriKind.Relative));

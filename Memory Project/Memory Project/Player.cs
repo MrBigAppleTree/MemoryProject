@@ -49,6 +49,9 @@ namespace Memory_Project
             this.score += increase;
         }
 
+        /// <summary>
+        /// Recreates the instance of the buttonlist after loading a saved game
+        /// </summary>
         public void remakeButtonList()
         {
             clickedButtons = new List<Button>();

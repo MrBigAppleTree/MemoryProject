@@ -36,6 +36,7 @@ namespace Memory_Project
         /// Makes a new instance of the boardview upon which the game is played
         /// </summary>
         /// <param name="controller">The controller who initialised this</param>
+        /// <param name="theme">The set theme of the game</param>
         public BoardView(GameController controller, string theme)
         {
             InitializeComponent();
@@ -96,7 +97,8 @@ namespace Memory_Project
         }
 
         /// <summary>
-        /// Event handler that triggers whenever a card(button) is clicked on the board
+        /// Event handler that triggers whenever a card(button) is clicked on the board.
+        /// Also handles the selection of the lonely (odd) card on odd numbered boards.
         /// </summary>
         /// <param name="sender">The button that has been clicked</param>
         /// <param name="e">Event arguments</param>
@@ -142,7 +144,11 @@ namespace Memory_Project
                 turnCheck();
             }
         }
-
+        /// <summary>
+        /// Handles the animation, related score increase and removal of the single card on boards with odd amounts of cards.
+        /// Only triggers via the 'Find Lonely Card' button
+        /// </summary>
+        /// <param name="btn">The button which is the lonely card</param>
         private async void LonelyCard(Button btn)
         {
             this.IsHitTestVisible = false;
@@ -194,7 +200,11 @@ namespace Memory_Project
             }
             
         }
-
+        /// <summary>
+        /// determines how much the score is increased by depending on the amount of turns that have passed and the total amount of cards
+        /// for example: with a 4x4 boardsize you wil get 125 points per pair until turn 16, the 100 points until turn 32 after which you'll get 50 points
+        /// </summary>
+        /// <returns>returns an int with the score increase</returns>
         private int scoreincrease()
         {
             //turnCounter
@@ -282,6 +292,9 @@ namespace Memory_Project
             
         }
 
+        /// <summary>
+        /// updates the onscreen turn counter
+        /// </summary>
         private void updateTurnCounter()
         {
             TextBlock tcn = (TextBlock)TurnGrid.Children[0];
@@ -352,7 +365,9 @@ namespace Memory_Project
             }
            
         }
-
+        /// <summary>
+        /// Loads the 'Find lonely card' button onscreen incase of an uneven numbered board.
+        /// </summary>
         public void loadUnevenButton()
         {
             Button btn = new Button();
@@ -366,11 +381,22 @@ namespace Memory_Project
             btnGrid.Children.Add(btn);
         }
 
+        /// <summary>
+        /// Event handler for the 'Find lonely card' button.
+        /// Sets select boolean to make the card click handler deal with the upcoming single card click.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void unevenClick(object sender, RoutedEventArgs e)
         {
             select = true;
         }
 
+        /// <summary>
+        /// Handles the interactions for the back, save and load buttons
+        /// </summary>
+        /// <param name="sender">The pressed button</param>
+        /// <param name="e"></param>
         public void btnClicks(object sender, RoutedEventArgs e)
         {
             switch ((string)((Button)sender).Content)
@@ -378,6 +404,8 @@ namespace Memory_Project
                 case "Back":
                     controller.Save(turnCounter);
                     NavigationService.Navigate(new Uri("MainNav.xaml", UriKind.Relative));
+                    ConfigView config = new ConfigView();
+                    config.MusicToggle((string)Application.Current.Resources["Theme"]);
                     break;
 
                 case "Save":
@@ -386,23 +414,34 @@ namespace Memory_Project
 
                 case "Reset":
 
-                    foreach (Player p in players)
+                    if (currentPlayer.getClickedBtns().Count == 0)
                     {
-                        p.setScore(0);
+                        foreach (Player p in players)
+                        {
+                            p.setScore(0);
+                        }
+
+                        int cardX = (int)Application.Current.Resources["cardX"];
+                        int cardY = (int)Application.Current.Resources["cardY"];
+                        string theme = (string)Application.Current.Resources["Theme"];
+
+                        GameController resetController = new GameController(cardY, cardX, players, theme, controller.getSerializer());
+                        this.NavigationService.Navigate(resetController.getView());
+
+                        break;
                     }
-
-                    int cardX = (int)Application.Current.Resources["cardX"];
-                    int cardY = (int)Application.Current.Resources["cardY"];
-                    string theme = (string)Application.Current.Resources["Theme"];
-
-                    GameController resetController = new GameController(cardY, cardX, players, theme, controller.getSerializer());
-                    this.NavigationService.Navigate(resetController.getView());
-
-                    break;
+                    else
+                    {
+                        break;
+                    }
             }
             
         }
 
+        /// <summary>
+        /// Sets all player text to white, then sets current players color to yellow.
+        /// </summary>
+        /// <param name="i">The index of the player whose turn it is</param>
         private void setColor(int i)
         {
             TextBlock txt = (TextBlock)PlayerGrid.Children[i];
@@ -446,9 +485,9 @@ namespace Memory_Project
         }
 
         /// <summary>
-        /// Determines the player with the highest score
+        /// Determines the player (or players) with the highest score 
         /// </summary>
-        /// <returns>Returns the player with the highest score</returns>
+        /// <returns>Returns the player with the highest score or players with the highest score if tied</returns>
         private List<Player> determineWinner()
         {
 
@@ -469,17 +508,23 @@ namespace Memory_Project
                 }
             }
 
-            //Player winner = players.Aggregate((player1, player2) => player1.getScore() > player2.getScore() ? player1 : player2);
-
             return winnerList;
         }
 
+        /// <summary>
+        ///     Write the players and winners in application memory and 
+        ///     navigate to the finish screen by creating a new finishedView object
+        /// </summary>
+        /// <param name="players">All the players in the game</param>
+        /// <param name="winner">The winner (or winners if tied) in the game</param>
         private void displayFinishScreen(List<Player> players, List<Player> winner)
         {
             Application.Current.Properties["players"] = players;
             Application.Current.Properties["winner"] = winner;
 
-            NavigationService.Navigate(new Uri("FinishedView.xaml", UriKind.Relative));
+            FinishedView finished = new FinishedView(this.theme, controller.getSerializer(), controller.getHeight(), controller.getWidth());
+            NavigationService.Navigate(finished);
+            //NavigationService.Navigate(new Uri("FinishedView.xaml", UriKind.Relative));
         }
     }
 }

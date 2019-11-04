@@ -30,7 +30,8 @@ namespace Memory_Project
         }
 
         /// <summary>
-        ///     Creates a rectangle with the given arguments
+        ///     Creates a rectangle with the given arguments.
+        ///     I'm pretty sure this method isn't used anywhere BUT DON'T TOUCH MAH BABY
         /// </summary>
         /// <param name="width">Width of the rectangle</param>
         /// <param name="height">Height of the rectangle</param>
@@ -79,6 +80,10 @@ namespace Memory_Project
             
             return rect;
         }
+        /// <summary>
+        /// starts the music for a specified theme which will loop when it ends
+        /// </summary>
+        /// <param name="theme">the theme for which the music is played</param>
         private void startMusic(string theme)
         {
             try
