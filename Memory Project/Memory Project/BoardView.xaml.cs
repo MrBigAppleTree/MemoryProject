@@ -233,7 +233,7 @@ namespace Memory_Project
         private async Task flipCard(Button btn, string imgPath)
         {
             double normalWidth = btn.ActualWidth;
-            int animationTimeMillis = 100;
+            int animationTimeMillis = 1000;
 
             playGrid.IsHitTestVisible = false;
             DoubleAnimation da1 = new DoubleAnimation();
@@ -414,19 +414,26 @@ namespace Memory_Project
 
                 case "Reset":
 
-                    foreach (Player p in players)
+                    if (currentPlayer.getClickedBtns().Count == 0)
                     {
-                        p.setScore(0);
+                        foreach (Player p in players)
+                        {
+                            p.setScore(0);
+                        }
+
+                        int cardX = (int)Application.Current.Resources["cardX"];
+                        int cardY = (int)Application.Current.Resources["cardY"];
+                        string theme = (string)Application.Current.Resources["Theme"];
+
+                        GameController resetController = new GameController(cardY, cardX, players, theme, controller.getSerializer());
+                        this.NavigationService.Navigate(resetController.getView());
+
+                        break;
                     }
-
-                    int cardX = (int)Application.Current.Resources["cardX"];
-                    int cardY = (int)Application.Current.Resources["cardY"];
-                    string theme = (string)Application.Current.Resources["Theme"];
-
-                    GameController resetController = new GameController(cardY, cardX, players, theme, controller.getSerializer());
-                    this.NavigationService.Navigate(resetController.getView());
-
-                    break;
+                    else
+                    {
+                        break;
+                    }
             }
             
         }
