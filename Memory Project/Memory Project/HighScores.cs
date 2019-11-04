@@ -130,7 +130,7 @@ namespace Memory_Project
         /// </returns>
         public static HighScores Load()
         {
-            Stream stream = new FileStream("../../highscores.txt", FileMode.Open, FileAccess.Read, FileShare.Read);
+            Stream stream = new FileStream("../../highscores.txt", FileMode.OpenOrCreate, FileAccess.Read, FileShare.Read);
             //Als er data in staat geeft hij de inhoud daar van terug.
             try
             {
