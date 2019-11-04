@@ -233,7 +233,7 @@ namespace Memory_Project
         private async Task flipCard(Button btn, string imgPath)
         {
             double normalWidth = btn.ActualWidth;
-            int animationTimeMillis = 1000;
+            int animationTimeMillis = 100;
 
             playGrid.IsHitTestVisible = false;
             DoubleAnimation da1 = new DoubleAnimation();
