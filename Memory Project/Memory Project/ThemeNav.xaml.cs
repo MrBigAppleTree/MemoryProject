@@ -32,7 +32,11 @@ namespace Memory_Project
             SetTheme();
 
         }
-
+        /// <summary>
+        /// Navigates to the previous page visited by the user
+        /// </summary>
+        /// <param name="sender">Back button</param>
+        /// <param name="e">Event arguments</param>
         private void back_click(object sender, RoutedEventArgs e)
         {
 
@@ -40,6 +44,9 @@ namespace Memory_Project
 
         }
 
+        /// <summary>
+        /// Constructor for the theme page
+        /// </summary>
         private void SetTheme()
         {
 
@@ -88,7 +95,9 @@ namespace Memory_Project
             Application.Current.Resources["Theme"] = "NHLStenden";
             SetTheme();
         }
-
+        /// <summary>
+        /// The initial card preview
+        /// </summary>
         private void SelectCard()
         {
             cardNumber = 1;
@@ -96,6 +105,11 @@ namespace Memory_Project
             CardPreview.Source = new BitmapImage(new Uri(frontpath, UriKind.RelativeOrAbsolute));
         }
 
+        /// <summary>
+        /// Displays the next card in the theme, when the next button is clicked by the user
+        /// </summary>
+        /// <param name="sender">Next button</param>
+        /// <param name="e">Event arguments</param>
         private void next_click(object sender, RoutedEventArgs e)
         {
 
@@ -115,7 +129,11 @@ namespace Memory_Project
             }
 
         }
-
+        /// <summary>
+        /// Displays the previous card in the theme, when the next button is clicked by the user
+        /// </summary>
+        /// <param name="sender">Previous button</param>
+        /// <param name="e">Event arguments</param>
         private void prev_click(object sender, RoutedEventArgs e)
         {
 
